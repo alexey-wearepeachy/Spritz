@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "email_text_1": "For partnership and PR inquiries:",
+        "email_1": "spritzsociety@align-pr.com",
+        "email_text_2": "For general inquiries:",
+        "email_2": "hello@spritzsociety.com",
+        "email_text_3": "For sales inquiries:",
+        "email_3": "sales@spritzsociety.com",
+        "first_email_text": "",
+        "first_email": "",
+        "second_email_text": "",
+        "second_email": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form"
+  ]
+}

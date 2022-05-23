@@ -1,0 +1,8 @@
+<div data-oke-reviews-product-listing-rating>
+    {% if product.tags contains 'varietyPack' %}
+        {% assign productVariety = all_products['variety-pack'] %}
+        {{ productVariety.metafields.okendo.ProductListingSnippet }}
+    {% else %}
+        {{ product.metafields.okendo.ProductListingSnippet }}
+    {% endif %}
+</div>

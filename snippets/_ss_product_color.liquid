@@ -1,0 +1,37 @@
+{% unless color %}{% assign color = '#F64A47' %}{% endunless %}
+{% assign colorr = color | color_lighten: 30 %}
+<style>
+  #{{id}} .spritz-product__title,
+  #{{id}} button.polygone-btn,
+  #{{id}} .link,
+  #{{id}} .js-pdp-qty,
+  #{{id}} .yotpo .yotpo-icon:before {
+    color : {{color}};
+  }
+  #{{id}} .js-pdp-qty-increment svg .shape {
+    fill : {{color}};
+  }
+  #{{id}} .pdp-qty-area svg path {
+    stroke : {{color}};
+  }
+  #{{id}}:before {
+    background-color: {{color}};
+  }
+  #{{id}} .spritz-product__content::after  {
+     background-color: {{color_inner}};
+  }
+  #{{id}} .svg-btn .svg path {
+    fill: {{color}};
+    stroke: {{color}};
+  }
+  #{{id}} .svg-btn .hover_svg path {
+    fill: #fff;
+    stroke: {{color}};
+  }
+  #{{id}} .selling-plan-wrapper .selling-plan-selector__inner input[type="radio"] + svg path {
+    stroke : {{color}};
+  }
+  #{{id}} .selling-plan-wrapper .selling-plan-selector__inner input[type="radio"]:checked + svg path {
+    fill : {{color}};
+  }
+</style>

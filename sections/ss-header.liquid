@@ -1,0 +1,54 @@
+<header class="ss-header">
+  <div class="ss-header__inner">
+    
+    <h1 class="ss-header__logo" aria-label="{{shop.name}} logo links to homepage">
+      <a href="/" rel="Home">
+        <span class="visually-hidden">{{shop.name}}</span>
+        {% if section.settings.logo != blank %}
+          <img src="{{section.settings.logo | img_url: 'master'}}" alt="{{shop.name}}">
+        {% else %}
+          {% render '_ss_logo' %}
+        {% endif %}
+      </a>
+    </h1>
+
+    <button class="ss-header__hamburger js-toggle-nav" id="js-toggle-nav" aria-label="Open or close nav">
+      {% render '_ss_hamburger_closed' %}
+    </button>
+    
+    <nav class="ss-header__nav left">
+      <a href="/collections/spritz">Shop</a>
+    </nav>
+
+    <nav class="ss-header__nav right">
+      <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account">
+        {%- liquid
+          if customer
+            echo 'customer.account_fallback' | t
+          else
+            echo 'customer.log_in' | t
+          endif
+        -%}
+      </a>
+      
+    <button class="d-flex js-toggle-mini-cart header__toggle-mini-cart">
+      {% render '_ss_icon_cart' %}
+      <span>(<span class="js-cart-count cart-count">{{cart.item_count}}</span>)</span>
+    </button>
+
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "merch-product",
+      "settings": {}
+    },
+    "video": {
+      "type": "ss-home-video",
+      "settings": {
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0581\/1909\/4440\/files\/2512369184.mp4?v=1626908348"
+      }
+    },
+    "reviews": {
+      "type": "ss-pdp-reviews",
+      "settings": {
+        "heading": "Hear what our members think"
+      }
+    },
+    "merch": {
+      "type": "ss-merchant-collection",
+      "settings": {
+        "heading": "Spritz up your Wardrobe",
+        "m_collection": "merch"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video",
+    "reviews",
+    "merch"
+  ]
+}

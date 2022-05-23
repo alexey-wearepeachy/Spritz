@@ -1,0 +1,75 @@
+<article class="section-{{ section.id }} home-ingredients">
+  {% if section.blocks.size > 0 %}
+  <div class="swiper-container home-ingredients-swiper">
+    <div class="swiper-wrapper" style="align-items: baseline">
+      {% for block in section.blocks %}
+        <section id="block-{{ block.id }}" class="ingredient swiper-slide">
+          <div class="ing-img">
+            <figure class="image">
+              <img
+                data-srcset="{{ block.settings.image | img_url: '165x' }} 165w,
+                {{ block.settings.image | img_url: '360x' }} 360w,
+                {{ block.settings.image | img_url: '535x' }} 535w,
+                {{ block.settings.image | img_url: '720x' }} 720w,
+                {{ block.settings.image | img_url: '940x' }} 940w,
+                {{ block.settings.image | img_url: '1070x' }} 1070w"
+                src="{{ block.settings.image | img_url: '533x' }}"
+                data-sizes="auto" 
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                class="lazyloaded w-100 h-auto"
+                />
+            </figure>
+          </div>
+          <header class="ing-content">
+            <h2 class="ing-title accent text-uppercase">{{ block.settings.title }}</h2>
+            <p class="subtitle acumin-pro">{{ block.settings.subtitle }}</p>
+          </header>
+        </section>
+      {% endfor %}
+    </div>
+    
+  </div>    
+  {% endif %}
+  <div class="swiper-pagination home-ingredients-swiper--pagination"></div>
+</article>
+
+{% schema %}
+{
+  "name" : "Ingredients",
+  "tag" : "section",
+  "class" : "spaced-section spaced-section--full-width",
+  "settings" : [
+  ],
+  "blocks": [
+    {
+        "type": "ingredient",
+        "name": "Ingredient",
+        "settings": [
+		      {
+            "type" : "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type" : "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type" : "text",
+            "id": "subtitle",
+            "label": "Subtitle"
+          }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients"
+    }
+  ]
+}
+{% endschema %}

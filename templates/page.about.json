@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "hero": {
+      "type": "ss-about-page-hero",
+      "settings": {
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0581\/1909\/4440\/files\/Spritz_30_drinks_final__1___1.mp4?v=1629019993",
+        "heading": "Introducing Spritz Society: Your new favorite sparkling cocktail!",
+        "text": "<p><strong>Spritz Society was founded on the idea that taste matters. Taste helps us make the most of the moment — and life is too short for drinks you don’t love.<br\/><br\/>So we take real, recognizable ingredients and pack them into convenient sparkling cocktails you can take anywhere. We’re intentional about how we make them, from real wine to real flavors, because our community appreciates the little things.<br\/><br\/>If you believe every moment is worth elevating, you’re in the society. Everyone is welcome. We’re brought together by great taste.<\/strong><\/p>"
+      }
+    },
+    "ticker": {
+      "type": "ss-about-ticker",
+      "disabled": true,
+      "settings": {
+        "text": "Made by Spritz lovers, for Spritz lovers."
+      }
+    },
+    "text_image": {
+      "type": "ss-about-text-image",
+      "settings": {
+        "heading": "Our Values",
+        "text": "<p><strong>We believe in taste.<\/strong><br\/>We make our cocktails as delicious as possible. Because taste matters. Our ingredients naturally work together to create flavors we’re proud of.<br\/><br\/><strong>We tell it like it is.<\/strong><br\/>We use real ingredients that you can recognize. We’re transparent about what we believe, because our mission is core to our founding story.<br\/><br\/><strong>We’re here for our community.<\/strong><br\/>We created Spritz Society to bring people together. As we laid the groundwork, we asked hundreds of those people what they wanted from their perfect beverage. We won’t stop working for them.<br\/><strong><br\/>We make moments.<\/strong><br\/>When it comes down to it, we exist to help people create special moments and enjoy life. We do our best to live up to those moments. And we’re grateful to be a part of them.<\/p>",
+        "align": "right",
+        "enable": false
+      }
+    },
+    "16273258542a1094e9": {
+      "type": "ss-about-ticker",
+      "disabled": true,
+      "settings": {
+        "text": "have your spritz and drink it to0"
+      }
+    },
+    "16273293890d4edf6a": {
+      "type": "ss-about-text-image",
+      "disabled": true,
+      "blocks": {
+        "13d54b13-800d-4e8a-b423-9c91ed9c9cc4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-poly-4.png"
+          }
+        },
+        "105cc761-b6d2-43a5-952a-36569999be02": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-poly-5.png"
+          }
+        },
+        "18f74c2a-45f5-4b21-b353-520295d321a7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about-poly-3.png"
+          }
+        }
+      },
+      "block_order": [
+        "13d54b13-800d-4e8a-b423-9c91ed9c9cc4",
+        "105cc761-b6d2-43a5-952a-36569999be02",
+        "18f74c2a-45f5-4b21-b353-520295d321a7"
+      ],
+      "settings": {
+        "heading": "Spritz lovers come in all shapes and sizes.",
+        "text": "<p>We are a society of like-minded individuals who believe in doing things a little differently. Real flavors, real experiences, a splash of adventure.<br\/><br\/>We unite in our desire to live life to the fullest. We spritz for the journey. We enjoy every sip. <\/p>",
+        "align": "left",
+        "enable": true
+      }
+    },
+    "quote": {
+      "type": "ss-about-quote",
+      "settings": {
+        "text": "Brought together by great taste"
+      }
+    },
+    "social": {
+      "type": "ss-about-social",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/2021-08-17_11.06.16.png"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "text_image",
+    "16273258542a1094e9",
+    "16273293890d4edf6a",
+    "quote",
+    "social"
+  ]
+}

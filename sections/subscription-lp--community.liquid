@@ -1,0 +1,76 @@
+{% liquid
+    assign title = section.settings.title
+    assign descr = section.settings.descr
+    assign btn_text = section.settings.btn_text
+    assign btn_url = section.settings.btn_url
+    assign blocks = section.blocks
+%}
+
+<section class="subscription-lp--community">
+    <div class="container">
+        <div class="community__content">
+            <h2 class="community__title">{{ title }}</h2>
+            <div class="community__descr">{{ descr }}</div>
+            <a href="{{ btn_url }}" class="community__btn svg-btn large d-flex flex-a-center flex-j-center bg-transperant">
+                {% render '_ss_polygon_button_shape', type: '' %}
+                <span>{{ btn_text }}</span>
+            </a>
+        </div>
+        <div class="community__gallery">
+            {% for block in blocks %}
+                <div class="community__img">
+                    <img src="{{ block.settings.img | img_url: 'master' }}" alt="{{ block.settings.img.alt }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Subscription community",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section title"
+        },
+        {
+            "type": "richtext",
+            "id": "descr",
+            "label": "Section description"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "subscribe"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block",
+            "name": "block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Block image"
+                }
+            ]
+        }
+    ],
+    "max_blocks": 3,
+    "presets": [
+        {
+            "category": "Subscription community",
+            "name": "Subscription"
+        }
+    ]
+}
+{% endschema %}

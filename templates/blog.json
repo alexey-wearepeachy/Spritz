@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "82c24b01-5bda-4dac-9bcb-183a38f1b3d1": {
+          "type": "block",
+          "settings": {
+            "blog": "society-news",
+            "img": "shopify:\/\/shop_images\/2021-08-17_11.06.37.png"
+          }
+        }
+      },
+      "block_order": [
+        "82c24b01-5bda-4dac-9bcb-183a38f1b3d1"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

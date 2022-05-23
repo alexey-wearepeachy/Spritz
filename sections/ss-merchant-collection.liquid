@@ -1,0 +1,44 @@
+<article class="color-white homepage-merchant-collection background-ss-section-gradient">
+  <div class="ss-container">
+    <header class="text-center">
+      <h1 class="ss--secondary-font heading-xxl">{{section.settings.heading}}</h1>
+    </header>
+    <section class="text-center swiper-container home-merch-swiper">
+      <div class="d-flex flex-wrap flex-j-center swiper-wrapper home-merch-swiper__wrap">
+        {%- for p in section.settings.m_collection.products -%}
+          {% if p.handle != product.handle %}
+            <div class="merch-item swiper-slide">
+              {% render '_ss_pl_merch_item', product: p, type: 'merch' %}
+            </div>
+          {% endif %}
+        {%- endfor -%}
+      </div>
+       <div class="swiper-pagination merch-swiper-pagination"></div>
+    </section>
+  </div>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Homepage Merchant",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type" : "collection",
+      "id": "m_collection",
+      "label": "Choose Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Merchant Product"
+    }
+  ]
+}
+{% endschema %}

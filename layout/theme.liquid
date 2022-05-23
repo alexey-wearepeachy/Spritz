@@ -1,0 +1,313 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
+    
+    {%- if settings.favicon -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    {%- endif -%}
+
+    {% include 'social-meta-tags' %}
+
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    {% comment %}<script src="assets/custombox.min.js"></script>{% endcomment %}
+    {% comment %}<link rel="stylesheet" href="assets/custombox.min.css">{% endcomment %}
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    
+    {%- render '_ss_fonts_preload' -%}
+    
+    {% render 'meta-tags' %}
+    
+    <!-- Global site tag (gtag.js) - Google Ads: 10790461096 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10790461096"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-10790461096');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Ads: 10790461096 End -->
+
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {{ content_for_header }}
+    
+    {% comment %}From DAWN theme{% endcomment %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {% comment %}Include app.css as inline style.{% endcomment %}
+    {% render '_ss_fonts' %}
+
+    <link href="{{'app.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{'custom.scss.css' | asset_url }}" rel="stylesheet">
+
+    <link href="https://staticw2.yotpo.com/Cru3E5olPTrY2VfmrdnMMVQck7ASdWjZuGw47X6N/widget.css?widget_version=2020-05-05_05-57-23" rel="stylesheet" type="text/css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    {% section 'global-gwp-settings' %}
+    {% comment %}SPRITZ globals vars{% endcomment %}
+    <script>
+      var globals = {
+        dev: window.location.href.indexOf('myshopify') >= 1 ? true : false,
+        freeShipEnabled: {{settings.free_ship_enabled}},
+        freeShipThreshold: {% if settings.free_ship_threshold != '' %}{{settings.free_ship_threshold | times: 100}}{% else %}0{% endif %},
+        gwpModule: window.gwpInstance(),
+        gwpEnabled: {{settings.gwp_enabled}},
+        gwpMin: {% if  settings.gwp_min != '' %}{{- settings.gwp_min | strip -}}{% else %}0{% endif %}, //Gift with purchase min cart value.
+        gwpProduct:  {% if settings.gwp_product != blank %}{{all_products[settings.gwp_product] | json }}{% else %}null{% endif %},
+        upsellEnabled: {{settings.upsell_enabled}},
+        upsellProduct: {% if settings.settings.upsell_product != blank %}{{all_products[settings.upsell_product] | json }}{% else %}null{% endif %},
+        emptyCartMessage: "Your cart is empty",
+        storeFrontAccessToken: "cf202a80051bbfe686932d739023ebfb",
+        storeUrl: "{{shop.url}}",
+        graphQlUrl: "{{shop.url}}/api/graphql",
+        headers: {
+          "Content-Type": "application/graphql",
+          "X-Shopify-Storefront-Access-Token": "cf202a80051bbfe686932d739023ebfb"
+        }
+      }
+    </script>
+    
+    <!-- Global site tag (gtag.js) - Google Ads: 10790461096 --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10790461096"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-10790461096'); </script>
+
+  {% comment %}From DAWN theme{% endcomment %}
+  {%- comment -%}
+    <script>
+    window.Userback = window.Userback || {};
+    Userback.access_token = '30151|46081|aY0LaYf1FiBxN0XEH36M3VDBP';
+    (function(d) {
+        var s = d.createElement('script');s.async = true;
+        s.src = 'https://static.userback.io/widget/v1.js';
+        (d.head || d.body).appendChild(s);
+    })(document);
+  </script> 
+  {%- endcomment -%}
+
+    <!-- QUAD PIXEL START -->
+    <script type="text/javascript"> (function(){ var e = document.getElementsByTagName("script")[0]; var d = document.createElement("script"); d.src = "//insiderdata360online.com/service/platform.js?ran="+Math.random(); d.type = "text/javascript"; d.async = true; d.defer = true; e.parentNode.insertBefore(d,e); })(); </script>
+    <!-- QUAD PIXEL END -->
+
+  {{ shop.metafields.okendo.ReviewsWidgetStyleTag }}
+  {{ shop.metafields.okendo.StyleCustomizations }}
+
+  <script type="application/javascript" async 
+  src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=RRLkf5"></script>
+
+    <script async="" type="text/javascript">var d=document,s='https://a.smtrk.net/trk?t=s&i=62693cb87d6dc3d91ebd58b6&p=t,i,x&s=069e2cd9df61fbeae7168c604b7a5d5e&r='+escape(d.referrer)+'&u='+escape(d.URL),n=d.createElement("script"),e=d.getElementsByTagName("script")[0];n.async=!0,n.src=s,e.parentNode.insertBefore(n,e);</script>
+  </head>
+
+  <body>
+    <script>
+      let ssData = localStorage.getItem('registeredCustomer');
+      if ('{{ customer.email }}' == ssData) {
+        localStorage.removeItem('registeredCustomer');
+        window.location.href = '/pages/thanks-for-registration'
+      }
+    </script>
+    {% section 'age-gate' %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ "accessibility.skip_to_text" | t }}
+    </a>
+
+    {% comment %}{% section 'announcement-bar' %}{% endcomment %}
+    {% comment %} {% section 'header' %} {% endcomment %}
+    {% section 'promobar' %}
+    {% section 'ss-header' %}
+    {% section 'navigation' %}
+
+
+    <main id="MainContent" class="js-Pjax content-for-layout focus-none" role="main" tabindex="-1">
+      <div class="js-Pjax-inner">{{ content_for_layout }}</div>
+    </main>
+
+    {% section 'footer' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      },
+        
+      window.discounts = {
+        giftHatTshirt: {{ settings.free-hat-tshirt | json }}
+      }
+    </script>
+
+  {% render '_mini-cart' %}
+  {% render '_ss_blocker' %}
+
+
+  {% comment %}From DAWN theme{% endcomment %}
+  <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
+
+  {% comment %}SPRITZ app code{% endcomment %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer
+  ></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" type="text/javascript" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js" type="text/javascript" defer></script>
+
+  <script src="{{ 'app.js' | asset_url }}" defer></script>
+
+  <script type="text/javascript">
+  (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/l4TSwcVeR4XEFaumTdE3flI7yQRa7iM2TVTsaGGU/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+  </script>
+
+
+<!-- mini-cart-footer__checkout-btnast Tag -->
+<script type="text/javascript">
+  window._qevents = window._qevents || [];
+  
+  (function() {
+  var elem = document.createElement('script');
+  elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+  elem.async = true;
+  elem.type = "text/javascript";
+  var scpt = document.getElementsByTagName('script')[0];
+  scpt.parentNode.insertBefore(elem, scpt);
+  })();
+  
+  window._qevents.push({
+  qacct:"p-sKeLK8j-vB8BX",
+  uid:"__INSERT_EMAIL_HERE__"
+  });
+  </script>
+  
+  <noscript>
+  <div style="display:none;">
+  <img src="//pixel.quantserve.com/pixel/p-sKeLK8j-vB8BX.gif" border="0" height="1" width="1" alt="Quantcast"/>
+  </div>
+  </noscript>
+  <!-- End Quantcast tag -->
+
+  <script> (function(){ var s = document.createElement('script'), e = ! document.body ? document.querySelector('head') : document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : '', hideMobile : false, hideTrigger : false, language : 'en', position : 'right', leadColor : '#146FF8', triggerColor : '#146FF8', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'medium', triggerOffsetX : 20, triggerOffsetY : 20, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 10, triggerOffsetY : 10, triggerRadius : '50%' } }); }; e.appendChild(s); }()); </script>
+<div class="acsb-trigger acsb-bg-lead acsb-trigger-size-medium acsb-trigger-position-x-right acsb-trigger-position-y-bottom acsb-ready" tabindex="0" role="button" style="display: none; inset: auto 20px 20px auto; border-radius: 50%;" aria-label="Open accessibility options, statement and help" data-acsb="trigger"> <span class="acsb-trigger-icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 131.3" enable-background="new 0 0 100 131.3" xml:space="preserve"><path d="M71.6,131.3c1,0,2.1-0.3,3.1-0.8c3.9-1.8,5.5-6.2,3.6-10.1c0,0-14.3-32.7-16.9-44.7c-1-4.2-1.6-15.3-1.8-20.5c0-1.8,1-3.4,2.6-3.9l32-9.6c3.9-1,6.2-5.5,5.2-9.4c-1-3.9-5.5-6.2-9.4-5.2c0,0-29.6,9.6-40.3,9.6c-10.4,0-39.8-9.4-39.8-9.4c-3.9-1-8.3,0.8-9.6,4.7c-1.3,4.2,1,8.6,5.2,9.6l32,9.6c1.6,0.5,2.9,2.1,2.6,3.9c-0.3,5.2-0.8,16.4-1.8,20.5c-2.6,12-16.9,44.7-16.9,44.7c-1.8,3.9,0,8.3,3.6,10.1c1,0.5,2.1,0.8,3.1,0.8c2.9,0,5.7-1.6,6.8-4.4l15.3-31.2l14.6,31.4C66.1,129.7,68.7,131.3,71.6,131.3z"></path> <circle style="fill: #fff;" cx="50.3" cy="14.6" r="14.6"></circle></svg></span><span class="acsb-actions-active-icon"> <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 105 79" style="enable-background:new 0 0 105 79;" xml:space="preserve"> <g>	<path d="M12.6,38.9C6,31.9-4.7,42.6,2.3,49.2c8.7,9,17.3,18.3,26.3,27c4,3.7,7,3.7,10.7,0l63.6-63.3	c6.7-7-3.7-17.6-10.7-10.7L34.3,60.2L12.6,38.9z"></path>
+</g>
+</svg> </span>
+</div>
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "7xl4gnidk5");
+</script>
+
+    {% comment %}
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', triggerPixel);
+      document.addEventListener('pjax:complete', triggerPixel);
+
+      function triggerPixel() {
+        var _learnq = _learnq || [];
+
+        var item = {
+          Name: {{ product.title|json }},
+          ProductID: {{ product.id|json }},
+          Categories: {{ product.collections|map:'title'|json }},
+          ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+          URL: "{{ shop.secure_url }}{{ product.url }}",
+          Brand: {{ product.vendor|json }},
+          Price: {{ product.price|money|json }},
+          CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+        };
+        _learnq.push(['track', 'Viewed Product', item]);
+        _learnq.push(['trackViewedItem', {
+          Title: item.Name,
+          ItemId: item.ProductID,
+          Categories: item.Categories,
+          ImageUrl: item.ImageURL,
+          Url: item.URL,
+          Metadata: {
+            Brand: item.Brand,
+            Price: item.Price,
+            CompareAtPrice: item.CompareAtPrice
+          }
+        }]);
+
+        const addToCartBtns = document.querySelectorAll("button[name='add']");
+
+        var addToCart = function() {
+          _learnq.push(['track', 'Added to Cart', item]);
+          console.log('fffffffffffffffffff');
+        };
+
+        for (var i = 0; i < addToCartBtns.length; i++) {
+          addToCartBtns[i].addEventListener('click', addToCart, false);
+        }
+      }
+    </script>
+
+        {% endcomment %}
+
+      <script type="text/javascript">
+        var _learnq = _learnq || [];
+
+        {% if template == 'product' %}
+
+        var item = {
+          Name: "{{ product.title }}",
+          ProductID: "{{ product.id }}",
+          Categories: {{ product.collections |map:'title' |json }},
+          ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+          URL: "{{ shop.secure_url }}{{ product.url }}",
+          Brand: {{ product.vendor|json }},
+          Price: {{ product.price|money|json }},
+          CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+        };
+
+        _learnq.push(['track', 'Viewed Product', item]);
+        _learnq.push(['trackViewedItem', {
+          Title: item.Name,
+          ItemId: item.ProductID,
+          Categories: item.Categories,
+          ImageUrl: item.ImageURL,
+          Url: item.URL,
+          Metadata: {
+            Brand: item.Brand,
+            Price: item.Price,
+            CompareAtPrice: item.CompareAtPrice
+          }
+        }]);
+        {% endif %}
+
+      </script>
+
+</body>
+</html>

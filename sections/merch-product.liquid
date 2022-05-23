@@ -1,0 +1,156 @@
+{% comment %}
+If product more than one Variant
+{% endcomment %}
+{% assign hasOneVar = true %}
+{% if product.variants.size > 1 %}
+{% assign hasOneVar = false %}
+{% endif %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign product_color = 'ss-' | append: product.id %}
+
+<article class="product-hero merch-product" data-product-id="{{product.id}}" id="{{ product_color }}">
+  <div class="ss-container">
+    <div class="d-flex flex-j-center flex-wrap">
+      <div class="product-hero__center left_part">
+        <div class="">
+          {% for image in product.images %}
+          {% assign src = image %}
+          <picture class="">
+            <img src="{{ src | img_url: '100x', format: 'pjpg' }}" data-srcset="{{  src | img_url: '600x' }},
+            {{ src | img_url: '600x', scale: 2 }} 2x,
+            {{ src | img_url: '600x', scale: 3 }} 3x" width="{{src.width}}" height="{{src.height}}"
+              alt="{{product.title}} from {{shop.name}}" class="lazyload margin-auto w-100 d-block h-auto" />
+          </picture>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="product-hero__right right_part">
+        <div class="position-absolute pdp-right-img ">
+          <img src="{{ 'pdp-merch-right-img.png' | asset_img_url: '324x' }}" class="lazyload" alt="{{product.title}} Badge from {{shop.name}}" width="162" height="169" />
+        </div>
+        <div class="product-hero__right--inner">
+          <form action="/cart/add" method="post" enctype="multipart/form-data" data-id="{{product.id}}"
+                class="js-product-form"
+                data-title="{{ product.title }}"
+                data-categories='{{ product.collections |map:'title' |json }}'
+                data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+                data-url="{{ shop.secure_url }}{{ product.url }}"
+                data-brand={{ product.vendor|json }}
+                data-price={{ product.price|money|json }}
+                data-compareatprice={{ product.compare_at_price_max|money|json }}
+          >
+
+            <h1 class="spritz-product__title heading-l pdp-title h2">{{product.title}}</h1>
+            {% comment %}
+            {% unless product.has_only_default_variant %}
+            <span class="js-pdp-variant pdp-variant-name d-block">
+              {{product.selected_or_first_available_variant.title}}
+            </span>
+            {% endunless %}
+            {% endcomment %}
+            {% comment %}
+            <div class="yotpo bottomLine mb-3" data-product-id="{{ product.id }}" aria-label="Star rating">
+              <div class="current"></div>
+            </div>
+            {% endcomment %}
+            <!-- SMARTRR_CUSTOMIZED_NO_AUTO_EDIT -->
+            {% comment %}{% render 'smartrr-product' %}{% endcomment %}
+
+            <p class="acumin-pro meet-our-spritz-sub-headline body-2">{{ product.metafields.descriptors.subtitle }}</p>
+            <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-2">Polyester&nbsp; {% render '_ss_marquee_svg' %} &nbsp;Cotton</p>
+
+            <div class="pdp-desc">
+              {{product.description}}
+            </div> 
+
+            {% comment %}<span class="js-product-price pdp-price">{{product.price | money }}</span>{% endcomment %}
+
+            {% comment %}Dont show if only the `Default Title` variant{% endcomment %}
+            {% if product.available == true %}
+            <div class="variant-select select" {% if product.has_only_default_variant or hasOneVar %}style="display:none" {% endif %}>
+                <div class="notchouter-btn">
+                    <div class="notchinner-btn">
+                        <select name="id" class="js-product-select">
+                            {% for variant in product.variants %}
+                            {% if variant.available == true %}
+                            <option value="{{variant.id}}" data-price="{{ variant.price | money_with_currency }}">{{ variant.title }}</option>
+                            {% else %}
+                            <option disabled="disabled">{{ variant.title }} Sold out!</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <span class="down-arrow-icon">{% render '_ss_icon_down_arrow' %}</span>
+                </div>
+            </div>
+            {% endif %}
+            <div class="d-flex flex-j-center flex-a-center pdp-qty-with-price">
+              <div class="d-flex flex-j-center acumin-pro pdp-qty-increment-wrap">
+                <button class="js-pdp-qty-increment pdp-qty-increment down" type="button"
+                  aria-label="Quantity increment for {{product.title}}">
+                  <span class="d-none">Decrease quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                      d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                      fill="#F64A47" />
+                    <path class="symbol" d="M16.2986 19.4737V21.7837H28.2986V19.4737H16.2986Z" fill="white" />
+                  </svg>
+                </button>
+                <label class="d-flex pdp-qty-area" for="pdp-qty-{{product.id}}" aria-label="Selet a quantity">
+                  <input type="number" value="1" id="pdp-qty-{{product.id}}" name="quantity" class="js-pdp-qty pdp-qty"
+                    maxlength="10" pattern="[0-9]" {% unless product.available %}disabled{% endunless %}>
+                  <svg width="87" height="50" viewBox="0 0 87 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M65.2452 0.999997L85.1925 24.68L65.2452 48.36L22.6651 48.36L1.55463 24.68L22.6651 0.999992L65.2452 0.999997Z"
+                      stroke="#F64A47" stroke-width="2" />
+                  </svg>
+                </label>
+                <button class="js-pdp-qty-increment pdp-qty-increment up" type="button"
+                  aria-label="Quantity descrement for {{product.title}}">
+                  <span class="d-none">Increase quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                      d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                      fill="#F64A47" />
+                    <path class="symbol"
+                      d="M21.6047 11.6437V18.7237H14.5547V21.0637H21.6047V28.3237H23.9747V21.0637H30.9947V18.7237H23.9747V11.6437H21.6047Z"
+                      fill="white" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="price_with_can_price">
+                <div class="price spritz-product__price" data-price='{{product.price}}'>{{product.price | money}}</div>
+                {% if product.metafields.product.pack %}
+                <div class="acumin-pro spritz-product__canprice">{{product.price | divided_by:
+                  product.metafields.product.pack | money }}/can</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="pdp-add-to-bag-wrapper">
+              <button type="submit" name="add"  class="svg-btn filled-svg-btn d-block large" {% unless product.available %}disabled{% endunless %}>
+                {% render '_ss_polygon_button_shape', type: 'filled' %}
+                <span>{% if product.available %}Add To Cart{% else %}Sold out{% endif %}</span>
+              </button>
+
+              <!--<button type="submit" name="add" class="polygone-normal-btn d-block pdp-add-to-bag" {% unless
+                product.available %}disabled{% endunless %}>
+                {% if product.available %}
+                Add To Cart
+                {% else %}
+                Sold out
+                {% endif %}
+              </button>-->
+            </div>
+
+            <a href="" class="acumin-pro link d-block text-center pdp-link-bottom"
+              aria-label="Learn more about {{product.title}}">
+              Sizing Chart
+            </a>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</article>

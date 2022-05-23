@@ -1,0 +1,157 @@
+{% comment %}
+  This file is maintained by Smartrr. 
+  Use the "Theming" section of the Smartrr app to configure theme settings. 
+{% endcomment %}
+<script>
+  if (!window.smartrr) {
+    window.smartrr = {};
+  }
+  window.smartrr.theme = {
+    "overrideCSS": ".smartrr-portal-modify-item-container {\n  background: white;\n}\n\n.smartrr-portal-tabs-header-container {\n  border: unset;\n}\n\n.smartrr-portal-slide-panel-content-settings {\n  background-color: #f64a47;\n}\n\n.smartrr-portal-manage-settings-text {\n  color: #f64a47;\n}\n\n.smartrr-portal-container {\n  margin-top: 2.275rem;\n}\n\n@media screen and (min-width: 768px) {\n  .smartrr-portal-container {\n    padding-top: 45px;\n\t}\n}",
+    "primaryColor": "#f64a47",
+    "secondaryColor": "#FFE8E8",
+    "mainContentBackgroundColor": "#FFE8E8",
+    "mainContentBorderRadius": 8,
+    "mainContentBorderColor": "#f64a47",
+    "mainContentBorderWidth": 2,
+    "loaderPrimaryColor": "#FDAD2A",
+    "loaderSecondaryColor": "#f64a47",
+    "bodyBackgroundColor": "#FFE8E8",
+    "bodyTextFontFamily": "KumlienProBold,     arial,     sans-serif",
+    "bodyTextFontWeight": "normal",
+    "bodyTextColor": "#f64a47",
+    "heading1TextFontFamily": "KumlienProBold,     arial,     sans-serif",
+    "heading1TextFontSize": 22,
+    "heading1FontWeight": "bolder",
+    "heading1TextColor": "#f64a47",
+    "heading2TextFontFamily": "KumlienProBold,     arial,     sans-serif",
+    "heading2TextFontSize": 16,
+    "heading2FontWeight": "normal",
+    "heading2TextColor": "#f64a47",
+    "heading3TextFontFamily": "KumlienProBold,     arial,     sans-serif",
+    "heading3TextFontSize": 16,
+    "heading3FontWeight": "normal",
+    "heading3TextColor": "#f64a47",
+    "heading4TextFontFamily": "KumlienProBold,     arial,     sans-serif",
+    "heading4TextFontSize": 16,
+    "heading4FontWeight": "normal",
+    "heading4TextColor": "#f64a47",
+    "buttonBackgroundColor": "#f64a47",
+    "buttonFontFamily": "Acumin-RPro,arial,sans-serif",
+    "buttonFontSize": 16,
+    "buttonFontWeight": "normal",
+    "buttonTextColor": "#fff",
+    "buttonBorderRadius": 22,
+    "buttonBorderColor": "#f64a47",
+    "buttonBorderWidth": 2,
+    "dropdownBackgroundColor": "#f64a47",
+    "dropdownTextColor": "#fff",
+    "dropdownBorderRadius": 22,
+    "dropdownBorderColor": "#f64a47",
+    "dropdownBorderWidth": 2,
+    "dropdownFontFamily": "Acumin-RPro,     arial,     sans-serif",
+    "dropdownFontSize": 16,
+    "dropdownFontWeight": "normal",
+    "smallProductImageBorderRadius": 12,
+    "mediumProductImageBorderRadius": 14,
+    "largeProductImageBorderRadius": 16,
+    "purchasableThemes": []
+  }
+</script>
+
+<style>
+  body {
+    background-color: #FFE8E8;
+    transition: background-color .15s ease-in-out;
+  }
+
+  #smartrr_account,
+  #smartrr_slide_panel,
+  #smartrr_toast_container {
+    box-sizing: border-box;
+
+    color: #f64a47;
+    font-family: KumlienProBold,     arial,     sans-serif;
+    font-weight: normal;
+    background-color: #FFE8E8;
+    transition: background-color .15s ease-in-out, color .15s ease-in-out;
+  }
+
+  #smartrr_account *,
+  #smartrr_account *:before,
+  #smartrr_account *:after,
+  #smartrr_slide_panel *,
+  #smartrr_slide_panel *:before,
+  #smartrr_slide_panel *:after,
+  #smartrr_toast_container *,
+  #smartrr_toast_container *:before,
+  #smartrr_toast_container *:after {
+    box-sizing: border-box;
+  }
+
+  #smartrr_toast_container {
+    z-index: 10000001;
+  }
+
+  #smartrr_toast_container .Toastify__toast-container {
+    z-index: 10000002;
+  }
+
+  .hide-in-customer-portal {
+    display: none;
+  }
+
+  #smartrr_account,
+  #smartrr_slide_panel,
+  #smartrr_toast_container {
+
+    --smartrr-primaryColor: #f64a47;
+    --smartrr-secondaryColor: #FFE8E8;
+    --smartrr-mainContentBackgroundColor: #FFE8E8;
+    --smartrr-mainContentBorderRadius: 8px;
+    --smartrr-mainContentBorderColor: #f64a47;
+    --smartrr-mainContentBorderWidth: 2px;
+    --smartrr-loaderPrimaryColor: #FDAD2A;
+    --smartrr-loaderSecondaryColor: #f64a47;
+    --smartrr-bodyBackgroundColor: #FFE8E8;
+    --smartrr-bodyTextFontFamily: KumlienProBold,     arial,     sans-serif;
+    --smartrr-bodyTextFontWeight: normal;
+    --smartrr-bodyTextColor: #f64a47;
+    --smartrr-heading1TextFontFamily: KumlienProBold,     arial,     sans-serif;
+    --smartrr-heading1TextFontSize: 22px;
+    --smartrr-heading1FontWeight: bolder;
+    --smartrr-heading1TextColor: #f64a47;
+    --smartrr-heading2TextFontFamily: KumlienProBold,     arial,     sans-serif;
+    --smartrr-heading2TextFontSize: 16px;
+    --smartrr-heading2FontWeight: normal;
+    --smartrr-heading2TextColor: #f64a47;
+    --smartrr-heading3TextFontFamily: KumlienProBold,     arial,     sans-serif;
+    --smartrr-heading3TextFontSize: 16px;
+    --smartrr-heading3FontWeight: normal;
+    --smartrr-heading3TextColor: #f64a47;
+    --smartrr-heading4TextFontFamily: KumlienProBold,     arial,     sans-serif;
+    --smartrr-heading4TextFontSize: 16px;
+    --smartrr-heading4FontWeight: normal;
+    --smartrr-heading4TextColor: #f64a47;
+    --smartrr-buttonBackgroundColor: #f64a47;
+    --smartrr-buttonTextColor: #fff;
+    --smartrr-buttonFontFamily: Acumin-RPro,arial,sans-serif;
+    --smartrr-buttonFontSize: 16px;
+    --smartrr-buttonFontWeight: normal;
+    --smartrr-buttonBorderRadius: 22px;
+    --smartrr-dropdownBackgroundColor: #f64a47;
+    --smartrr-dropdownTextColor: #fff;
+    --smartrr-dropdownFontFamily: Acumin-RPro,     arial,     sans-serif;
+    --smartrr-dropdownFontSize: 16px;
+    --smartrr-dropdownFontWeight: normal;
+    --smartrr-dropdownBorderRadius: 22px;
+    --smartrr-buttonBorderColor: #f64a47;
+    --smartrr-buttonBorderWidth: 2px;
+    --smartrr-dropdownBorderColor: #f64a47;
+    --smartrr-dropdownBorderWidth: 2px;
+    --smartrr-smallProductImageBorderRadius: 12px;
+    --smartrr-mediumProductImageBorderRadius: 14px;
+    --smartrr-largeProductImageBorderRadius: 16px;
+  }
+
+</style>

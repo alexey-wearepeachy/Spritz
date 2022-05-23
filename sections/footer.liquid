@@ -1,0 +1,206 @@
+<footer class="footer ">
+  <section class="footer__inner">
+    <div class="ss-container ss-container-footer d-flex flex-wrap ">
+      <div class="footer__left">  
+        <nav class="footer__nav">
+          <h2 class="footer__nav-header">Info</h2>
+          <ul class="footer__nav-ul acumin-pro">
+            {% for link in linklists.footer-info.links %}
+              <li><a href="{{link.url}}" aria-label="Read mor e about our {{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>      
+        <nav class="footer__nav">
+          <h2 class="footer__nav-header">Shop</h2>
+          <ul class="footer__nav-ul acumin-pro">
+            {% for link in linklists.footer-flavors.links %}
+              <li><a href="{{link.url}}" aria-label="Read more about our {{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__right"> 
+        <h2 class="footer__nav-header footer__right__nav-header">
+          <span class="medium-up--hide">Stay Connected</span>
+          <span class="small-hide">Stay Connected</span>
+        </h2>
+        {% render '_ss_footer_subscribe' %}
+        {% render '_ss_social_links' %}
+      </div>
+      <div class="footer__last d-flex flex-a-center w-100 acumin-pro">
+        <div class="footer__last__copy-right">
+          ©2022 Spritz Bev, Inc.
+        </div>
+        <div class="footer__last__logo text-center">
+          <a href="/" rel="Home">
+            <span class="visually-hidden">{{shop.name}}</span>
+            {% render '_ss_logo' %}
+          </a>
+        </div>
+        <div class="footer__last__links d-flex">
+          <ul class="footer__nav-ul d-flex">
+            {% for link in linklists.footer-last.links %}
+              <li><a href="{{link.url}}" aria-label="Read more about {{shop.name}} {{link.title}}">{{link.title}}</a></li>
+            {% endfor %}            
+          </ul>
+        </div>
+      </div>
+      <div class="footer__last d-flex flex-a-center w-100 acumin-pro footer-visible-mobile">
+        <div class="footer__last__copy-right">
+          ©2022 Spritz Bev, Inc.
+        </div>
+
+        <div class="footer__last__links d-flex">
+          <ul class="footer__nav-ul d-flex">
+            {% for link in linklists.footer-last.links %}
+              <li><a href="{{link.url}}" aria-label="Read more about {{shop.name}} {{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
+          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.footer.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.footer.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.footer.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.footer.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.footer.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.footer.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "default": "Sign up to our emails",
+      "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      }
+    ]
+  }
+}
+{% endschema %}

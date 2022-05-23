@@ -1,0 +1,63 @@
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+
+<section class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <!-- Article -->
+    <div class="container">
+      <div class="article">
+        <div class="article__head">
+            <p class="article__date">
+                {% assign tags = '' %}
+                {% for tag in article.tags %}
+                    {% assign tags = tags | append: tag | append: '|' %}
+                {% endfor %}
+                {% if tags contains 'date' %}
+                    {% for tag in article.tags %}
+                        {% if tag contains 'date' %}
+                            {{ tag | remove: 'date-' }}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {{ article.created_at | date: '%Y/%m/%d' }}
+                {% endif %}
+            </p>
+          <h1 class="article__title">{{ article.title }}</h1>
+          <h4 class="article__author">by {{ article.author }}</h4>
+            {% for tag in article.tags %}
+                {% if tag contains 'time' %}
+                    <h4 class="article__time">{{ tag | remove: 'time-' }} min</h4>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="article__body">
+            {{ article.content }}
+        </div>
+      </div>
+    </div>
+    <!-- END Article -->
+
+    {% render 'article-recent-posts', current_article_handle: article.handle %}
+
+</section>
+
+
+{% schema %}
+{
+    "name": "t:sections.main-article.name",
+    "tag": "section",
+    "settings" : [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Recent Articles label",
+            "default": "Recent Articles"
+        },
+        {
+            "type": "text",
+            "id": "btn",
+            "label": "Button text",
+            "default": "load more"
+        }
+    ]
+}
+{% endschema %}

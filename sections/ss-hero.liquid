@@ -1,0 +1,281 @@
+<div class="hero">
+  <div class="ss-container">
+    <div class="hero-wrapper grid grid--1-col grid--2-col-tablet">
+     
+      <div class="hero-content grid__item hero-text-col hero-col">
+        {% if section.settings.subtext != blank %}
+        <div class="hero-subtext accent text-left">
+          {{ section.settings.subtext }}
+        </div>
+        {% endif %}
+        {% if section.settings.text != blank %}
+        <div class="mobile-hide">
+          <h1 class="hero-text heading-l">{{ section.settings.text | remove: '<p>'  | remove: '</p>' }}</h1>
+        </div>
+        {% endif %}
+        {% if section.settings.btn_link != blank and section.settings.btn_text != blank %}
+          
+        <div class="hero-btns">
+          <a href="{{ section.settings.btn_link }}" class="svg-btn large d-flex flex-a-center flex-j-center bg-transperant">
+            {% render '_ss_polygon_button_shape', type: '' %}
+            <span>{{ section.settings.btn_text }}</span>
+          </a>
+          <!--<div class="notchouter-btn">
+            <div class="notchinner-btn">
+              <a class="polygone-btn" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+            </div>
+          </div>-->
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- START CANS -->
+      <div dir="rtl" class="hero-image grid__item hero-cans-col hero-col">
+        <div class="cans-wrapper">
+          <div class="cans-inner">
+          {% if section.settings.image %}
+          <figure class="can image-one">
+            <img
+              data-srcset="{{ section.settings.image | img_url: '165x' }} 165w,
+              {{ section.settings.image | img_url: '360x' }} 360w,
+              {{ section.settings.image | img_url: '535x' }} 535w,
+              {{ section.settings.image | img_url: '720x' }} 720w,
+              {{ section.settings.image | img_url: '940x' }} 940w,
+              {{ section.settings.image | img_url: '1070x' }} 1070w"
+              src="{{ section.settings.image | img_url: '533x' }}"
+              data-sizes="auto" 
+              alt="{{ section.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+              class="lazyload w-100 h-auto d-block"
+              />
+          </figure>
+          {% endif %}
+          {% if section.settings.image2 %}
+          <figure class="can image-two">
+            <img
+              data-srcset="{{ section.settings.image2 | img_url: '165x' }} 165w,
+              {{ section.settings.image2 | img_url: '360x' }} 360w,
+              {{ section.settings.image2 | img_url: '535x' }} 535w,
+              {{ section.settings.image2 | img_url: '720x' }} 720w,
+              {{ section.settings.image2 | img_url: '940x' }} 940w,
+              {{ section.settings.image2 | img_url: '1070x' }} 1070w"
+              src="{{ section.settings.image2 | img_url: '533x' }}"
+              data-sizes="auto" 
+              alt="{{ section.settings.image2.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image2.width }}"
+              height="{{ section.settings.image2.height }}"
+              class="lazyload w-100 h-auto"
+              />
+          </figure>
+          {% endif %}
+          {% if section.settings.image3 %}
+          <figure class="can image-third">
+            <img
+              data-srcset="{{ section.settings.image3 | img_url: '165x' }} 165w,
+              {{ section.settings.image3 | img_url: '360x' }} 360w,
+              {{ section.settings.image3 | img_url: '535x' }} 535w,
+              {{ section.settings.image3 | img_url: '720x' }} 720w,
+              {{ section.settings.image3 | img_url: '940x' }} 940w,
+              {{ section.settings.image3 | img_url: '1070x' }} 1070w"
+              src="{{ section.settings.image3 | img_url: '533x' }}"
+              data-sizes="auto" 
+              alt="{{ section.settings.image3.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image3.width }}"
+              height="{{ section.settings.image3.height }}"
+              class="lazyload w-100 h-auto"
+              />
+          </figure>
+          {% endif %}
+          {% if section.settings.image4 %}
+          <figure class="can image-fourth">
+            <img
+              data-srcset="{{ section.settings.image4 | img_url: '165x' }} 165w,
+              {{ section.settings.image4 | img_url: '360x' }} 360w,
+              {{ section.settings.image4 | img_url: '535x' }} 535w,
+              {{ section.settings.image4 | img_url: '720x' }} 720w,
+              {{ section.settings.image4 | img_url: '940x' }} 940w,
+              {{ section.settings.image4 | img_url: '1070x' }} 1070w"
+              src="{{ section.settings.image4 | img_url: '533x' }}"
+              data-sizes="auto" 
+              alt="{{ section.settings.image4.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image4.width }}"
+              height="{{ section.settings.image4.height }}"
+              class="lazyload w-100 h-auto"
+              />
+          </figure>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <!-- END CANS -->
+
+      {% if section.settings.text != blank and template != 'index' %}
+        <div class="mobile-show">
+          <h1 class="hero-text heading-l">{{ section.settings.text | remove: '<p>'  | remove: '</p>' }}</h1>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if section.settings.press_title != blank %}
+      <h3 class="hero__press-title">{{ section.settings.press_title }}</h3>
+
+      <div class="hero__press-desk">
+        {% for block in section.blocks %}
+          {% if block.type == 'press' %}
+            <div class="hero__press-img">
+              <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt }}">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="marquee-slider hero__press-mob" data-marquee>
+    {% for i in (i..1) %}
+      {% for block in section.blocks %}
+        {% if block.type == 'press' %}
+          <div class="hero__press-img">
+            <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt }}">
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- {% if section.blocks.size > 0 %}
+<div class="ticker-tape-wrap">
+  <div class="swiper-container ticker-tape js-ticker-taper-swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'ticker_tap' %}    
+      <div class="swiper-slide">
+        <div class="marquee-svg">
+          {% include '_ss_marquee_svg' %}
+        </div>
+        <span class="ticker-text">{{ block.settings.ticker_text }}</span>
+      </div>
+      {% endcase %}
+      {% endfor %}    
+    </div>
+  </div>
+</div>
+{% endif %} -->
+
+
+<div class="marquee-slider" data-marquee>
+  {% for block in section.blocks %}
+    {% if block.type == 'ticker_tap' %}
+      <span>
+        <span class="marquee-svg">{% include '_ss_marquee_svg' %}</span>
+        <span class="ticker-text">{{ block.settings.ticker_text }}</span>
+      </span>
+    {% endif %}
+  {% endfor %}
+  {% for block in section.blocks %}
+    {% if block.type == 'ticker_tap' %}
+      <span>
+        <span class="marquee-svg">{% include '_ss_marquee_svg' %}</span>
+        <span class="ticker-text">{{ block.settings.ticker_text }}</span>
+      </span>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name" : "Hero Homepage",
+  "tag" : "section",
+  "class" : "hero-section spaced-section spaced-section--full-width",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "subtext",
+      "label": "Hero sub text"
+    },
+    {
+      "type" : "richtext",
+      "id": "text",
+      "label": "Hero text"
+    },
+    {
+      "type" : "text",
+      "id": "btn_text",
+      "label": "Button label"
+    },
+    {
+      "type" : "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "please add image in desending order"
+    },
+    {
+      "type" : "image_picker",
+      "id": "image",
+      "label": "First image"
+    },
+    {
+      "type" : "image_picker",
+      "id": "image2",
+      "label": "Second image"
+    },
+    {
+      "type" : "image_picker",
+      "id": "image3",
+      "label": "Third image"
+    },
+    {
+      "type" : "image_picker",
+      "id": "image4",
+      "label": "Fourth image"
+    },
+    {
+      "type": "text",
+      "id": "press_title",
+      "label": "Press title"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "ticker_tap",
+        "name": "Ticker Tap",
+        "settings": [
+		      {
+            "type" : "text",
+            "id": "ticker_text",
+            "label": "Ticker text"
+          }
+        ]
+    },
+    {
+        "type": "press",
+        "name": "Press logo",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Press logo"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Homepage"
+    }
+  ]
+}
+{% endschema %}

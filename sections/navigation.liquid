@@ -1,0 +1,14 @@
+{% render '_ss_nav', navigation: section.settings.navigation %}
+
+{% schema %}
+{
+    "name": "Navigation",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "navigation",
+            "label": "Navigation menu"
+        }
+    ]
+}
+{% endschema %}

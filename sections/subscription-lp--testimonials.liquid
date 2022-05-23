@@ -1,0 +1,99 @@
+<article class="testimonials background-ss-background color-ss-grapefruit subscription-lp--testimonials">
+  <header class="text-center testimonials__header ss-container">
+    <h1 class="ss--secondary-font testimonials__heading h2">
+      {{section.settings.heading}}
+    </h1>
+  </header>
+  <section class="ss-container">
+    <div class="swiper-container testimonials-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+        {% assign rank = block.settings.rank %}
+        {% assign extraStars = 5 | minus: rank %}
+        <figure class="swiper-slide testi">
+          <blockquote class="testi-quote">
+            {{block.settings.testi}}        
+          </blockquote>
+          <cite class="testi-cite">&mdash;{{block.settings.cite}}</cite>
+          <div class="rank testi-rank" data-rank="{{rank}}">
+            {% for i in (1..rank) %}
+              <span class="star filled">
+                {% render '_ss_icon_star' %}
+              </span>
+            {% endfor %}
+            {% for i in (1..extraStars) %}
+              <span class="star empty">
+                {% render '_ss_icon_star_empty' %}
+              </span>
+            {% endfor %}
+          </div>
+        </figure>  
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+        <div class="swiper-button-next">
+          {% render '_ss_swiper_button_next' %}
+        </div>
+        <div class="swiper-button-prev">
+          {% render '_ss_swiper_button_prev' %}
+        </div>
+    </div>
+  </section>
+  <a href="{{ section.settings.btn_url }}" class="testimonials__btn svg-btn large d-flex flex-a-center flex-j-center">
+    {% render '_ss_polygon_button_shape', type: '' %}
+    <span>{{ section.settings.btn_text }}</span>
+  </a>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Subscription testimonials",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button text"
+    },
+    {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Item",
+      "settings": [
+        {
+          "type" : "textarea",
+          "id": "testi",
+          "label": "Testimonial"
+        },     
+        {
+          "type" : "text",
+          "id": "cite",
+          "label": "Cite person"
+        },
+        {
+          "type" : "number",
+          "id": "rank",
+          "label": "Rank 1-5"
+        }        
+      ]
+    }
+  ],  
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

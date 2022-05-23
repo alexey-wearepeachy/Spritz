@@ -1,0 +1,38 @@
+
+<article class="text-center about-social">
+  <header class="about-social__header">
+    <h2 class="body-2">Join on</h2>
+    {% render '_ss_social_links' %}
+  </header>
+  <figure>
+    <img
+      data-srcset="{{section.settings.image | img_url: '1200x'}},
+      {{section.settings.image | img_url: '1200x', scale: 2}} 2x,
+      {{section.settings.image | img_url: '1200x', scale: 3}} 3x"
+      class="lazyload w-100 h-auto d-block"
+      alt="{{page.title}}"
+      width="{{section.settings.image.width}}"
+      height="{{section.settings.image.height}}"
+      />    
+  </figure>
+</article>
+
+{% schema %}
+{
+  "name" : "About Social",
+  "tag" : "section",
+  "class": "ss-container",
+  "settings" : [
+    {
+      "type" : "image_picker",
+      "id": "image",
+      "label": "image"
+    }    
+  ],
+  "presets": [
+    {
+      "name": "About Social"
+    }
+  ]
+}
+{% endschema %}

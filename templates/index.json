@@ -1,0 +1,579 @@
+{
+  "sections": {
+    "162567013216851d9a": {
+      "type": "ss-hero",
+      "blocks": {
+        "8ab1aaf3-4cc7-4a64-94b9-24c5e6c7a5de": {
+          "type": "ticker_tap",
+          "disabled": true,
+          "settings": {
+            "ticker_text": ""
+          }
+        },
+        "c36a2cfc-6231-4d33-b431-3f749c0816fe": {
+          "type": "ticker_tap",
+          "settings": {
+            "ticker_text": "REAL WINE"
+          }
+        },
+        "59e05153-49ca-4c76-a476-e0191c8fdf65": {
+          "type": "ticker_tap",
+          "settings": {
+            "ticker_text": "REAL FLAVORS"
+          }
+        },
+        "1322c5aa-61a1-4b50-8131-21a9c2c2f942": {
+          "type": "ticker_tap",
+          "settings": {
+            "ticker_text": "REAL INGREDIENTS"
+          }
+        },
+        "99ec7fd7-eac9-4a25-a0b0-16e245811818": {
+          "type": "ticker_tap",
+          "settings": {
+            "ticker_text": "6% ALC"
+          }
+        },
+        "0e9849f8-4c38-42ed-809b-077cfed6e506": {
+          "type": "ticker_tap",
+          "settings": {
+            "ticker_text": "GLUTEN FREE"
+          }
+        },
+        "5c0e2cfd-f731-4b0c-a974-6fd385e02347": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_12.png"
+          }
+        },
+        "25b5f886-d4dd-42b7-9926-b8fdcabc9fac": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_14.png"
+          }
+        },
+        "d72f5f09-56b6-4a23-82d5-c9bc08574a12": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_13.png"
+          }
+        },
+        "d05fe36b-fb3d-4168-8e5c-5e505e0ebf1f": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_15.png"
+          }
+        },
+        "a0e20ea4-9b4e-438a-99eb-e37f00a81bbf": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_16.png"
+          }
+        },
+        "b623e960-6bb7-488a-a1a6-79689d8d90c3": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_17.png"
+          }
+        },
+        "52f7a87e-8bab-43ba-bc7a-6b2840c860a0": {
+          "type": "press",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Mask_group_18.png"
+          }
+        }
+      },
+      "block_order": [
+        "8ab1aaf3-4cc7-4a64-94b9-24c5e6c7a5de",
+        "c36a2cfc-6231-4d33-b431-3f749c0816fe",
+        "59e05153-49ca-4c76-a476-e0191c8fdf65",
+        "1322c5aa-61a1-4b50-8131-21a9c2c2f942",
+        "99ec7fd7-eac9-4a25-a0b0-16e245811818",
+        "0e9849f8-4c38-42ed-809b-077cfed6e506",
+        "5c0e2cfd-f731-4b0c-a974-6fd385e02347",
+        "25b5f886-d4dd-42b7-9926-b8fdcabc9fac",
+        "d72f5f09-56b6-4a23-82d5-c9bc08574a12",
+        "d05fe36b-fb3d-4168-8e5c-5e505e0ebf1f",
+        "a0e20ea4-9b4e-438a-99eb-e37f00a81bbf",
+        "b623e960-6bb7-488a-a1a6-79689d8d90c3",
+        "52f7a87e-8bab-43ba-bc7a-6b2840c860a0"
+      ],
+      "settings": {
+        "subtext": "PREMIUM SPARKLING COCKTAILS",
+        "text": "<p>Life's too short for drinks you don’t love. Taste matters.<\/p>",
+        "btn_text": "SHOP NOW",
+        "btn_link": "shopify:\/\/collections\/spritz",
+        "image": "shopify:\/\/shop_images\/Lemon_Large_055dd114-48aa-442a-96d2-e4af18939b25.png",
+        "image2": "shopify:\/\/shop_images\/Pineapple_Large_ce03068e-c1b5-447b-87cf-8350574b750c.png",
+        "image3": "shopify:\/\/shop_images\/Blood_Orange_Large_2578b3c3-e2af-4ba0-957f-900bed0b1f5e.png",
+        "image4": "shopify:\/\/shop_images\/Grapefruit_Large_7897201d-9443-4b13-9c1b-df52fb6ca665.png",
+        "press_title": "Featured On"
+      }
+    },
+    "162687500985776fb6": {
+      "type": "ss-ingredients",
+      "blocks": {
+        "285bfd7f-fb30-496a-ad45-bc3dbb53a79d": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/wine_based_w.png",
+            "title": "REAL WINE",
+            "subtitle": "Made with real white wine from grapes harvested in California."
+          }
+        },
+        "d0f2b833-b5bc-4b04-a136-298ab5444ad5": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/transparent_ingredients_w_033471b0-ccc3-483f-bbc2-f7ced0971c03.png",
+            "title": "Real flavors",
+            "subtitle": "Every can of Spritz Society is made with natural fruit flavors."
+          }
+        },
+        "3ccb6f3d-0e99-459a-bb00-48710cb2b0ee": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/firework_w.png",
+            "title": "Real ingredients",
+            "subtitle": "We use natural fruit flavors, real wine, and 6 or less ingredients in every can."
+          }
+        }
+      },
+      "block_order": [
+        "285bfd7f-fb30-496a-ad45-bc3dbb53a79d",
+        "d0f2b833-b5bc-4b04-a136-298ab5444ad5",
+        "3ccb6f3d-0e99-459a-bb00-48710cb2b0ee"
+      ],
+      "settings": {}
+    },
+    "16256701367bef267d": {
+      "type": "ss-image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "Headline about why Spritz?",
+        "text": "<p>We see food and beverage as the entryway to celebrating Italian culture.<\/p>",
+        "btn_text": "About CTA",
+        "btn_link": "shopify:\/\/pages\/contact",
+        "image": "shopify:\/\/shop_images\/spritz_cans_1.png",
+        "image_mb": "shopify:\/\/shop_images\/spritz_cans_1.png"
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "disabled": true,
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sparkling wine. Natural fruit flavors. F***ing delicious."
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/spritz_cans_1.png",
+        "image_2": "shopify:\/\/shop_images\/spritz_cans_1_1.png",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "featured_products": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "disabled": true,
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first"
+      }
+    },
+    "1626905978d418ae4f": {
+      "type": "ss-meet-our-spritz",
+      "blocks": {
+        "9a52fa07-42f0-4355-8e72-fb9a8d7bd686": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Grapefruit_Large_7897201d-9443-4b13-9c1b-df52fb6ca665.png",
+            "product": "grapefruit"
+          }
+        },
+        "12600df7-d689-4a13-ba32-f9c60ed3474b": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Blood_Orange_Large_2578b3c3-e2af-4ba0-957f-900bed0b1f5e.png",
+            "product": "blood-orange"
+          }
+        },
+        "0ca79518-87e9-429a-84f4-9125b9f3c7d5": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Pineapple_Large_ce03068e-c1b5-447b-87cf-8350574b750c.png",
+            "product": "pineapple"
+          }
+        },
+        "0588e882-9727-44b0-8f98-0f0efce070d5": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lemon_Large_055dd114-48aa-442a-96d2-e4af18939b25.png",
+            "product": "lemon"
+          }
+        }
+      },
+      "block_order": [
+        "9a52fa07-42f0-4355-8e72-fb9a8d7bd686",
+        "12600df7-d689-4a13-ba32-f9c60ed3474b",
+        "0ca79518-87e9-429a-84f4-9125b9f3c7d5",
+        "0588e882-9727-44b0-8f98-0f0efce070d5"
+      ],
+      "settings": {
+        "headline": "Meet Spritz Society",
+        "sub_headline": "We take real, recognizable ingredients and pack them into convenient sparkling cocktails you can take anywhere."
+      }
+    },
+    "1626925172e0f0d613": {
+      "type": "ss-bundle",
+      "blocks": {
+        "a4ea2e7d-ae8b-4021-83dd-e66ae799f3b9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Grapefruit_Box_Can_302de3e4-b886-471f-a9af-ef3491e1146d.png",
+            "heading": "Grapefruit"
+          }
+        },
+        "91e47e11-e910-450c-9704-ac1000011c12": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BloodOrange_Box_Can.png",
+            "heading": "Blood Orange"
+          }
+        },
+        "035aef49-1924-4b3c-b235-08b3297398c7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Pineapple_Box_Can_ed850513-abda-409c-89bc-691d98875f77.png",
+            "heading": "Pineapple"
+          }
+        },
+        "8e98a1da-540c-4d19-a8bf-4c5c1328dddb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lemon_Box_All.png",
+            "heading": "Lemon"
+          }
+        }
+      },
+      "block_order": [
+        "a4ea2e7d-ae8b-4021-83dd-e66ae799f3b9",
+        "91e47e11-e910-450c-9704-ac1000011c12",
+        "035aef49-1924-4b3c-b235-08b3297398c7",
+        "8e98a1da-540c-4d19-a8bf-4c5c1328dddb"
+      ],
+      "settings": {
+        "heading": "Can’t decide? Try them all.",
+        "product": "variety-pack"
+      }
+    },
+    "1630479995f38ef85d": {
+      "type": "ss-meet-our-merch",
+      "disabled": true,
+      "blocks": {
+        "bf9743d7-693d-4ada-bc25-673030cd72e5": {
+          "type": "product",
+          "settings": {
+            "product": "launch-hat"
+          }
+        },
+        "2fae0f4c-61d0-4390-b5a3-79b74a48467d": {
+          "type": "product",
+          "settings": {
+            "product": "launch-tshirt"
+          }
+        },
+        "c1cca1b5-62f0-48c0-a648-b1fff93c7852": {
+          "type": "product",
+          "settings": {
+            "product": "launch-crewneck"
+          }
+        },
+        "b134ab9a-729c-44d4-89b4-9f53fd0acfc3": {
+          "type": "product",
+          "settings": {
+            "product": "spritz-society-launch-bucket-hat"
+          }
+        }
+      },
+      "block_order": [
+        "bf9743d7-693d-4ada-bc25-673030cd72e5",
+        "2fae0f4c-61d0-4390-b5a3-79b74a48467d",
+        "c1cca1b5-62f0-48c0-a648-b1fff93c7852",
+        "b134ab9a-729c-44d4-89b4-9f53fd0acfc3"
+      ],
+      "settings": {
+        "headline": "",
+        "sub_headline": ""
+      }
+    },
+    "1626986931ebc39189": {
+      "type": "ss-subscribe",
+      "blocks": {
+        "e95cb5f8-ba76-4faa-b09b-9c4702a6a8e7": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/money_w_0b15768c-9ddb-45ce-ad47-940ef30ec1e2.png",
+            "caption": "Save 15% on your order"
+          }
+        },
+        "44a55b21-21ae-4c20-9135-ae1edd9a176f": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pause_w.png",
+            "caption": "Exclusive subscriber perks"
+          }
+        },
+        "e7c731c6-a007-4215-a698-e717438be92a": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/change_flavors_w.png",
+            "caption": "Change flavors whenever"
+          }
+        },
+        "b7cbbe12-abf6-4b26-8227-5ea61e8e644e": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/early_access_w.png",
+            "caption": "Cancel or pause at any time"
+          }
+        }
+      },
+      "block_order": [
+        "e95cb5f8-ba76-4faa-b09b-9c4702a6a8e7",
+        "44a55b21-21ae-4c20-9135-ae1edd9a176f",
+        "e7c731c6-a007-4215-a698-e717438be92a",
+        "b7cbbe12-abf6-4b26-8227-5ea61e8e644e"
+      ],
+      "settings": {
+        "heading": "Subscribe now to get Spritz Society delivered to you",
+        "button_text": "Subscribe & save",
+        "button_link": "shopify:\/\/products\/blood-orange"
+      }
+    },
+    "1626907793a444cfba": {
+      "type": "ss-home-video",
+      "settings": {
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0581\/1909\/4440\/files\/Spritz_30_drinks_final__1___1.mp4?v=1629019993"
+      }
+    },
+    "16269085041d0fd0b2": {
+      "type": "ss-as-seen-in",
+      "disabled": true,
+      "blocks": {
+        "8a2697c1-7bec-4075-87b0-2772ad00cf18": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Logo_1.png",
+            "url": "https:\/\/vogure.com"
+          }
+        },
+        "6940cddd-7bbb-416e-b736-6d3ac8ebd697": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Logo_2.png",
+            "url": ""
+          }
+        },
+        "d57f59c1-acc4-4048-aaa8-caacfd7af609": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Logo_3.png",
+            "url": ""
+          }
+        },
+        "17d9d4ff-6678-43e2-a6ec-1f9914d8f98a": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Logo_4.png",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "8a2697c1-7bec-4075-87b0-2772ad00cf18",
+        "6940cddd-7bbb-416e-b736-6d3ac8ebd697",
+        "d57f59c1-acc4-4048-aaa8-caacfd7af609",
+        "17d9d4ff-6678-43e2-a6ec-1f9914d8f98a"
+      ],
+      "settings": {
+        "heading": "As seen in"
+      }
+    },
+    "16269831909ff1c185": {
+      "type": "ss-merchant-collection",
+      "disabled": true,
+      "settings": {
+        "heading": "Spritz Up Your Life With Flavor",
+        "m_collection": "merch"
+      }
+    },
+    "1626909214a76b82ef": {
+      "type": "testimonials-carousel",
+      "blocks": {
+        "d87f9d1f-656e-4090-8d13-41e3839dd9e7": {
+          "type": "text",
+          "settings": {
+            "testi": "I’m a huge fan of the variety pack. I love all the Spritz flavors so this is the perfect compromise when you want to have a little of everything",
+            "cite": "Alix L.",
+            "rank": 5
+          }
+        },
+        "e39f2e49-1394-441d-894d-ac69dd01783b": {
+          "type": "text",
+          "settings": {
+            "testi": "Blood orange is delicious! Light and refreshing with a really distinct citrus flavor. Will for sure be ordering again!",
+            "cite": "Eric O.",
+            "rank": 5
+          }
+        },
+        "e03b6384-049a-4444-851d-df329d340514": {
+          "type": "text",
+          "settings": {
+            "testi": "I’m team grapefruit all the way. So many hard seltzers that I’ve tried do not do this flavor justice, but Spritz Society crushed it!!",
+            "cite": "Jess F.",
+            "rank": 5
+          }
+        },
+        "e0378aa5-2e95-4c63-b4c5-34d36827588c": {
+          "type": "text",
+          "settings": {
+            "testi": "If you’re looking for a quintessential lemonade flavor, look no further. Spot on and the bubbles make it super delicious.",
+            "cite": "Sammy F.",
+            "rank": 5
+          }
+        },
+        "7100c62a-ea07-41d8-b535-9aad6b022feb": {
+          "type": "text",
+          "settings": {
+            "testi": "I like pineapple flavored anything, so you know I had to give this one a try first. Holy!!! I can’t get enough of this stuff - I bring it to every party!",
+            "cite": "Charlie C.",
+            "rank": 5
+          }
+        }
+      },
+      "block_order": [
+        "d87f9d1f-656e-4090-8d13-41e3839dd9e7",
+        "e39f2e49-1394-441d-894d-ac69dd01783b",
+        "e03b6384-049a-4444-851d-df329d340514",
+        "e0378aa5-2e95-4c63-b4c5-34d36827588c",
+        "7100c62a-ea07-41d8-b535-9aad6b022feb"
+      ],
+      "settings": {
+        "heading": "Hear from Spritz Society",
+        "btn_text": "shop now",
+        "btn_url": "#shopify-section-template--15840866468057__1626905978d418ae4f"
+      }
+    },
+    "16269786523ba126e6": {
+      "type": "ss-insta-feed",
+      "blocks": {
+        "1e2ac3d5-4e9e-41e5-a659-0cf2bf2dafaa": {
+          "type": "images",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2021-08-17_11.06.16.png"
+          }
+        },
+        "1e1b62bc-8f47-497a-98e9-670f50728228": {
+          "type": "images",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2021-08-17_11.06.27.png"
+          }
+        },
+        "3332d0f7-d809-4f3f-a478-5e9ad31559a5": {
+          "type": "images",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2021-08-17_11.06.37.png"
+          }
+        }
+      },
+      "block_order": [
+        "1e2ac3d5-4e9e-41e5-a659-0cf2bf2dafaa",
+        "1e1b62bc-8f47-497a-98e9-670f50728228",
+        "3332d0f7-d809-4f3f-a478-5e9ad31559a5"
+      ],
+      "settings": {
+        "heading": "Brought together by great taste",
+        "sub_heading": "<p>Follow us on Instagram <a href=\"https:\/\/www.instagram.com\/spritz\/?hl=en\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/spritz\/?hl=en\">@spritz<\/a><\/p>"
+      }
+    }
+  },
+  "order": [
+    "162567013216851d9a",
+    "162687500985776fb6",
+    "16256701367bef267d",
+    "image_banner",
+    "featured_products",
+    "image_text",
+    "1626905978d418ae4f",
+    "1626925172e0f0d613",
+    "1630479995f38ef85d",
+    "1626986931ebc39189",
+    "1626907793a444cfba",
+    "16269085041d0fd0b2",
+    "16269831909ff1c185",
+    "1626909214a76b82ef",
+    "16269786523ba126e6"
+  ]
+}

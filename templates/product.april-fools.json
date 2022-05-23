@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "april-fools",
+      "blocks": {
+        "f7bac88a-01a4-420c-a63f-904a14b5ca6d": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/de1afee388d02c5f1e8d904da6f9af6b-PhotoRoom.png"
+          }
+        },
+        "2ff6d7b9-5bb8-4967-a4d1-07853308d391": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/depositphotos_36274253-stock-photo-orange-slice-PhotoRoom_2.png"
+          }
+        },
+        "27edd61c-bccf-4210-a26d-d05eee89d062": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/grape-1-PhotoRoom.png"
+          }
+        },
+        "546bcfd4-cf48-43dd-8edf-ab8720046098": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/728x728_1_7734a9154015f9b326b382c0f83bc775_1870x1870_0xac120003_15081974371629981614-PhotoRoom_1.png"
+          }
+        },
+        "50d4f939-c52b-49e8-932d-da83bf76237f": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/depositphotos_36274253-stock-photo-orange-slice-PhotoRoom_3.png"
+          }
+        },
+        "9219a06b-d2a0-420f-9030-5820d3c80dc2": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/de1afee388d02c5f1e8d904da6f9af6b-PhotoRoom.png"
+          }
+        },
+        "5ef26896-b638-4d0c-a4ea-6b4c8f7066d0": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/grape-1-PhotoRoom.png"
+          }
+        },
+        "9a6b2542-e521-4978-9f80-3c84f57c687a": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/728x728_1_7734a9154015f9b326b382c0f83bc775_1870x1870_0xac120003_15081974371629981614-PhotoRoom_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "f7bac88a-01a4-420c-a63f-904a14b5ca6d",
+        "2ff6d7b9-5bb8-4967-a4d1-07853308d391",
+        "27edd61c-bccf-4210-a26d-d05eee89d062",
+        "546bcfd4-cf48-43dd-8edf-ab8720046098",
+        "50d4f939-c52b-49e8-932d-da83bf76237f",
+        "9219a06b-d2a0-420f-9030-5820d3c80dc2",
+        "5ef26896-b638-4d0c-a4ea-6b4c8f7066d0",
+        "9a6b2542-e521-4978-9f80-3c84f57c687a"
+      ],
+      "settings": {
+        "title": "APRIL <br> FOOLS!"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

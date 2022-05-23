@@ -1,0 +1,14 @@
+<header class="account-section account-header">
+  <h1 class="heading-m account-heading">{{'customer.account.details' | t}}</h1>
+  <nav class="account-breadcrumb account-section">
+    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+    <a href="{{ routes.account_url }}">{{'customer.orders.order_number' | t}}</a>
+    <a href="{{ routes.account_addresses_url }}">{{'customer.addresses.account_page' | t}}</a>
+  </nav>
+  {% if template contains 'address' %}
+  <div class="">
+    <button type="button" class="button js-toggle-new-address-form rounded-button" id="AddressNewButton" aria-expanded="false"
+      aria-owns="AddressNewForm">{{ 'customer.addresses.add_new' | t }}</button>
+  </div>
+  {% endif %}
+</header>

@@ -1,0 +1,89 @@
+<section class="ss-container {{section.settings.align}}">
+  <div class="about-text-image">
+    <div class="about-text-image__row">
+      <div class="about-text-image__col left">
+        {% for block in section.blocks %}
+          <figure class="about-text-image__img index-{{forloop.index}}">
+            <img
+              data-srcset="{{block.settings.image | img_url: '271x226'}},
+              {{block.settings.image | img_url: '271x226', scale: 2}} 2x"
+              alt="{{block.settings.image.title}}"
+              class="lazyload d-block h-auto"
+              width="{{block.settings.image.width}}"
+              height="{{block.settings.image.height}}"
+              loading=lazy>
+          </figure>
+        {% endfor %}
+      </div>
+      <div class="about-text-image__col right">
+        <h2 class="h1 about-text-image__col-heading">{{section.settings.heading}}</h2>
+        {% if section.settings.enable %}
+        <div class="position-absolute pdp-right-img">
+          {% render '_ss_icon_pdp_badge' %}
+        </div>
+        {% endif %}
+        <div class="body-1">{{section.settings.text}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name" : "About Text & Images",
+  "tag" : "section",
+  "class": "about-text-image-section",
+  "max_blocks": 3,
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "heading"
+    },   
+    {
+      "type" : "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }        
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable bottles badge",
+      "default": true
+    }   
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type" : "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],  
+  "presets": [
+    {
+      "name": "About Text & Images"
+    }
+  ]
+}
+{% endschema %}

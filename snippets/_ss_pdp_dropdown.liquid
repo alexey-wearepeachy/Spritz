@@ -1,0 +1,52 @@
+{% assign isVarietyPack = false %}
+{% assign collectionHandle = 'spritz' %}
+{% for collection in product.collections %}
+    {% assign title = collection.title | downcase %}
+    {% if title == 'merch' %}
+        {% assign collectionHandle = 'merch' %}
+    {% endif %}
+{% endfor %}
+
+{% if product.title contains 'variety' or product.title contains 'Variety' %}
+  {% assign isVarietyPack = true %}
+{% endif %}
+{% comment %}
+{% unless isVarietyPack %}
+<div class="accordion-trigger-wrapper notchouter {% if isVarietyPack %}cursor-text{% endif %}">
+  <div class="verticle-border verticle-border-left"></div>
+  <div class="accordion-inner notchinner">
+    
+    <button class="accordion-trigger js-accordion-trigger">
+      {{product.title}}
+      {% unless isVarietyPack %}
+        <span class="accordion-icon">
+        {% render '_ss_icon_down_arrow' %}
+        </span>        
+      {% endunless %}
+    </button>
+    
+    {% unless isVarietyPack %}
+      <div class="accordion-panel js-accordion-panel">
+        <ul class="dropdown-list">
+          {% for p in collections[collectionHandle].products %}
+            {% assign yes = p.metafields.my_fields.include_in_pdp_dropdown %}
+              {% if yes == true and p.handle != product.handle %}
+                <li>
+                    <a href="{{p.url}}">
+                        {{p.title}}
+                    </a>
+                </li>
+              {% endif %}        
+          {% endfor %}        
+        </ul>
+      </div>
+    {% endunless %}
+
+  </div>
+  <div class="verticle-border verticle-border-right"></div>
+</div>
+
+{% endunless %}
+{% endcomment %}
+
+

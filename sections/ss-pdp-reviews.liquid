@@ -1,0 +1,26 @@
+<article class="color--ss-grapefruit pdp-reviews">
+  <div class="ss-container" id="reviews">
+    <header class="text-center">
+      <h1 class="ss--secondary-font heading-xxl">{{section.settings.heading}}</h1>
+    </header>
+    {% render 'okendo-reviews-widget' %}
+  </div>
+</article>
+{% schema %}
+{
+  "name" : "PDP reviews",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP reviews"
+    }
+  ]
+}
+{% endschema %}

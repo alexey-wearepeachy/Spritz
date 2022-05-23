@@ -1,0 +1,21 @@
+
+
+
+
+<article class="text-page">
+  <header class="text-page__header text-center">
+  <h1>{{ page.title | escape }}</h1>
+  </header>
+
+  <section class="text-page__body">
+    {{ page.content }}
+  </section>
+</article>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "spaced-section"
+}
+{% endschema %}

@@ -1,0 +1,175 @@
+<article class="background-ss-background color-ss-grapefruit homepage-bundle">
+  <form action="#" method="post" enctype="multipart/form-data" data-custom-pack-buy>
+    <section class="text-center d-flex flex-j-center flex-wrap ss-container">
+      <div class="image-area">
+        <div class="spritz-product__fig" data-cp-product-area>
+          {% for block in section.blocks %}
+            {% render '_ss_custom_pack_product' as product: block.settings.product, block: block %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="d-flex flex-fd-column text-left product-content position-relative">
+        <div class="position-absolute pdp-right-img small-hide">
+          {% render '_ss_icon_pdp_badge' %}
+        </div>
+        
+        <div class="d-flex flex-fd-column">
+          <h2 class="h2 custom_pack_page_title">{{ page_title }}</h2>
+          <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1">Build your own bundle.</p>
+          <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-2"><span class="pack__number">16</span>-pack&nbsp;</p>
+          <div class="packs_wrapper d-flex flex-a-center ">
+            <button type="button" class="ss--primary-font pack_outer" name="no-of-packs" value="8" aria-label="8 pack" data-cp-pack-selection>
+              <span class="pack_inner_8 pack_inner">
+                8-Pack
+              </span>
+            </button>
+            <button type="button" class="ss--primary-font pack_outer active" name="no-of-packs" value="16" aria-label="16 pack" data-cp-pack-selection>
+              <div class="yellow_badge small-hide">
+                {% render '_ss_icon_best_seller_badge' %}
+              </div>
+              <span class="pack_inner_16 pack_inner">
+                16-Pack
+              </span>
+            </button>
+            <button type="button" class="ss--primary-font pack_outer" name="no-of-packs" value="24" aria-label="24 pack" data-cp-pack-selection>
+              <div class="yellow_badge small-hide">
+                {% render '_ss_icon_best_value_badge' %}
+              </div>
+              <span class="pack_inner_24 pack_inner">
+                24-Pack
+              </span>
+            </button>
+          </div>
+        </div>
+        
+        {% render '_selling_plan_options', product: all_products[section.settings.product_handle] %}            
+        
+        <div class="your_bundle_wrapper accordion-trigger-wrapper notchouter">
+          <div class="verticle-border verticle-border-left"></div>
+          <div class="your_bundle_inner accordion-inner notchinner">
+            <h4 class="h4 your_bundle_title">Your bundle</h4>
+
+            <div class="single_pack_wrapper d-flex flex-wrap">
+              <div class="single_pack_item" data-pack="1">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 1</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+              <div class="single_pack_item" data-pack="2">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}                    
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 2</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+              <div class="single_pack_item" data-pack="3">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 3</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+              <div class="single_pack_item" data-pack="4">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 4</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+              <div class="single_pack_item hide" data-pack="5">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 5</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+              <div class="single_pack_item hide" data-pack="6">
+                <div class="single_pack position-relative">
+                  <div class="single_pack_inner">
+                    <div class="selected_img"></div>
+                    {% render '_ss_single_pack_svg' %}
+                  </div>
+                </div>
+                <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-1"><span class="pack_label">Pack 6</span><span class="product_name"></span></p>
+                <div class="cans__size">4 cans</div>
+              </div>
+
+            </div>
+
+            <div class="total_pack_price">$48.00</div>
+            <div class="custom_pack_add_to_cart accordion-trigger-wrapper">
+              <button type="submit"  class="svg-btn filled-svg-btn d-block large" aria-label="custom pack add to cart" id="custom-pack-atc" disabled>
+                {% render '_ss_polygon_button_shape', type: 'filled' %}
+                <span>Add To Cart</span>
+              </button>
+              <!--
+              <div class="accordion-inner notchinner">
+                <button type="submit" class="btn polygone-btn" aria-label="custom pack add to cart" id="custom-pack-atc" disabled>ADD TO CART</button>
+              </div>-->
+            </div>
+          </div>
+          <div class="verticle-border verticle-border-right"></div>
+        </div>
+      </div>
+    </section>
+  </form>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Custom Pack",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product handle for subscription option",
+      "default": "variety-pack"
+    }
+  ],
+  "blocks": [{
+    "type": "bundle_product",
+    "name": "Product",
+    "settings" : [
+      {
+        "type" : "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type" : "product",
+        "id": "product",
+        "label": "Choose product"
+      }   
+    ]
+  }],
+  "presets": [
+    {
+      "name": "Custom Pack"
+    }
+  ]
+}
+{% endschema %}

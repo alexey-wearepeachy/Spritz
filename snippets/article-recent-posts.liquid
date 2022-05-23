@@ -1,0 +1,47 @@
+<section class="article-recent-posts">
+    <div class="container">
+        <h2 class="article-recent-posts__title">{{ section.settings.title }}</h2>
+        <div class="posts-list">
+            {% assign limit = 1 %}
+            {% for article in blog.articles %}
+                {% if article.handle != current_article_handle and limit <= 4 %}
+                    {% render 'article-post', article: article %}
+                    {% assign limit = limit | plus: 1  %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <button class="article-recent-posts__load-more" id="load-more">{{ section.settings.btn }}</button>
+    </div>
+</section>
+
+<script>
+
+    function hideArticles() {
+        [].forEach.call(document.querySelectorAll('.posts-list .post-list__article'), function(item, idx){
+            if (idx > 2 - 1) {
+                item.classList.add("vis-hidden");
+            }
+        });
+    }
+
+    hideArticles();
+
+    document.querySelector('#load-more').addEventListener('click', function(){
+
+        [].forEach.call(document.querySelectorAll('.' + "vis-hidden"), function(item, idx){
+            if (idx < 2) {
+                item.classList.remove("vis-hidden");
+            }
+
+            if ( document.querySelectorAll('.' + "vis-hidden").length === 0) {
+                document.querySelector('#load-more').style.display = 'none';
+            }
+
+        });
+
+    });
+
+    window.addEventListener('locationchange', function(){
+        hideArticles();
+    });
+</script>

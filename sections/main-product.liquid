@@ -1,0 +1,466 @@
+{% comment %}
+If product more than one Variant
+{% endcomment %}
+
+{% assign is_merch_product = false %}
+{% for collection in product.collections %}
+  {% assign title = collection.title | downcase %}
+  {% if title == 'merch' %}
+    {% assign is_merch_product = true %}
+  {% endif %}
+{% endfor %}
+
+{% assign hasFruitGraphic = false %}
+{% assign fruitGraphic =  product.metafields.my_fields.fruit_graphic %}
+{% if fruitGraphic != blank %}
+  {% assign hasFruitGraphic = true %}
+{% endif %}
+{% assign hasOneVar = true %}
+{% if product.variants.size > 1 %}
+{% assign hasOneVar = false %}
+{% endif %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign product_color = 'ss-' | append: product.id %}
+
+<article class="product-hero" data-product-id="{{product.id}}" id="{{ product_color }}">
+    <div class="d-flex flex-j-center flex-wrap ss-container">
+      <div class="product-hero__center left_part">
+        <div class="d-flex">
+          <div class="thumbnail-slider-wrap">
+            <div class="slider-arrow-prev">
+              {% render '_ss_icon_down_arrow' %}
+            </div>
+            <div class="thumbnail-slider">
+
+              {% for image in product.images %}
+                <picture class="">
+                  <img
+                          data-src="{{ image | img_url: '100x' }}"
+                          data-srcset="{{ image | img_url: '600x' }},
+                    {{ image | img_url: '600x', scale: 2 }} 2x,
+                    {{ image | img_url: '600x', scale: 3 }} 3x"
+                          width="{{ product.featured_image.width}}"
+                          height="{{ product.featured_image.height}}"
+                          alt="{{product.title}} from {{shop.name}}"
+                          data-custom-alt="{{ image.alt }}"
+                          class="lazyload margin-auto w-auto d-block h-auto" />
+                </picture>
+              {% endfor %}
+
+            </div>
+            <div class="slider-arrow-next">
+              {% render '_ss_icon_down_arrow' %}
+            </div>
+          </div>
+
+
+
+          <div class="pdp-image-wrap main-slider">
+
+            {%- comment -%}
+             {% if hasFruitGraphic %}
+              <img
+                data-src="{{product.metafields.my_fields.fruit_graphic | file_url }}"
+                alt="{{product.title}}"
+                class="js-fruit-graphic lazyload"
+                aria-hidden="true">
+            {% endif %}
+            {%- endcomment -%}
+
+
+            {% for image in product.images %}
+              <picture class="">
+                <img
+                        data-src="{{ image | img_url: '100x' }}"
+                        data-srcset="{{ image | img_url: '600x' }},
+                    {{ image | img_url: '600x', scale: 2 }} 2x,
+                    {{ image | img_url: '600x', scale: 3 }} 3x"
+                        width="{{ product.featured_image.width}}"
+                        height="{{ product.featured_image.height}}"
+                        alt="{{product.title}} from {{shop.name}}"
+                        class="lazyload margin-auto w-auto d-block h-auto"
+                        data-custom-alt="{{ image.alt }}"/>
+              </picture>
+            {% endfor %}
+
+
+            {% assign src = image %}
+
+
+          </div>
+          <div class="main-arrow-prev"><</div>
+          <div class="main-arrow-next">></div>
+
+
+        </div>
+
+      </div>
+
+      <div class="product-hero__right right_part">
+
+        {% assign title = product.title | downcase %}
+        {% if title contains 'variety' and section.settings.free_sticker != blank %}
+          <div class="position-absolute pdp-right-img variety-free-shipping">
+            <img src="{{section.settings.free_sticker | img_url: 'master'}}" >
+          </div>
+        {% endif %}
+
+        {% unless is_merch_product %}
+          <div class="position-absolute pdp-right-img {% if title contains 'variety' %}variety-temp{% endif %}">
+            {% render '_ss_icon_pdp_badge' %}
+          </div>
+        {%endunless%}
+
+        <div class="product-hero__right--inner product-content">
+          <form action="/cart/add" method="post" enctype="multipart/form-data" data-id="{{product.id}}"
+                class="js-product-form {% if title contains 'variety' %}variety-form{% endif %}"
+                data-title="{{ product.title }}"
+                data-categories='{{ product.collections |map:'title' |json }}'
+                data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+                data-url="{{ shop.secure_url }}{{ product.url }}"
+                data-brand={{ product.vendor|json }}
+                data-price={{ product.price|money|json }}
+                data-compareatprice={{ product.compare_at_price_max|money|json }}>
+            <h1 class="spritz-product__title heading-l pdp-title h2">{{product.title}}</h1>
+            <a href="#reviews">
+              {% render 'okendo-reviews-product-rating-summary' %}
+            </a>
+            <br>
+
+            {% unless is_merch_product or product.metafields.multi.multi_variants_packs %}
+              <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-2" style="margin-top: 0;">{{ product.metafields.product.pack }}-pack&nbsp;</p>
+            {%endunless%}
+            <p class="acumin-pro meet-our-spritz-sub-headline body-2" style="margin-top: 0;">{{ product.metafields.descriptors.subtitle }}</p>
+
+
+            {% comment %}
+            {% unless product.has_only_default_variant %}
+            <span class="js-pdp-variant pdp-variant-name d-block">
+              {{product.selected_or_first_available_variant.title}}
+            </span>
+            {% endunless %}
+            {% endcomment %}
+            {% comment %}
+            <div class="yotpo bottomLine mb-3" data-product-id="{{ product.id }}" aria-label="Star rating">
+              <div class="current"></div>
+            </div>
+            {% endcomment %}
+            <!-- SMARTRR_CUSTOMIZED_NO_AUTO_EDIT -->
+            {% comment %}{% render 'smartrr-product' %}{% endcomment %}
+
+            <div class="pdp-desc acumin-pro">
+              {{product.description}}
+            </div>
+
+            {% if product.metafields.product.props != blank %}
+              <div class="product-props">
+                {% assign product_props = product.metafields.product.props | split: '|' %}
+                {% for prop in product_props %}
+                  <div class="product-props__item">
+                    {{ prop }}
+                    <svg width="111" height="77" viewBox="0 0 111 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M105.893 76H5.10742L1 71.507L1 5.49064L5.10742 1H105.893L110 5.49064V71.507L105.893 76Z" stroke="#F64A47" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% render '_ss_pdp_dropdown' %}
+
+            {% if product.tags contains 'varietyPack' %}
+              {% assign variety_class = 'multi-var' %}
+            {% endif %}
+            {% render '_selling_plan_options', variety_class: variety_class %}
+
+            {% if product.metafields.custom_fields["product_attributes"] != blank %}
+              <div class="accordion">
+                {% for item in product.metafields.custom_fields["product_attributes"] %}
+                  {% if item["heading"] != blank %}
+                    <button type="button" class="accordion-trigger" id="accordion-trigger--{{forloop.index}}">{{
+                      item["heading"] }}</button>
+                  {% endif %}
+                  {% if item["body"] != blank %}
+                    <div class="accordion-panel">
+                      {{ item["body"] }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% comment %}<span class="js-product-price pdp-price">{{product.price | money }}</span>{% endcomment %}
+
+            {% assign multi_variants_packs = product.metafields.multi.multi_variants_packs | split: ','  %}
+
+            {% if product.tags contains 'varietyPack' %}
+              <div class="select-switcher">
+                {% for variant in product.variants %}
+                  {% if variant.available == true %}
+                    <div class="switcher-overlay">
+                      <input type="radio" name="selectSwitcher"
+                             id="switcher-{{ forloop.index0 }}"
+                             data-op="{{ forloop.index0 }}"
+                             value="{{ variant.title }}"
+                              {% if forloop.first %} checked {% endif %}
+                      >
+                      <label for="switcher-{{ forloop.index0 }}" class="sel-switcher-option noselect">
+                        {{ variant.title }}
+                      </label>
+                    </div>
+                    {% if forloop.first %}
+                      <div class="sel-switcher-toggler">
+                        <svg width="64" height="27" viewBox="0 0 64 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M-8.48805e-07 19.4184L-3.22177e-07 7.37055L15.5 -2.12e-06L47.7681 1.57549e-06L64 7.37055L64 19.4184L47.7681 27L15.5 27L-8.48805e-07 19.4184Z" fill="#F2C628"/>
+                        </svg>
+                        <svg class="switcher-coloc" width="32" height="27" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.58517e-06 7.37054L15.7681 -7.09518e-07L32 7.37054L32 19.4184L15.7681 27L1.05854e-06 19.4184L1.58517e-06 7.37054Z" fill="#F64A47"/>
+                        </svg>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% comment %}Dont show if only the `Default Title` variant{% endcomment %}
+            {% if product.available == true %}
+              <div class="select select--pdp js-select" style="{% if is_merch_product %}display: block; {% else %}display: none {% endif %}">
+                <select name="id" class="js-product-select  {% if title contains 'variety' %}varietySelect{% endif %}">
+                  {% for variant in product.variants %}
+                    {% if variant.available == true %}
+                      {% assign data_can = multi_variants_packs[forloop.index0] %}
+                      <option value="{{variant.id}}"
+                              data-index="{{ forloop.index0 }}"
+                              data-js-option-price="{{ variant.price | money_without_currency }}"
+                              data-price="{{ variant.price | money_with_currency }}"
+                              data-can-amount="{{ data_can }}"
+                      >
+                        {{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }}
+                      </option>
+                    {% else %}
+                      <option disabled="disabled">{{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }} Sold out!</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            {% endif %}
+
+            {% if product.title contains 'Shirt' or product.title contains 'Crewneck' %}
+              <a href="#size-guide-popup" class="open-popup-link">Size guide</a>
+
+              <div id="size-guide-popup" class="white-popup mfp-hide">
+                {% if product.title contains 'Shirt' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0581/1909/4440/files/Spritz_SG_tee_1.png?v=1630433496" alt="">
+                {% endif %}
+                {% if product.title contains 'Crewneck' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0581/1909/4440/files/Spritz_SG_crewneck_1.png?v=1630433456" alt="">
+                {% endif %}
+              </div>
+            {% endif %}
+
+
+            <div class="d-flex flex-j-center flex-a-center pdp-qty-with-price">
+              <div class="d-flex flex-j-center acumin-pro pdp-qty-increment-wrap">
+                <label class="d-flex pdp-qty-area" for="pdp-qty-{{product.id}}" aria-label="Selet a quantity">
+                  <input type="number" value="1" id="pdp-qty-{{product.id}}" name="quantity" class="js-pdp-qty pdp-qty"
+                         maxlength="10" pattern="[0-9]" {% unless product.available %}disabled{% endunless %}>
+                  <svg class="svg" width="100%" height="72" viewBox="0 0 378 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path d="M346.874 0.999999L376.686 36L346.874 71L31.4672 71L1.31982 36L31.4672 0.999997L346.874 0.999999Z" fill="#F64A47" stroke="#F64A47" stroke-width="2"></path>
+                  </svg>
+                </label>
+                <button class="js-pdp-qty-increment pdp-qty-increment down" type="button"
+                        aria-label="Quantity increment for {{product.title}}">
+                  <span class="d-none">Decrease quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                          d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                          fill="#F64A47" />
+                    <path class="symbol" d="M16.2986 19.4737V21.7837H28.2986V19.4737H16.2986Z" fill="white" />
+                  </svg>
+                </button>
+                <button class="js-pdp-qty-increment pdp-qty-increment up" type="button"
+                        aria-label="Quantity descrement for {{product.title}}">
+                  <span class="d-none">Increase quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                          d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                          fill="#F64A47" />
+                    <path class="symbol"
+                          d="M21.6047 11.6437V18.7237H14.5547V21.0637H21.6047V28.3237H23.9747V21.0637H30.9947V18.7237H23.9747V11.6437H21.6047Z"
+                          fill="white" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="price_with_can_price">
+                <div class="price spritz-product__price js-price" data-price='{{product.price}}'>{{product.price | money}}</div>
+                {% if product.metafields.multi.multi_variants_packs %}
+                  <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                    product.metafields.product.pack | money }}/can</div>
+                {% elsif product.metafields.product.pack %}
+                  <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                    product.metafields.product.pack | money }}/can</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="pdp-add-to-bag-wrapper">
+              <button type="submit" name="add"  class="svg-btn filled-svg-btn d-block large" {% unless product.available %}disabled{% endunless %}>
+                {% render '_ss_polygon_button_shape', type: 'filled' %}
+                <span>{% if product.available %}Add To Cart{% else %}Sold out{% endif %}</span>
+              </button>
+
+              {% assign title = product.title | downcase %}
+              {% if title contains 'variety' %}
+                <div class="free_shipping text-center under-button-text">
+                  {% if product.tags contains 'varietyPack' %}
+                    NEW
+                  {% else %}
+                    FREE SHIPPING
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <!--<button type="submit" name="add" class="polygone-normal-btn d-block pdp-add-to-bag" {% unless
+                      product.available %}disabled{% endunless %}>
+              {% if product.available %}
+              Add To Cart
+              {% else %}
+              Sold out
+              {% endif %}
+            </button>-->
+            </div>
+
+
+        </div>
+        </form>
+        <a href="javascript:void(0)" class="acumin-pro link d-block text-center pdp-link-bottom"
+           aria-label="Learn more about {{product.title}}">
+          {{section.settings.link_text}}
+        </a>
+      </div>
+    </div>
+</article>
+
+{% if product.tags contains 'sliderFilter' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let selector = $('[name="selectSwitcher"]');
+
+      setTimeout(() => {
+        $('.main-slider').slick('slickFilter', function () {
+          return $(this).find('img').attr("data-custom-alt") == selector.val() || $(this).find('img').attr("data-custom-alt") == 'Pack';
+        });
+
+        $('.thumbnail-slider').slick('slickFilter', function () {
+          return $(this).find('img').attr("data-custom-alt") == selector.val() || $(this).find('img').attr("data-custom-alt") == 'Pack';
+        });
+      }, 500);
+
+      //listener
+      $('[name="selectSwitcher"]').on('change', function () {
+        $('.main-slider').slick('slickUnfilter');
+        $('.thumbnail-slider').slick('slickUnfilter');
+
+        let $this = $(this);
+
+        $('.main-slider').slick('slickFilter', function () {
+          return $(this).find('img').attr("data-custom-alt") == $this.val() || $(this).find('img').attr("data-custom-alt") == 'Pack';
+        });
+
+        $('.thumbnail-slider').slick('slickFilter', function () {
+          return $(this).find('img').attr("data-custom-alt") == $this.val() || $(this).find('img').attr("data-custom-alt") == 'Pack';
+        });
+
+        $('.main-slider').slick('slickGoTo', 0);
+      });
+    });
+  </script>
+{% endif %}
+
+<style>
+  .open-popup-link {
+    display: block;
+    padding: 0 0 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  @media (min-width: 450px) {
+    .open-popup-link {
+      padding: 0 0 20px 0;
+    }
+  }
+  .white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 7px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px 7%;
+    transition: 1s all;
+  }
+
+  @media (min-width: 450px) {
+    .white-popup {
+      padding: 40px;
+      margin: 20px auto;
+    }
+  }
+  .mfp-bg {}
+  .mfp-fade.mfp-bg {
+    opacity: 0;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+  }
+  /* overlay animate in */
+  .mfp-fade.mfp-bg.mfp-ready {
+    opacity: 0.8;
+  }
+  /* overlay animate out */
+  .mfp-fade.mfp-bg.mfp-removing {
+    opacity: 0;
+  }
+  .mfp-fade.mfp-wrap .mfp-content {
+    opacity: 0;
+    transition: all 0.4s ease-out;
+  }
+  .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    opacity: 1;
+  }
+
+  .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    opacity: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Nutrition Facts"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Nutrition Facts and Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "popup_text",
+      "label": "Popup text"
+    },
+    {
+      "type": "image_picker",
+      "id": "free_sticker",
+      "label": "Free shipping sticker"
+    }
+    
+  ]
+}
+{% endschema %}

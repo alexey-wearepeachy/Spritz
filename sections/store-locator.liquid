@@ -1,0 +1,95 @@
+{% liquid
+    assign main_title   = section.settings.main_title
+    assign title        = section.settings.title
+    assign blocks       = section.blocks
+%}
+
+<article class="text-page store-locator--main">
+    <header class="text-page__header text-center">
+        <h1 class="def-page__title">{{ page.title | escape }}</h1>
+        <h2 class="def-page__subtitle">{{ main_title }}</h2>
+    </header>
+
+    <section class="text-page__body">
+      {{ page.content }}
+        <div class="delivery-blocks">
+            <h2 class="delivery-blocks__title">{{ title }}</h2>
+            <div class="delivery-blocks__list">
+                {% for block in blocks %}
+                    {% assign title = block.settings.title %}
+                    {% assign icon  = block.settings.icon %}
+                    {% assign url  = block.settings.url %}
+
+                    <a href="{{ url }}" target="_blank" class="delivery-blocks__item">
+                        <div class="delivery-blocks-item__img">
+                            <img src="{{ icon | img_url: 'master' }}" alt="{{ icon.alt }}">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</article>
+{% render 'store-locator-pop-up' %}
+
+{% schema %}
+{
+    "name": "Store locator",
+    "settings": [
+        {
+            "type": "text",
+            "id": "main_title",
+            "label": "Section title"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Delivery blocks title"
+        },
+        {
+            "type": "header",
+            "content": "Pop-up settings"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Logo"
+        },
+        {
+            "type": "text",
+            "id": "pop_title",
+            "label": "Pop-up title",
+            "default": "Not in your area? buy spritz online!"
+        },
+        {
+            "type": "text",
+            "id": "pop_btn",
+            "label": "Pop-up button text",
+            "default": "Shop now"
+        },
+        {
+            "type": "url",
+            "id": "pop_url",
+            "label": "Pop-up button link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block",
+            "name": "block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

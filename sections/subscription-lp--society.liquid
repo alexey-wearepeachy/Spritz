@@ -1,0 +1,77 @@
+{% liquid
+    assign title = section.settings.title
+    assign blocks = section.blocks
+%}
+
+<section class="subscription-lp--society">
+    <h2 class="society__title">{{ title }}</h2>
+    <div class="society-list">
+        {% for block in blocks %}
+            {% liquid
+                assign img = block.settings.img
+                assign descr = block.settings.descr
+                assign bg_color = block.settings.bg_color
+                assign color = block.settings.color
+            %}
+
+            <div class="society__item" style="background: {{ bg_color }}">
+                <div class="society__item--img">
+                    <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+                </div>
+                <div class="society__item--overlay">
+                    <div class="society__item--descr">
+                        <p style="color: {{ color }}">{{ descr }}</p>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Subscription society",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "blocks",
+            "name": "block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Block icon"
+                },
+                {
+                    "type": "textarea",
+                    "id": "descr",
+                    "label": "Block descr"
+                },
+                {
+                    "type": "color",
+                    "id": "bg_color",
+                    "label": "Background color"
+                },
+                {
+                    "type": "color",
+                    "id": "color",
+                    "label": "Text color"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Subscription lp",
+            "name": "Subscription society"
+        }
+    ]
+}
+{% endschema %}

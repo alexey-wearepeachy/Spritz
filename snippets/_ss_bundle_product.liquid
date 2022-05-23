@@ -1,0 +1,169 @@
+<div class="ss-container ss_bundle_product">
+  <div class="d-flex flex-wrap flex-a-center flex-j-center">
+    <div class="image-area">
+      <div class="spritz-product__fig">
+        {% for block in section.blocks %}
+          <figure class="spritz-product__fig-img">
+            <a href="{{product.url}}">
+              <img
+              data-src="{{ block.settings.image | img_url: '300x' }}"
+              class="lazyload h-auto"
+              alt="{{product.title}} by {{shop.name}}"
+              loading="lazy"
+              width="{{block.settings.image.width}}"
+              height="{{block.settings.image.height}}">
+            </a>
+         
+            <a href="{{product.url}}">
+              <figcaption class="accent text-center spritz-product__fig-capt">
+                {{block.settings.heading}}
+              </figcaption>
+            </a>
+
+          </figure>                  
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="d-flex flex-fd-column text-left product-content">
+      <a href="{{product.url}}">
+        <h2 class="h2">{{product.title}}</h2>
+      </a>
+      {% if product.metafields.product.pack %}
+        <div class="acumin-pro spritz-product__packs">({{product.metafields.product.pack}} pack) - FREE SHIPPING</div>
+      {% endif %}
+
+      {% render 'okendo-reviews-product-rating-summary' as product: product %} <br>
+
+      <div class="acumin-pro spritz-product__packs">Try all our flavors in one simple pack.</div>
+      <!-- <div class="standalone-bottomline">
+        <div class="yotpo-bottomline pull-left star-clickable" tabindex="0">
+          <span class="yotpo-stars">
+            <span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>
+            <span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>
+            <span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>
+            <span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>
+            <span class="yotpo-icon yotpo-icon-half-star rating-star pull-left"></span>
+        </div>
+      </div> -->
+
+      {% render '_ss_yotpo_stars' as product: product %}
+
+      {% assign title = product.title | downcase %}
+      <form
+          action="/cart/add"
+          method="post"
+          enctype="multipart/form-data"
+          data-id="{{product.id}}"
+          {% if title contains 'variety' %}class="variety-form"{% endif %}
+          data-title="{{ product.title }}"
+          data-categories='{{ product.collections |map:'title' |json }}'
+          data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+          data-url="{{ shop.secure_url }}{{ product.url }}"
+          data-brand={{ product.vendor|json }}
+          data-price={{ product.price|money|json }}
+          data-compareatprice={{ product.compare_at_price_max|money|json }}>
+
+          {% comment %}Required{% endcomment %}
+          {% assign multi_variants_packs = product.metafields.multi.multi_variants_packs | split: ','  %}
+
+          {% if title contains 'variety' %}
+              {% assign variety_class = 'multi-var' %}
+          {% endif %}
+          {% render '_selling_plan_options', variety_class: variety_class, product: product %}
+
+          {% if title contains 'variety' %}
+              <div class="select-switcher">
+                  {% for variant in product.variants %}
+                      {% if variant.available == true %}
+                          <div class="switcher-overlay">
+                              <input type="radio" name="selectSwitcher"
+                                     id="switcher-{{ forloop.index0 }}"
+                                     data-op="{{ forloop.index0 }}"
+                                      {% if forloop.first %} checked {% endif %}
+                              >
+                              <label for="switcher-{{ forloop.index0 }}" class="sel-switcher-option noselect">
+                                  {{ variant.title }}
+                              </label>
+                          </div>
+                          {% if forloop.first %}
+                              <div class="sel-switcher-toggler">
+                                  <svg width="64" height="27" viewBox="0 0 64 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M-8.48805e-07 19.4184L-3.22177e-07 7.37055L15.5 -2.12e-06L47.7681 1.57549e-06L64 7.37055L64 19.4184L47.7681 27L15.5 27L-8.48805e-07 19.4184Z" fill="#F2C628"/>
+                                  </svg>
+                                  <svg class="switcher-coloc" width="32" height="27" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M1.58517e-06 7.37054L15.7681 -7.09518e-07L32 7.37054L32 19.4184L15.7681 27L1.05854e-06 19.4184L1.58517e-06 7.37054Z" fill="#F64A47"/>
+                                  </svg>
+                              </div>
+                          {% endif %}
+                      {% endif %}
+                  {% endfor %}
+              </div>
+          {% endif %}
+
+          {% comment %}Dont show if only the `Default Title` variant{% endcomment %}
+          {% if product.available == true %}
+              <div class="select select--pdp js-select" style="{% if is_merch_product %}display: block; {% else %}display: none {% endif %}">
+                  <select name="id" class="js-product-select  {% if title contains 'variety' %}varietySelect{% endif %}">
+                      {% for variant in product.variants %}
+                          {% if variant.available == true %}
+                              {% assign data_can = multi_variants_packs[forloop.index0] %}
+                              <option value="{{variant.id}}"
+                                      data-index="{{ forloop.index0 }}"
+                                      data-js-option-price="{{ variant.price | money_without_currency }}"
+                                      data-price="{{ variant.price | money_with_currency }}"
+                                      data-can-amount="{{ data_can }}"
+                              >
+                                  {{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }}
+                              </option>
+                          {% else %}
+                              <option disabled="disabled">{{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }} Sold out!</option>
+                          {% endif %}
+                      {% endfor %}
+                  </select>
+              </div>
+          {% endif %}
+
+          <div class="price_with_can_price">
+              <div class="price spritz-product__price js-price" data-price='{{product.price}}'>{{product.price | money}}</div>
+              {% if product.metafields.multi.multi_variants_packs %}
+                  <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                      product.metafields.product.pack | money }}/can</div>
+              {% elsif product.metafields.product.pack %}
+                  <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                      product.metafields.product.pack | money }}/can</div>
+              {% endif %}
+          </div>
+
+          <button  type="submit" name="add" class="svg-btn d-block large" {% unless product.available %}disabled{% endunless %}>
+            {% render '_ss_polygon_button_shape', type: '' %}
+
+              <span>
+
+                {% if product.available %}
+                {% if template contains 'index' %}
+                  ADD TO CART
+                {% elsif template.suffix contains 'subscription' %}
+                  Subscribe Now
+                {% else %}
+                  SHOP NOW
+                {% endif %}
+                {% else %}
+                  Sold out
+                {% endif %}
+              </span>
+          </button>
+
+          <div class="text-center learn-more">
+            <a
+              href="{{product.url}}"
+              class="text-uppercase link"
+              aria-label="Learn more about {{product.title}}">
+              Learn more <span class="hidden">about {{product.title}}</span>
+            </a>
+          </div>
+        </form>
+
+    </div>
+  </div>
+</div>

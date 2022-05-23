@@ -1,0 +1,176 @@
+<article class="meet-our-spritz-wrap meet-our-spritz-wrap--merch {% if template.name == 'collection' %}plp {% endif %}background-ss-background">
+
+  <section class="swiper-container meet-our-spritz-swiper">
+    <div class="d-flex flex-wrap spritz-products spritz-products--merch swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product]%}
+        {% assign block_id = 'ss-' | append: block.id %}
+      <div class="text-center spritz-product spritz-product--merch swiper-slide" id="{{ block_id }}">
+        {% for variant in product.variants %}
+          {% if variant.image %}
+            <figure class="spritz-product__fig spritz-product__fig--merch" data-variant-id="{{ variant.id }}" style="{% unless forloop.first %}display: none;{% endunless %}">
+              <a href="{{product.url}}">
+                <img
+                    data-srcset="{{ variant.image | img_url: '120x' }}, {{ variant.image | img_url: '120x', scale: 2 }} 2x"
+                    class="lazyload h-auto spritz-product__img spritz-product__img--merch"
+                    alt="{{variant.title}} by {{shop.name}}">
+              </a>
+            </figure>
+          {% else %}
+            {% if forloop.first %}
+              <figure class="spritz-product__fig spritz-product__fig--merch">
+                <a href="{{product.url}}">
+                  <img
+                      data-srcset="{{ product | img_url: '120x' }}, {{ product | img_url: '120x', scale: 2 }} 2x"
+                      class="lazyload h-auto spritz-product__img spritz-product__img--merch"
+                      alt="{{product.title}} by {{shop.name}}">
+                </a>
+              </figure>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        <div class="spritz-product__content product-content">
+          <a href="{{product.url}}">
+            <h2 class="accent text-uppercase spritz-product__title">{{ product.title }}</h2>
+          </a>
+          {% if product.metafields.product.pack %}
+            <div class="acumin-pro spritz-product__packs text-center">({{product.metafields.product.pack}} pack)</div>
+          {% endif %}
+
+          {% render 'okendo-reviews-product-rating-summary' as product: product %} <br>
+
+          <form
+            action="/cart/add"
+            method="post"
+            enctype="multipart/form-data"
+            data-id="{{product.id}}"
+            data-title="{{ product.title }}"
+            data-categories='{{ product.collections |map:'title' |json }}'
+            data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+            data-url="{{ shop.secure_url }}{{ product.url }}"
+            data-brand={{ product.vendor|json }}
+            data-price={{ product.price|money|json }}
+            data-compareatprice={{ product.compare_at_price_max|money|json }}
+          >
+
+            {% comment %}Required{% endcomment %}
+            <label aria-label="Select an option">
+              <span class="d-none">Select an option</span>
+              <div class="select js-select">
+                <select name="id" class="js-product-select" data-id="{{product.id}}">
+                  {% for variant in product.variants %}
+                  {% if variant.available == true %}
+                    <option value="{{variant.id}}" data-js-option-price="{{ variant.price | money_without_currency }}" data-price="{{ variant.price | money }}">{{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }}</option>
+                  {% else %}
+                    <option disabled="disabled">{{ variant.title | replace: 'Default Title', 'BLACK & WHITE' }} - sold out!</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            </label>
+            <br>
+
+            {% render '_selling_plan_options', product: product %}
+
+            <div class="price spritz-product__price">{{product.price | money}}</div>
+            {% if product.metafields.product.pack %}
+              <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by: product.metafields.product.pack | money }}/can</div>
+            {% endif %}
+
+            <div class="d-flex flex-j-center acumin-pro pdp-qty-increment-wrap">
+              <button class="js-pdp-qty-increment pdp-qty-increment down" type="button" aria-label="Quantity increment for {{product.title}}">
+                <span class="d-none">Decrease quantity</span>
+                <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path class="shape" d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z" fill="#F64A47"/>
+                  <path class="symbol" d="M16.2986 19.4737V21.7837H28.2986V19.4737H16.2986Z" fill="white"/>
+                </svg>
+              </button>
+              <label class="d-flex pdp-qty-area" for="pdp-qty-{{product.id}}" aria-label="Selet a quantity">
+                <input type="number" value="1" id="pdp-qty-{{product.id}}" name="quantity" class="js-pdp-qty pdp-qty" maxlength="10" pattern="[0-9]" {% unless product.available %}disabled{% endunless %}>
+                <svg width="87" height="50" viewBox="0 0 87 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M65.2452 0.999997L85.1925 24.68L65.2452 48.36L22.6651 48.36L1.55463 24.68L22.6651 0.999992L65.2452 0.999997Z" stroke="#F64A47" stroke-width="2"/>
+                </svg>
+              </label>
+              <button class="js-pdp-qty-increment pdp-qty-increment up" type="button" aria-label="Quantity descrement for {{product.title}}">
+                <span class="d-none">Increase quantity</span>
+                <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path class="shape" d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z" fill="#F64A47"/>
+                  <path class="symbol" d="M21.6047 11.6437V18.7237H14.5547V21.0637H21.6047V28.3237H23.9747V21.0637H30.9947V18.7237H23.9747V11.6437H21.6047Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+
+            <!--<button type="submit" name="add" class="polygone-normal-btn d-none" {% unless product.available %}disabled{% endunless %}>
+              {% if product.available %}
+                Add To Cart
+              {% else %}
+                Sold out
+              {% endif %}
+            </button>-->
+
+            <button name="add" class="svg-btn filled-svg-btn d-block medium" {% unless product.available %}disabled{% endunless %}>
+              {% render '_ss_polygon_button_shape', type: 'filled' %}
+              <span>{% if product.available %}Add To Cart{% else %}Sold out{% endif %}</span>
+            </button>
+          </form>
+
+          <a
+            href="{{product.url}}"
+            class="text-uppercase link"
+            aria-label="Learn more about {{product.title}}">
+            Learn more <span class="hidden">about {{product.title}}</span>
+          </a>
+
+        </div>
+        {% render '_ss_product_color' as color: product.metafields.product.color, id: block_id, color_inner: product.metafields.product.color_inner %}
+      </div>
+
+      {% endfor %}
+    </div>
+    <div class="meet-our-spritz-swiper--pagination swiper-pagination"></div>
+  </section>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Meet Our Merch",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+     {
+       "type": "text",
+       "id": "sub_headline",
+       "label": "Sub headline"
+     }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type" : "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type" : "product",
+          "id": "product",
+          "label": "Choose product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meet Our Merch"
+    }
+  ]
+}
+{% endschema %}

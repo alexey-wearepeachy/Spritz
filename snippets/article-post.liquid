@@ -1,0 +1,15 @@
+<article class="post-list__article">
+    <a href="{{ article.url }}" target="_blank" class="post-list__article-img">
+        <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt }}">
+    </a>
+    <div class="post-list__article-info">
+        <p class="article__date">{{ article.created_at | date: '%Y/%m/%d' }}</p>
+        {% for tag in article.tags %}
+            {% if tag contains 'time' %}
+                <p class="article__time">{{ tag | remove: 'time-' }} min</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <a class="post-list__article-title" href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+    <div class="post-list__article-text">{{ article.image.alt | default: 'read more..' }}</div>
+</article>

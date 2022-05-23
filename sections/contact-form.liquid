@@ -1,0 +1,222 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+<div class="contact ss-customer text-center">
+  <div class="ss-container">
+  <header>
+    <h1 class="h1" tabindex="-1">
+      Contact Us
+    </h1>
+  </header>
+  <div class="ss-container__content">
+    <div class="ss-contact-page__additional">
+
+     <div class="additional-email-item">
+       <h3 class="additional-email-item__title">{{ section.settings.email_text_1 }}</h3>
+       <a href="mailto:{{ section.settings.email_1 }}">{{ section.settings.email_1 }}</a>
+     </div>
+     <div class="additional-email-item">
+      <h3 class="additional-email-item__title">{{ section.settings.email_text_2 }}</h3>
+      <a href="mailto:{{ section.settings.email_2 }}">{{ section.settings.email_2 }}</a>
+    </div>
+    <div class="additional-email-item">
+      <h3 class="additional-email-item__title">{{ section.settings.email_text_3 }}</h3>
+      <a href="mailto:{{ section.settings.email_3 }}">{{ section.settings.email_3 }}</a>
+    </div>
+
+    </div>
+    <div class="ss-customer-login ss-contact-page">
+      <h2 class="additional-email-item__title">For order inquiries:</h2>
+      <div class="contact-email-info contact-email-info-mobile medium-hide large-up-hide">
+        <div class="general">
+          <span class="email-text">{{ section.settings.first_email_text }}</span>
+          <a href="mailto: {{ section.settings.first_email | downcase }}" class="login-recover">
+            {{ section.settings.first_email }}
+          </a>
+        </div>
+        <div class="customerr">
+          <span class="email-text">{{ section.settings.second_email_text }}</span>
+          <a href="mailto: {{ section.settings.second_email | downcase }}" class="login-recover">
+            {{ section.settings.second_email }}
+          </a>
+        </div>
+      </div>
+      {%- form 'contact', id: 'ContactForm' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+        {%- elsif form.errors -%}
+          <div class="form__message">
+            <h2 class="form-status caption-large" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+          </div>
+          <ul class="form-status-list caption-large" role="list">
+            <li>
+              <a href="#ContactForm-email" class="link">
+                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+        <div class="contact__fieldss">
+          <div class="field field--with-error notchouter">
+            <div class="notchinner">
+              <span class="required small-hide">*</span>
+              <input
+              autocomplete="email"
+              type="email"
+              id="ContactForm-email"
+              class="field__input"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              required
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+              placeholder="{{ 'templates.contact.form.email' | t }}"
+            >
+            </div>
+            
+            <!-- <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label> -->
+            {%- if form.errors contains 'email' -%}
+              <small class="contact__field-error" id="ContactForm-email-error">
+                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+              </small>
+            {%- endif -%}
+          </div>
+          <div class="field notchouter">
+            <div class="notchinner">
+              <span class="required small-hide">*</span>
+              <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[fname]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="first name" required>
+            </div>
+            <!-- <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label> -->
+          </div>
+        </div>
+        <div class="field notchouter">
+          <div class="notchinner">
+            <span class="required small-hide">*</span>
+            <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[lname]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="last name" required>
+          </div>  
+        </div>
+        <div class="field notchouter">
+          <div class="notchinner">
+            <input class="field__input" autocomplete="" type="text" id="ContactForm-order" name="contact[order]" value="" placeholder="order #">
+          </div>  
+        </div>
+        <div class="field notchouter notchouter-textarea">
+          <div class="verticle-line verticle-line-left"></div>
+          <div class="verticle-line verticle-line-right"></div>
+          <div class="notchinner notchinner-textarea">
+            <span class="required small-hide textarea-required">*</span>
+            <label class="textarea__label" for="ContactForm-body">MESSAGE</label>
+            <textarea
+            rows="10"
+            id="ContactForm-body"
+            class="text-area field__input input scrollbar-hidden"
+            name="contact[{{ 'templates.contact.form.comment' | t }}]"
+            placeholder="I HAD A QUESTION ABOUT MY ORDER ..."
+            required
+            >
+              {{- form.body -}}
+            </textarea>
+          </div>
+        </div>
+        
+        <button class="svg-btn filled-svg-btn d-block large login-btn-notchouter">
+          {% render '_ss_polygon_button_shape', type: 'filled' %}
+          <span>SUBMIT</span>
+        </button>
+    
+        <!--<div class="notchouter login-btn-notchouter">
+          <div class="notchinner login-btn-notchinner">
+            <button class="input">
+              SUBMIT
+            </button>
+          </div>
+        </div>-->
+        <div class="contact-email-info small-hide">
+          <div class="general">
+            <span class="email-text">{{ section.settings.first_email_text }}</span>
+            <a href="mailto: {{ section.settings.first_email | downcase }}" class="login-recover">
+              {{ section.settings.first_email }}
+            </a>
+          </div>
+          <div class="customerr">
+            <span class="email-text">{{ section.settings.second_email_text }}</span>
+            <a href="mailto: {{ section.settings.second_email | downcase }}" class="login-recover">
+              {{ section.settings.second_email }}
+            </a>
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "spaced-sectionn", 
+  "settings": [
+    {
+      "type": "text",
+      "id": "email_text_1",
+      "label": "Email text 1"
+    },
+    {
+      "type": "text",
+      "id": "email_1",
+      "label": "Email 1"
+    },
+    {
+      "type": "text",
+      "id": "email_text_2",
+      "label": "Email text 2"
+    },
+    {
+      "type": "text",
+      "id": "email_2",
+      "label": "Email 2"
+    },
+    {
+      "type": "text",
+      "id": "email_text_3",
+      "label": "Email text 3"
+    },
+    {
+      "type": "text",
+      "id": "email_3",
+      "label": "Email 3"
+    },
+    {
+      "type": "text",
+      "id": "first_email_text",
+      "label": "First email text"
+    },
+    {
+      "type": "text",
+      "id": "first_email",
+      "label": "First email"
+    },
+    {
+      "type": "text",
+      "id": "second_email_text",
+      "label": "Second email text"
+    },
+    {
+      "type": "text",
+      "id": "second_email",
+      "label": "Second email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

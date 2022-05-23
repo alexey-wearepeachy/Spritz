@@ -1,0 +1,26 @@
+<ul class="social-links" role="list">    
+  {%- comment -%}
+   <li class="social-links__item">
+    <a href="{{ settings.social_tiktok_link }}" class="" aria-describedby="a11y-external-message">
+      {%- render '_ss_icon_tiktok' -%}
+      <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+    </a>
+  </li>
+  {%- endcomment -%}
+ 
+  <li class="social-links__item">
+    <a href="{{ settings.instagram_url }}" target="_blank" class="" aria-describedby="a11y-external-message">
+      {%- render '_ss_icon_instagram' -%}
+      <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+    </a>
+  </li>
+  {%- comment -%}
+   <li class="social-links__item">
+    <a href="{{ settings.social_facebook_link }}" class="" aria-describedby="a11y-external-message">
+      {%- render '_ss_icon_facebook' -%}
+      <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+    </a>
+  </li>  
+  {%- endcomment -%}
+ 
+</ul>

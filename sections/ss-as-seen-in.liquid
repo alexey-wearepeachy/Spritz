@@ -1,0 +1,60 @@
+<article class="as-seen-in background-ss-background">
+  <header class="text-center as-seen-in__header">
+    <h1 class="accent text-uppercase color-ss-grapefruit">{{section.settings.heading}}</h1>
+  </header>
+  <section class="d-flex flex-wrap ss-container as-seen-in__icons">
+    {% for block in section.blocks %}
+    <figure class="as-seen-in__icon">
+      <a
+        href="{{block.url}}"
+        aria-label="View the full article">
+        <img
+          data-srcset="{{block.settings.logo | img_url: '300x'}},
+          {{block.settings.logo | img_url: '300x', scale: 2}} 2x"
+          class="lazyload d-block w-100 h-auto"
+          alt="{{block.settings.logo.title}}"
+          width="{{block.settings.logo.width}}"
+          height="{{block.settings.logo.height}}">
+      </a>
+    </figure>  
+    {% endfor %}
+  </section>
+</article>
+
+
+{% schema %}
+{
+  "name" : "As seen in",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Item",
+      "settings": [
+        {
+          "type" : "image_picker",
+          "id": "logo",
+          "label": "LOGO"
+        },     
+        {
+          "type" : "url",
+          "id": "url",
+          "label": "URL to article"
+        }
+      ]
+    }
+  ],  
+  "presets": [
+    {
+      "name": "As seen in"
+    }
+  ]
+}
+{% endschema %}

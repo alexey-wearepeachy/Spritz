@@ -1,0 +1,90 @@
+<article class="color-white homepage-subscribe subscription-lp--subscribe">
+  <div class="ss-container">
+    <div class="d-flex flex-wrap flex-a-center">
+      <div class="left-part">
+        <div class="left-part-inner">
+          <h2 class="h2">{{section.settings.heading}}</h2>
+          
+            <a href="{{section.settings.button_link}}" class="svg-btn large d-flex flex-a-center flex-j-center desk-btn">
+              {% render '_ss_polygon_button_shape', type: '' %}
+              <span>{{section.settings.button_text}}</span>
+            </a>
+            <!--<div class="notchouter-btn">
+            <div class="notchinner-btn">
+              <a class="polygone-btn" href="{{section.settings.button_link}}">{{section.settings.button_text}}</a>
+            </div>
+            </div>-->
+        </div>
+      </div>
+      <div class="right-part">
+        <div class="d-flex flex-wrap text-center">
+          {% for block in section.blocks %}
+            <div class="icon_text">
+              <figure class="d-flex flex-j-center">
+                <img
+                  data-src="{{ block.settings.image | img_url: '400x' }}"
+                  class="lazyload h-auto homepage-subscribe__icon"
+                  alt="{{product.title}} by {{shop.name}}"
+                  loading="lazy"
+                  height="{{block.settings.image.height}}">
+              </figure>
+              <p class="acumin-pro">{{ block.settings.caption}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <a href="{{section.settings.button_link}}" class="svg-btn large d-flex flex-a-center flex-j-center  mobile-btn">
+        {% render '_ss_polygon_button_shape', type: '' %}
+        <span>{{section.settings.button_text}}</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Subscription subscribe",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type" : "text",
+      "id": "button_text",
+      "label": "Button Label"
+    },
+    {
+      "type" : "url",
+      "id": "button_link",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icontext",
+      "name": "Icon + Text",
+      "settings": [
+        {
+          "type" : "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type" : "text",
+          "id": "caption",
+          "label": "Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Subscribe"
+    }
+  ]
+}
+{% endschema %}

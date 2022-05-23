@@ -1,0 +1,20 @@
+{% liquid
+    assign title    = section.settings.pop_title
+    assign pop_btn  = section.settings.pop_btn
+    assign pop_url  = section.settings.pop_url
+    assign img      = section.settings.img
+%}
+<div class="store-locator-pop-up__overlay">
+</div>
+<div class="store-locator-pop-up">
+    <div class="store-locator-pop__main">
+        <div class="store-locator-pop__img">
+            <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+        </div>
+        <h2 class="store-locator-pop__title">{{ title }}</h2>
+        <a href="{{ pop_url }}" class="store-locator-pop__link svg-btn filled-svg-btn d-block medium">
+            {% render '_ss_polygon_button_shape', type: 'filled' %}
+            <span>{{ pop_btn }}</span>
+        </a>
+    </div>
+</div>

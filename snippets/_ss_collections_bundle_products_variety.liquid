@@ -1,0 +1,191 @@
+{% assign product = block.settings.productt %}
+{% assign product2 = all_products[product.metafields.sep_product.product] %}
+
+<div id="block-{{ block.id }}" class="bundle-product">
+    {% if block.settings.show_badge %}
+        <div class="yellow_badge">
+            <figure class="">
+                <img
+                        data-src="{{ block.settings.img_label | img_url: '300x' }}"
+                        class="lazyload h-auto"
+                        alt="{{block.settings.img_label.alt}}"
+                        loading="lazy"
+                        width="{{block.settings.img_label.width}}"
+                        height="{{block.settings.img_label.height}}">
+            </figure>
+        </div>
+    {% endif %}
+    <div class="bundle-product-inner">
+        <div class="image-area">
+            <div class="spritz-product__fig">
+                <a href="{{ product.url }}" class="spritz-product__photo" data-pack="{{product.metafields.product.pack}}" style="margin: 0 auto;">
+                    <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}" style="max-height: 300px;">
+                </a>
+                <a href="{{ product2.url }}" class="spritz-product__photo" data-pack="{{product2.metafields.product.pack}}" style="display:none; margin: 0 auto;">
+                    <img src="{{ product2.featured_image | img_url: 'master' }}" alt="{{ product2.featured_image.alt }}" style="max-height: 300px;">
+                </a>
+            </div>
+        </div>
+        <div class="d-flex flex-fd-column flex-j-center flex-a-center text-left product-content">
+            <a href="{{block.settings.bottom_link}}">
+                <h2 class="h2" style="margin-bottom: 10px">{{block.settings.title}}</h2>
+            </a>
+            {% if product.metafields.product.pack %}
+                <div class="spritz-product__packs spritz-product--pack" style="margin-bottom: 20px" data-pack="{{product.metafields.product.pack}}">
+                    ({{product.metafields.product.pack}} pack) - NEW
+                </div>
+                <div class="spritz-product__packs spritz-product--pack" style="display:none; margin-bottom: 20px;" data-pack="{{product2.metafields.product.pack}}">
+                    ({{product2.metafields.product.pack}} pack) - FREE SHIPPING
+                </div>
+            {% endif %}
+            {% if block.settings.second_subtitle %}
+                <div class="acumin-pro spritz-product__packs text-center">{{ block.settings.second_subtitle }}</div>
+            {% endif %}
+            {% if block.settings.enable_star %}
+
+                {% if block.settings.productt != blank %}
+                    {% assign productt = block.settings.productt %}
+                    <!-- {% render '_ss_yotpo_stars' as product: productt %} -->
+                {% else %}
+                    <!-- {% render '_ss-yotpo-stars-fake' %} -->
+                {% endif %}
+
+            {% endif %}
+
+            <!-- <form
+          action="/cart/add"
+          method="post"
+          enctype="multipart/form-data"
+          data-id="{{product.id}}"> -->
+
+            <!-- {% comment %}Required{% endcomment %}
+          <label aria-label="Select an option" style="display: none;">
+            <span class="d-none">Select an option</span>
+            <div class="select" {% if product.has_only_default_variant %}style="display: none" {% endif %}>
+              <select name="id" class="js-product-select" data-id="{{product.id}}">
+                {% for variant in product.variants %}
+                {% if variant.available == true %}
+                  <option value="{{variant.id}}" data-price="{{ variant.price | money }}">{{ variant.title }} {{ variant.price | money }}</option>
+                {% else %}
+                  <option disabled="disabled">{{ variant.title }} - sold out!</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          </label> -->
+
+            {% if block.settings.productt != blank %}
+                <form
+                        action="/cart/add"
+                        method="post"
+                        enctype="multipart/form-data"
+                        class="variety-form"
+                        data-id="{{product.id}}"
+                        data-title="{{ product.title }}"
+                        data-categories='{{ product.collections |map:'title' |json }}'
+                        data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+                        data-url="{{ shop.secure_url }}{{ product.url }}"
+                        data-brand={{ product.vendor|json }}
+                        data-price={{ product.price|money|json }}
+                        data-compareatprice={{ product.compare_at_price_max|money|json }}
+                >
+
+                    {% comment %}Required{% endcomment %}
+
+                    {% render '_selling_plan_multi', product: product, product2: product2 %}
+
+                    {% assign data_can1 = product.metafields.product.pack %}
+                    {% assign data_can2 = product2.metafields.product.pack %}
+
+                    {% if product.tags contains 'varietyPack' %}
+                        <div class="select-switcher">
+                            <div class="switcher-overlay">
+                                <input type="radio" name="selectSwitcher"
+                                       id="switcher-0"
+                                       data-op="0"
+                                       value="{{ product.variants[0].title }}"
+                                       data-var="{{ data_can1 }}"
+                                       data-url="{{ product.url }}"
+                                       checked
+                                >
+                                <label for="switcher-0" class="sel-switcher-option noselect">
+                                    {{ product.variants[0].title }}
+                                </label>
+                            </div>
+                            <div class="sel-switcher-toggler">
+                                <svg width="64" height="27" viewBox="0 0 64 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M-8.48805e-07 19.4184L-3.22177e-07 7.37055L15.5 -2.12e-06L47.7681 1.57549e-06L64 7.37055L64 19.4184L47.7681 27L15.5 27L-8.48805e-07 19.4184Z" fill="#F2C628"/>
+                                </svg>
+                                <svg class="switcher-coloc" width="32" height="27" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.58517e-06 7.37054L15.7681 -7.09518e-07L32 7.37054L32 19.4184L15.7681 27L1.05854e-06 19.4184L1.58517e-06 7.37054Z" fill="#F64A47"/>
+                                </svg>
+                            </div>
+                            <div class="switcher-overlay">
+                                <input type="radio" name="selectSwitcher"
+                                       id="switcher-1"
+                                       data-op="1"
+                                       value="{{ product2.variants[0].title }}"
+                                       data-var="{{ data_can2 }}"
+                                       data-url="{{ product2.url }}"
+                                >
+                                <label for="switcher-1" class="sel-switcher-option noselect">
+                                    {{ product2.variants[0].title}}
+                                </label>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% comment %}Dont show if only the `Default Title` variant{% endcomment %}
+                    {% if product.available == true %}
+                        <div class="select select--pdp js-select" style="{% if is_merch_product %}display: block; {% else %}display: none {% endif %}">
+                            <select name="id" class="js-product-select varietySelect">
+                                <option value="{{ product.variants[0].id }}"
+                                        data-index="0"
+                                        data-js-option-price="{{ product.variants[0].price | money_without_currency }}"
+                                        data-price="{{ product.variants[0].price | money_with_currency }}"
+                                        data-can-amount="{{ data_can1 }}"
+                                        selected
+                                >
+                                    {{ product.variants[0].title }}
+                                </option>
+                                <option value="{{ product2.variants[0].id }}"
+                                        data-index="1"
+                                        data-js-option-price="{{ product2.variants[0].price | money_without_currency }}"
+                                        data-price="{{ product2.variants[0].price | money_with_currency }}"
+                                        data-can-amount="{{ data_can2 }}"
+                                >
+                                    {{ product2.variants[0].title }}
+                                </option>
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    <div class="price_with_can_price">
+                        <div class="price spritz-product__price js-price" data-price='{{product.price}}'>{{product.price | money}}</div>
+                        {% if product.metafields.product.pack %}
+                            <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                                product.metafields.product.pack | money }}/can</div>
+                        {% endif %}
+                    </div>
+
+                    <button name="add" class="svg-btn d-block large" {% unless product.available %}disabled{% endunless %}>
+                        {% render '_ss_polygon_button_shape', type: '' %}
+                        <span>{% if product.available %}Add To Cart{% else %}Sold out{% endif %}</span>
+                    </button>
+
+                </form>
+            {% else %}
+                <a href="{{ block.settings.btn_link }}" class="svg-btn large d-flex flex-a-center flex-j-center bg-white">
+                    {% render '_ss_polygon_button_shape', type: '' %}
+                    <span>{{ block.settings.btn_text }}</span>
+                </a>
+
+            {% endif %}
+            <div class="bottom-link">
+                <a href="{{ block.settings.bottom_link }}" class="text-uppercase link">{{ block.settings.bottom_link_text }}</a>
+            </div>
+            <!-- </form> -->
+
+        </div>
+    </div>
+</div>

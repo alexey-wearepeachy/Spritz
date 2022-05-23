@@ -1,0 +1,173 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "SHRIMPTON",
+    "theme_author": "Ben Shrimpton",
+    "theme_version": "1.0.0",
+    "theme_support_url": "https:\/\/www.shrimpton.agency\/",
+    "theme_documentation_url": "https:\/\/www.shrimpton.agency\/"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Add a Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Social URLS",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Add your social URL's here"
+      },
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter"
+      },
+      {
+        "type": "url",
+        "id": "tiktok_url",
+        "label": "Tiktok"
+      }
+    ]
+  },
+  {
+    "name": "Top Banner Message",
+    "settings": [
+      {
+        "type": "text",
+        "id": "banner_message",
+        "label": "Message"
+      }
+    ]
+  },
+  {
+    "name": "Free Samples",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Enable free samples in cart"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_samples_enabled",
+        "label": "Enabled?"
+      },
+      {
+        "type": "text",
+        "id": "free_samples_heading",
+        "label": "eg. Choose free samples"
+      },
+      {
+        "type": "textarea",
+        "id": "free_samples_description",
+        "label": "Explain"
+      }
+    ]
+  },
+  {
+    "name": "Upsell In Minicart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Choose an upell product"
+      },
+      {
+        "type": "text",
+        "id": "upsell_title",
+        "label": "Upsell title"
+      },
+      {
+        "type": "checkbox",
+        "id": "upsell_enabled",
+        "label": "Upsell enabled?"
+      },
+      {
+        "type": "product",
+        "id": "upsell_product",
+        "label": "Upsell Product"
+      }
+    ]
+  },
+  {
+    "name": "Gift With Purchase Product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Choose a free product"
+      },
+      {
+        "type": "checkbox",
+        "id": "gwp_enabled",
+        "label": "GWP enabled?"
+      },
+      {
+        "type": "text",
+        "id": "gwp_min",
+        "label": "GWP min value?"
+      },
+      {
+        "type": "product",
+        "id": "gwp_product",
+        "label": "Product"
+      }
+    ]
+  },
+  {
+    "name": "Free Hat \/ T-shirt",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "free-hat-tshirt",
+        "label": "Enable Discount?"
+      }
+    ]
+  },
+  {
+    "name": "Free Shipping",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Set free shippign value"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_ship_enabled",
+        "label": "Free Ship enabled?"
+      },
+      {
+        "type": "text",
+        "id": "free_ship_threshold",
+        "label": "Free ship threshold"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Subscribe block"
+      },
+      {
+        "type": "text",
+        "id": "subscribe_message",
+        "label": "Subscribe message"
+      }
+    ]
+  }
+]

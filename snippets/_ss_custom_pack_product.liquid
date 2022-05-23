@@ -1,0 +1,72 @@
+{% assign selling_plan_id = '' %}
+{% for group in product.selling_plan_groups %}
+  {% for selling_plan in group.selling_plans %}
+    {% assign selling_plan_id = selling_plan.id %}
+    {% break %}
+  {% endfor %}
+{% endfor %}
+<div class="d-flex left-part-img" data-cp-product="{{ product.id }}" data-cp-product-selling_plan="{{ selling_plan_id }}">
+  <figure class="spritz-product__fig-img">
+    <img data-src="{{ block.settings.image | img_url: '300x' }}" class="lazyload h-auto"
+      alt="{{product.title}} by {{shop.name}}" loading="lazy" width="{{block.settings.image.width}}"
+      height="{{block.settings.image.height}}" data-cp-product-image>
+    <figcaption class="accent text-center spritz-product__fig-capt" data-cp-product-name>
+      {{ product.title }}
+    </figcaption>
+  </figure>
+  {% if product.metafields.product.pack %}
+    <div class="spritz-product__packs">{{product.metafields.product.pack}} PACK</div>
+  {% endif %}
+  
+
+    {% comment %}Required{% endcomment %}
+    <label aria-label="Select an option" style="display: none;">
+      <span class="d-none">Select an option</span>
+      <div class="select" {% if product.has_only_default_variant %}style="display: none" {% endif %}>
+        <select name="id" class="js-product-select" data-id="{{product.id}}">
+          {% for variant in product.variants %}
+          {% if variant.available == true %}
+          <option value="{{variant.id}}" data-price="{{ variant.price }}">{{ variant.title }} {{ variant.price |
+            money }}</option>
+          {% else %}
+          <option disabled="disabled">{{ variant.title }} - sold out!</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </label>
+
+    <div class="d-flex flex-j-center acumin-pro pdp-qty-increment-wrap">
+      <button class="js-cp-qty-increment pdp-qty-increment down" type="button"
+        aria-label="Quantity increment for {{product.title}}">
+        <span class="d-none">Decrease quantity</span>
+        <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="shape"
+            d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+            fill="#F64A47" />
+          <path class="symbol" d="M16.2986 19.4737V21.7837H28.2986V19.4737H16.2986Z" fill="white" />
+        </svg>
+      </button>
+      <label class="d-flex pdp-qty-area" for="pdp-qty-{{product.id}}" aria-label="Selet a quantity">
+        <input type="number" value="0" id="pdp-qty-{{product.id}}" name="quantity" class="js-pdp-qty pdp-qty"
+          maxlength="10" pattern="[0-9]" {% unless product.available %}disabled{% endunless %} readonly>
+        <svg width="87" height="50" viewBox="0 0 87 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M65.2452 0.999997L85.1925 24.68L65.2452 48.36L22.6651 48.36L1.55463 24.68L22.6651 0.999992L65.2452 0.999997Z"
+            stroke="#F64A47" stroke-width="2" />
+        </svg>
+      </label>
+      <button class="js-cp-qty-increment pdp-qty-increment up" type="button"
+        aria-label="Quantity descrement for {{product.title}}">
+        <span class="d-none">Increase quantity</span>
+        <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="shape"
+            d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+            fill="#F64A47" />
+          <path class="symbol"
+            d="M21.6047 11.6437V18.7237H14.5547V21.0637H21.6047V28.3237H23.9747V21.0637H30.9947V18.7237H23.9747V11.6437H21.6047Z"
+            fill="white" />
+        </svg>
+      </button>
+    </div>
+</div>

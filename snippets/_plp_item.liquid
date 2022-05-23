@@ -1,0 +1,91 @@
+
+{% assign hasOneVar = true %}
+{% if product.variants.size > 1 %}
+  {% assign hasOneVar = false %}
+{% endif %}
+
+<article class="plp-item d-flex {% if forloop.last == true %}last{% endif%}">
+  <figure class="plp-item__left">
+  <a
+    href="{{product.url}}"
+    class="d-block plp-item__a"
+    title="View {{product.title}} details"
+    aria-label="View {{product.title}} details">
+    {% assign src = product.images.first %}
+    <picture>
+      <source media="(max-width: 280px)" srcset="{{ src | img_url: '280x' }}, {{ src | img_url: '280x', scale: 2 }} 2x">
+      <source media="(max-width: 320px)" srcset="{{ src | img_url: '320x' }}, {{ src | img_url: '320x', scale: 2 }} 2x">
+      <source media="(max-width: 360px)" srcset="{{ src | img_url: '360x' }}, {{ src | img_url: '360x', scale: 2 }} 2x">
+      <source media="(max-width: 375px)" srcset="{{ src | img_url: '375x' }}, {{ src | img_url: '375x', scale: 2 }} 2x">      
+      <source media="(max-width: 411px)" srcset="{{ src | img_url: '411x' }}, {{ src | img_url: '411x', scale: 2 }} 2x">
+      <source media="(max-width: 414px)" srcset="{{ src | img_url: '414x' }}, {{ src | img_url: '414x', scale: 2 }} 2x">
+      <source media="(max-width: 768px)" srcset="{{ src | img_url: '344x' }}, {{ src | img_url: '344x', scale: 2 }} 2x">
+      <source media="(max-width: 1024px)" srcset="{{ src | img_url: '211x' }}, {{ src | img_url: '211x', scale: 2 }} 2x">
+      <source media="(max-width: 1280px)" srcset="{{ src | img_url: '275x' }}, {{ src | img_url: '275x', scale: 2 }} 2x">
+      <source media="(max-width: 1366px)" srcset="{{ src | img_url: '296x' }}, {{ src | img_url: '296x', scale: 2 }} 2x">
+      <source media="(max-width: 1440px)" srcset="{{ src | img_url: '315x' }}, {{ src | img_url: '315x', scale: 2 }} 2x">
+      <source media="(max-width: 1600px)" srcset="{{ src | img_url: '355x' }}, {{ src | img_url: '355x', scale: 2 }} 2x">
+      <source media="(max-width: 1920px)" srcset="{{ src | img_url: '435x' }}, {{ src | img_url: '435x', scale: 2 }} 2x">
+      <source media="(min-width: 1921px)" srcset="{{ src | img_url: '594x' }}, {{ src | img_url: '594x', scale: 2 }} 2x">
+      <img
+        data-src="{{ src | img_url: 'small' }}"
+        width="{{src.width | divided_by: 3}}px"
+        height="{{src.height | divided_by: 3}}px"
+        alt="{{product.title}} from {{shop.name}}"
+        class="lazyload d-block asset-fill"
+        loading="lazy">
+    </picture>
+  </a>
+  </figure>
+  <section class="plp-item__right">
+    <div  class="plp-item__right-inner">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" data-id="{{product.id}}">
+ 
+        <h2 class="plp-item__heading heading-xl ss--secondary-font">
+        <a href="{{product.url}}" title="View {{product.title}}" aria-label="View {{product.title}}">{{product.title}}</a>
+        </h2>
+
+        {% render '_selling_plan_options'%}
+
+        <div class="plp-item__desc acumin-pro">
+          <div>
+            {{product.first_available_variant.title}}
+          </div>          
+          {{product.description}}
+        </div>
+
+        {% render '_ss_yotpo_stars' %}
+
+        <label aria-label="Select an option" style="display: none;">
+          <span class="d-none">Select an option</span>
+          <div class="select" {% if product.has_only_default_variant %}style="display: none" {% endif %}>
+            <select name="id" class="js-product-select" data-id="{{product.id}}">
+              {% for variant in product.variants %}
+              {% if variant.available == true %}
+                <option value="{{variant.id}}" data-price="{{ variant.price | money }}">{{ variant.title }} {{ variant.price | money }}</option>
+              {% else %}
+                <option disabled="disabled">{{ variant.title }} - sold out!</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+        </label>
+        
+        <input type="number" value="1" name="quantity" class="d-none" aria-hidden="true">
+
+        <a href="{{product.url}}" class="polygone-btn d-block" aria-label="Shop the {{product.title}}">
+          Shop Flavor
+        </a>
+
+        <button type="submit" name="add" class="polygone-btn d-block" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}
+            Quick Add
+          {% else %}
+            Sold out
+          {% endif %}
+        </button>
+
+      </form>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,74 @@
+{% for group in product.selling_plan_groups %}
+  {% unless group.name contains "[hidden]" %}
+    <div class="selling-plan-wrapper" data-id="{{product.id}}">
+      {% assign save_percent = product.variants[0].selling_plan_allocations[0].price | times: 100 | divided_by: product.price %}
+      {% if save_percent < 100 %}
+        {% assign percent = 100 | minus: save_percent  %}
+        {% assign amount = product.price | divided_by: 100 | times: percent %}
+        {% assign subscribe_price = product.price | minus: amount %}
+      {% endif %}
+      <div class="selling-plan-selector">
+        <div class="selling-plan-selector__inner  d-flex flex-a-center" data-initial-price='{{subscribe_price}}' data-price='{{subscribe_price | money}}'>
+          <input
+            type="radio"
+            name="selling-plan-select"
+            class="bag-message__checkbox"
+            id="selling-plan-subscription-{{product.id}}"
+            data-id="{{product.id}}"
+            value="subscription"
+            checked>
+  
+          {% render '_ss_icon_radio' %}
+  
+          <label class="bag-message__label subscription {{ variety_class }}" for="selling-plan-subscription-{{product.id}}" data-percent={{percent}} >
+            Subscribe & Save
+            {% if variety_class != blank %}
+              {% assign save_amount1 = product.variants[0].price | minus: product.variants[0].selling_plan_allocations[0].price %}
+              {% assign save_amount2 = product.variants[1].price | minus: product.variants[1].selling_plan_allocations[0].price %}
+              <input class="subs-save__amount" type="hidden" data-pack="{{ product.metafields.product.pack }}" data-amount="{{ save_amount1 }}">
+              <input class="subs-save__amount" type="hidden" data-pack="{{ product2.metafields.product.pack }}" data-amount="{{ save_amount2 }}">
+              <span class="subs-save__amount" style="font-weight: inherit;">{{ save_amount1 | money }}</span>
+            {% else %}
+              {% assign save_percent = product.variants[0].selling_plan_allocations[0].price | times: 100 | divided_by: product.price %}
+              {% if save_percent < 100 %}
+                {{ 100 | minus: save_percent }}%
+              {% endif %}
+            {% endif %}
+          </label>
+        </div>
+        <label for="selling_plan" class="selling_plan_options" style="display:block" data-id="{{product.id}}">
+          <span class="d-flex">{% render '_ss_icon_checked' %} &nbsp;Ships every 30 days</span>
+          <span class="d-flex">{% render '_ss_icon_checked' %} &nbsp;Pause or skip anytime</span>
+          <span class="d-flex">{% render '_ss_icon_checked' %} &nbsp;Minimum 3 month commitment</span>
+          <div class="select" style="display: none">
+            <select name="selling_plan" id="selling_plan_select-{{product.id}}">
+              {% for selling_plan in group.selling_plans %}
+              <option value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <span class="d-none">Subscribe and save</span>
+        </label>
+      </div>
+      <div class="selling-plan-selector">
+        <div class="selling-plan-selector__inner d-flex flex-a-center active" data-initial-price='{{product.price}}' data-price='{{product.price | money}}'>
+          <input
+            type="radio"
+            name="selling-plan-select"
+            class="bag-message__checkbox"
+            id="selling-plan-single-{{product.id}}"
+            data-id="{{product.id}}"
+            value="regular"
+            >
+  
+          {% render '_ss_icon_radio' %}
+  
+          <label class="bag-message__label {{ variety_class }}" for="selling-plan-single-{{product.id}}" >
+            One-Time Purchase <!--{{product.price | money}}-->
+          </label>
+        </div>
+      </div>
+    </div>
+  
+  {% endunless %}
+  {% endfor %}

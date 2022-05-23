@@ -1,0 +1,142 @@
+{% liquid
+    assign title        = section.settings.title
+    assign subtitle     = section.settings.subtitle
+    assign motto        = section.settings.motto
+    assign img          = section.settings.img
+    assign bg_color     = section.settings.bg_color
+    assign btn_text     = section.settings.btn_text
+    assign btn_url      = section.settings.btn_url
+
+    assign press_title = section.settings.press_title
+
+    assign blocks = section.blocks
+%}
+
+<style>
+    .hp-hero__btn {
+        background-color: {{ bg_color }};
+    }
+</style>
+
+<section class="hp-hero" style="background-color: {{ bg_color }}">
+    <div class="container">
+
+        <div class="hp-hero__top">
+            <div class="hp-hero__content">
+                <h4 class="hp-hero__subtitle">{{ subtitle }}</h4>
+                <h1 class="hp-hero__title">{{ title }}</h1>
+                <h2 class="hp-hero__motto">{{ motto }}</h2>
+                <a class="hp-hero__btn noselect" href="{{ btn_url }}">
+                    <span class="btn--overlay"></span>
+                    <span class="btn--overlay-hover"></span>
+                    <span>{{ btn_text }}</span>
+                </a>
+            </div>
+            <div class="hp-hero__img">
+                <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+            </div>
+        </div>
+
+        <div class="hp-hero__bot">
+            {% if press_title != blank %}
+                <h3 class="hero__press-title">{{ section.settings.press_title }}</h3>
+            {% endif %}
+            {% if blocks %}
+                <div class="hero__press-desk">
+                    {% for block in blocks  %}
+                        {% if block.type == 'press' %}
+                            <div class="hero__press-img">
+                                <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt }}">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="marquee-slider hero__press-mob" data-marquee>
+                    {% for i in (i..1) %}
+                        {% for block in blocks %}
+                            {% if block.type == 'press' %}
+                                <div class="hero__press-img">
+                                    <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt }}">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Hero section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Section subtitle",
+            "default": "Premium sparkling cocktails"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section title",
+            "default": "Life’s to short for drinks you don’t love"
+        },
+        {
+            "type": "text",
+            "id": "motto",
+            "label": "Section motto",
+            "default": "FEATURING ALL 4 FLAVORS"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Section image"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Section background",
+            "default": "#FED9D1"
+        },
+        {
+            "type": "text",
+            "id": "press_title",
+            "label": "Press title",
+            "default": "Featured On"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "shop now"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "press",
+            "name": "Press logo",
+            "settings": [
+                {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Press logo"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Homepage",
+            "name": "Homepage hero"
+        }
+    ]
+}
+{% endschema %}

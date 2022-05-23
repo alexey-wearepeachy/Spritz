@@ -1,0 +1,22 @@
+<nav class="navigation nav-open">
+
+  <div class="navigation__inner-wrap">
+
+    <button class="navigation__hamburger" onclick="this.closest('body').classList.remove('nav-open')">
+      {% render '_ss_hamburger_open' %}
+    </button>
+
+    <section class="navigation__inner">
+      <ul class="navigation__list">
+        {% for link in linklists[navigation].links %}
+          <li class="navigation__item">
+              <a href="javascript:void(0);" onclick="window.location = '{{ link.url }}'">{{ link.title }}</a>
+            </li>
+        {% endfor %}
+      </ul>
+
+      {% render '_ss_social_links' %}
+    </section>
+    
+  </div>
+</nav>

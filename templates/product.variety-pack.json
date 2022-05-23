@@ -1,0 +1,135 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product--variety",
+      "settings": {
+        "link_text": "",
+        "popup_text": "",
+        "free_sticker": "shopify:\/\/shop_images\/free_shipping.png"
+      }
+    },
+    "video": {
+      "type": "ss-home-video",
+      "settings": {
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0581\/1909\/4440\/files\/Spritz_30_drinks_final__1___1.mp4?v=1629019993"
+      }
+    },
+    "img_with_text": {
+      "type": "ss-pdp-image-with-content",
+      "blocks": {
+        "6c55eea8-270d-4170-955f-87cd7a56f439": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bucket_1.png",
+            "caption": "Chill"
+          }
+        },
+        "8d50f919-8b27-40ab-9b3e-a78a47015a8e": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_15.png",
+            "caption": "Sip"
+          }
+        },
+        "73043bb2-8c79-42e9-b2eb-c8b92d32a27d": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_17.png",
+            "caption": "Enjoy"
+          }
+        }
+      },
+      "block_order": [
+        "6c55eea8-270d-4170-955f-87cd7a56f439",
+        "8d50f919-8b27-40ab-9b3e-a78a47015a8e",
+        "73043bb2-8c79-42e9-b2eb-c8b92d32a27d"
+      ],
+      "settings": {
+        "heading": "Life's too short for drinks you don’t love",
+        "subheading": "Sparkling cocktails with real wine, real flavors, and real ingredients.",
+        "icon_heading": "How to Spritz",
+        "image": "shopify:\/\/shop_images\/2021-08-17_11.01.06_2337365e-97e9-4a88-8870-90839e8c1894.png"
+      }
+    },
+    "subscribe": {
+      "type": "ss-subscribe",
+      "blocks": {
+        "807bfdb8-9bb6-420c-ba51-74e6c3c5f506": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4.png",
+            "caption": "Save 15% on your order"
+          }
+        },
+        "b5ea24c9-dbea-4ea7-8be8-8e81cd803eaf": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Spritz_perks_a76f6fea-d76f-4ac0-bdb4-f490c233e700.png",
+            "caption": "Exclusive subscriber perks"
+          }
+        },
+        "8ef9f8c4-190b-4069-a77b-eb95acbc80f3": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_18.png",
+            "caption": "Change flavors whenever"
+          }
+        },
+        "3e13de71-1b8f-4806-a2b7-4f8007905623": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Spritz_cancel_763da6db-fb79-4793-84a9-0ad281d533ec.png",
+            "caption": "Cancel or pause at any time"
+          }
+        }
+      },
+      "block_order": [
+        "807bfdb8-9bb6-420c-ba51-74e6c3c5f506",
+        "b5ea24c9-dbea-4ea7-8be8-8e81cd803eaf",
+        "8ef9f8c4-190b-4069-a77b-eb95acbc80f3",
+        "3e13de71-1b8f-4806-a2b7-4f8007905623"
+      ],
+      "settings": {
+        "heading": "Subscribe now to get Spritz Society delivered to you",
+        "button_text": "Subscribe & save",
+        "button_link": ""
+      }
+    },
+    "home_hero": {
+      "type": "ss-hero",
+      "settings": {
+        "subtext": "",
+        "text": "<p>Want to try all our flavors?<br\/>Get our variety pack.<\/p>",
+        "btn_text": "SHOP NOW",
+        "btn_link": "shopify:\/\/products\/variety-pack",
+        "image": "shopify:\/\/shop_images\/Lemon_Large_055dd114-48aa-442a-96d2-e4af18939b25.png",
+        "image2": "shopify:\/\/shop_images\/Blood_Orange_Large_2578b3c3-e2af-4ba0-957f-900bed0b1f5e.png",
+        "image3": "shopify:\/\/shop_images\/Grapefruit_Large_7897201d-9443-4b13-9c1b-df52fb6ca665.png",
+        "image4": "shopify:\/\/shop_images\/Pineapple_Large_ce03068e-c1b5-447b-87cf-8350574b750c.png"
+      }
+    },
+    "reviews": {
+      "type": "ss-pdp-reviews",
+      "settings": {
+        "heading": "Hear what our members think"
+      }
+    },
+    "merch": {
+      "type": "ss-merchant-collection",
+      "disabled": true,
+      "settings": {
+        "heading": "Spritz up your Wardrobe",
+        "m_collection": "merch"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video",
+    "img_with_text",
+    "subscribe",
+    "home_hero",
+    "reviews",
+    "merch"
+  ]
+}

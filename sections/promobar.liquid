@@ -1,0 +1,43 @@
+<div class="promobar" style="background: {{ section.settings.bg }};" style="white-space: nowrap">
+    <div class="promobar__marquee promobar__marquee--loading" data-promo-marquee style="white-space: nowrap">
+        {% for block in section.blocks %}
+            <div class="promobar__text" style="color: {{section.settings.font}}">{{ block.settings.text }}</div>
+        {% endfor %}
+        {% for block in section.blocks %}
+            <div class="promobar__text" style="color: {{section.settings.font}}">{{ block.settings.text }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Promobar",
+    "settings": [
+        {
+            "type": "color",
+            "id": "bg",
+            "label": "background color",
+            "default": "#000"
+        },
+        {
+            "type": "color",
+            "id": "font",
+            "label": "Text color",
+            "default": "#fff"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Bromobar block",
+            "type": "block",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,234 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "162796863267f0d855": {
+      "type": "ss-meet-our-spritz",
+      "blocks": {
+        "a53b6fbf-ca33-4f21-a2ce-5df4d0237840": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ygroQaqw.png",
+            "product": "grapefruit"
+          }
+        },
+        "774327a0-72c5-41e8-9cfb-afdd91e3dbd5": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CCRIG2qA.png",
+            "product": "blood-orange"
+          }
+        },
+        "7e24da7d-9ad3-4e1e-9058-b42b9dba748f": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MxBut4Gg.png",
+            "product": "pineapple"
+          }
+        },
+        "e4f635ed-877d-4db9-b87b-50d9c5e17a0c": {
+          "type": "product",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lemonade_Small_4fd91bc6-4aef-49b6-b8f2-608907789e95.png",
+            "product": "lemon"
+          }
+        }
+      },
+      "block_order": [
+        "a53b6fbf-ca33-4f21-a2ce-5df4d0237840",
+        "774327a0-72c5-41e8-9cfb-afdd91e3dbd5",
+        "7e24da7d-9ad3-4e1e-9058-b42b9dba748f",
+        "e4f635ed-877d-4db9-b87b-50d9c5e17a0c"
+      ],
+      "settings": {
+        "headline": "Shop Spritz Society",
+        "sub_headline": "Flavors<br><a href=\"#bundle-section\" style=\"\">Bundle<\/a>"
+      }
+    },
+    "bundle-product": {
+      "type": "ss-collections-bundle",
+      "blocks": {
+        "c366caa7-b3ce-43a3-a2a7-076d789f1def": {
+          "type": "bundle_product",
+          "settings": {
+            "product_handle": "variety-pack",
+            "productt": "variety-pack",
+            "first_image": "shopify:\/\/shop_images\/Grapefruit_Box_Can_302de3e4-b886-471f-a9af-ef3491e1146d.png",
+            "first_heading": "GRAPEFRUIT",
+            "second_image": "shopify:\/\/shop_images\/BloodOrange_Box_Can.png",
+            "second_heading": "BLOOD ORANGE",
+            "third_image": "shopify:\/\/shop_images\/Pineapple_Box_Can_ed5156e6-28c6-49da-8ebe-a236f47b398b.png",
+            "third_heading": "PINEAPPLE",
+            "fourth_image": "shopify:\/\/shop_images\/Lemon_Box_All.png",
+            "fourth_heading": "LEMONADE",
+            "title": "The Variety Pack",
+            "subtitle": "(16 Cans)",
+            "second_subtitle": "Try all our flavors in one simple pack.",
+            "enable_star": true,
+            "price": "$80.00",
+            "can_price": "$5.00\/can",
+            "btn_link": "",
+            "btn_text": "ADD TO CART",
+            "bottom_link": "shopify:\/\/products\/variety-pack",
+            "bottom_link_text": "LEARN MORE",
+            "show_badge": true,
+            "img_label": "shopify:\/\/shop_images\/yellow-label.png"
+          }
+        },
+        "8876f7bf-2805-492b-b9fe-982d8995bac3": {
+          "type": "bundle_product",
+          "disabled": true,
+          "settings": {
+            "product_handle": "variety-pack",
+            "productt": "",
+            "first_image": "shopify:\/\/shop_images\/Grapefruit_Box_Can.png",
+            "first_heading": "GRAPEFRUIT",
+            "second_image": "shopify:\/\/shop_images\/WkHf2Iiw.png",
+            "second_heading": "BLOOD ORANGE",
+            "third_image": "shopify:\/\/shop_images\/Pineapple_Box_Can.png",
+            "third_heading": "PINEAPPLE",
+            "fourth_image": "shopify:\/\/shop_images\/Lemon_Box_All.png",
+            "fourth_heading": "LEMONADE",
+            "title": "The Custom Pack",
+            "subtitle": "(8, 16 or 24 Pack)",
+            "second_subtitle": "Customize your flavors in your custom pack.",
+            "enable_star": true,
+            "price": "starting at $24.00",
+            "can_price": "$2.00\/can",
+            "btn_link": "shopify:\/\/pages\/custom-pack",
+            "btn_text": "CUSTOMIZE NOW",
+            "bottom_link": "shopify:\/\/pages\/custom-pack",
+            "bottom_link_text": "LEARN MORE",
+            "show_badge": false
+          }
+        }
+      },
+      "block_order": [
+        "c366caa7-b3ce-43a3-a2a7-076d789f1def",
+        "8876f7bf-2805-492b-b9fe-982d8995bac3"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "16304887560860a054": {
+      "type": "ss-meet-our-merch",
+      "disabled": true,
+      "blocks": {
+        "ac8de5b0-2497-4998-9ea1-f39b670256d1": {
+          "type": "product",
+          "settings": {
+            "product": "launch-hat"
+          }
+        },
+        "f312c43c-0c93-4782-bd4d-55fe6db5bec9": {
+          "type": "product",
+          "settings": {
+            "product": "launch-tshirt"
+          }
+        },
+        "d2c9e875-2ee1-482e-ac07-f28def3f92c8": {
+          "type": "product",
+          "settings": {
+            "product": "launch-crewneck"
+          }
+        },
+        "200e9a6b-2dd9-4537-9629-9a262f3f96c6": {
+          "type": "product",
+          "settings": {
+            "product": "spritz-society-launch-bucket-hat"
+          }
+        }
+      },
+      "block_order": [
+        "ac8de5b0-2497-4998-9ea1-f39b670256d1",
+        "f312c43c-0c93-4782-bd4d-55fe6db5bec9",
+        "d2c9e875-2ee1-482e-ac07-f28def3f92c8",
+        "200e9a6b-2dd9-4537-9629-9a262f3f96c6"
+      ],
+      "settings": {
+        "headline": "",
+        "sub_headline": ""
+      }
+    },
+    "162796910499212796": {
+      "type": "ss-merchant-collection",
+      "disabled": true,
+      "settings": {
+        "heading": "Spritz up your Wardrobe",
+        "m_collection": "merch"
+      }
+    },
+    "16279691275957aa1c": {
+      "type": "ss-subscribe",
+      "blocks": {
+        "1c6fcebf-18a8-4f3e-8ea7-8b8d632b013b": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_4.png",
+            "caption": "Save 15% on your order"
+          }
+        },
+        "f44975fc-7a1f-4c55-a90b-4a383131f406": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Spritz_perks.png",
+            "caption": "Exclusive subscriber perks"
+          }
+        },
+        "dfbf82f6-82d1-4daa-ba9e-eac7c0420787": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_18.png",
+            "caption": "Change flavors whenever"
+          }
+        },
+        "118215dc-26c4-4a2f-a53b-7fc8b7ea9494": {
+          "type": "icontext",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Spritz_cancel.png",
+            "caption": "Cancel or pause at any time"
+          }
+        }
+      },
+      "block_order": [
+        "1c6fcebf-18a8-4f3e-8ea7-8b8d632b013b",
+        "f44975fc-7a1f-4c55-a90b-4a383131f406",
+        "dfbf82f6-82d1-4daa-ba9e-eac7c0420787",
+        "118215dc-26c4-4a2f-a53b-7fc8b7ea9494"
+      ],
+      "settings": {
+        "heading": "Subscribe now to get Spritz Society delivered to you",
+        "button_text": "Subscribe & save",
+        "button_link": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "162796863267f0d855",
+    "bundle-product",
+    "16304887560860a054",
+    "162796910499212796",
+    "16279691275957aa1c"
+  ]
+}

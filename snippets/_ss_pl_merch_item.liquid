@@ -1,0 +1,90 @@
+<article class="d-flex flex-fd-column {% if forloop.last == true %}last{% endif%}">
+  {% if type %}
+    {% if type == 'merch' %}
+    <svg width="396" height="532" viewBox="0 0 396 532" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="path-1-inside-1" fill="white">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M198 0L396 115.177V488.752L335.729 532H198H60.2711L0 488.752V115.177L198 0Z"/>
+      </mask>
+      <path d="M396 115.177H398V114.026L397.006 113.448L396 115.177ZM198 0L199.006 -1.72878L198 -2.31376L196.994 -1.72878L198 0ZM396 488.752L397.166 490.377L398 489.779V488.752H396ZM335.729 532V534H336.372L336.895 533.625L335.729 532ZM60.2711 532L59.1052 533.625L59.6278 534H60.2711V532ZM0 488.752H-2V489.779L-1.16599 490.377L0 488.752ZM0 115.177L-1.00564 113.448L-2 114.026V115.177H0ZM397.006 113.448L199.006 -1.72878L196.994 1.72878L394.994 116.906L397.006 113.448ZM398 488.752V115.177H394V488.752H398ZM336.895 533.625L397.166 490.377L394.834 487.127L334.563 530.375L336.895 533.625ZM198 534H335.729V530H198V534ZM60.2711 534H198V530H60.2711V534ZM-1.16599 490.377L59.1052 533.625L61.4371 530.375L1.16599 487.127L-1.16599 490.377ZM-2 115.177V488.752H2V115.177H-2ZM196.994 -1.72878L-1.00564 113.448L1.00564 116.906L199.006 1.72878L196.994 -1.72878Z" fill="white" mask="url(#path-1-inside-1)"/>
+    </svg>
+    {% endif %}
+  {% endif %}
+  <figure>
+  <a
+    href="{{product.url}}"
+    class="d-block plp-item__a"
+    title="View {{product.title}}"
+    aria-label="View {{product.title}}" data-pjax-state>
+    {% assign src = product.images.first %}
+    <picture>
+      <source media="(max-width: 280px)" srcset="{{ src | img_url: '280x' }}, {{ src | img_url: '280x', scale: 2 }} 2x">
+      <source media="(max-width: 320px)" srcset="{{ src | img_url: '320x' }}, {{ src | img_url: '320x', scale: 2 }} 2x">
+      <source media="(max-width: 360px)" srcset="{{ src | img_url: '360x' }}, {{ src | img_url: '360x', scale: 2 }} 2x">
+      <source media="(max-width: 375px)" srcset="{{ src | img_url: '375x' }}, {{ src | img_url: '375x', scale: 2 }} 2x">      
+      <source media="(max-width: 411px)" srcset="{{ src | img_url: '411x' }}, {{ src | img_url: '411x', scale: 2 }} 2x">
+      <source media="(max-width: 414px)" srcset="{{ src | img_url: '414x' }}, {{ src | img_url: '414x', scale: 2 }} 2x">
+      <source media="(max-width: 768px)" srcset="{{ src | img_url: '344x' }}, {{ src | img_url: '344x', scale: 2 }} 2x">
+      <source media="(max-width: 1024px)" srcset="{{ src | img_url: '211x' }}, {{ src | img_url: '211x', scale: 2 }} 2x">
+      <source media="(max-width: 1280px)" srcset="{{ src | img_url: '275x' }}, {{ src | img_url: '275x', scale: 2 }} 2x">
+      <source media="(max-width: 1366px)" srcset="{{ src | img_url: '296x' }}, {{ src | img_url: '296x', scale: 2 }} 2x">
+      <source media="(max-width: 1440px)" srcset="{{ src | img_url: '315x' }}, {{ src | img_url: '315x', scale: 2 }} 2x">
+      <source media="(max-width: 1600px)" srcset="{{ src | img_url: '355x' }}, {{ src | img_url: '355x', scale: 2 }} 2x">
+      <source media="(max-width: 1920px)" srcset="{{ src | img_url: '435x' }}, {{ src | img_url: '435x', scale: 2 }} 2x">
+      <source media="(min-width: 1921px)" srcset="{{ src | img_url: '594x' }}, {{ src | img_url: '594x', scale: 2 }} 2x">
+      <img
+        data-src="{{ src | img_url: 'small' }}"
+        width="{{src.width | divided_by: 3}}px"
+        height="{{src.height | divided_by: 3}}px"
+        alt="{{product.title}} from {{shop.name}}"
+        class="lazyload d-block asset-fill"
+        loading="lazy">
+    </picture>
+  </a>
+  </figure>
+  <div  class="plp-item__content">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" data-id="{{product.id}}">
+
+      <h2 class="plp-item__heading heading-xl ss--secondary-font">
+        <a href="{{product.url}}" title="View {{product.title}}" aria-label="View {{product.title}}" data-pjax-state>{{product.title}}</a>
+      </h2>
+
+      <div class="price spritz-product__price">{{product.price | money}}</div>
+
+      <label aria-label="Select an option" style="display: none;">
+        <span class="d-none">Select an option</span>
+        <div class="select" {% if product.has_only_default_variant %}style="display: none" {% endif %}>
+          <select name="id" class="js-product-select" data-id="{{product.id}}">
+            {% for variant in product.variants %}
+            {% if variant.available == true %}
+              <option value="{{variant.id}}" data-price="{{ variant.price | money }}">{{ variant.title }} {{ variant.price | money }}</option>
+            {% else %}
+              <option disabled="disabled">{{ variant.title }} - sold out!</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </label>
+      
+      <input type="number" value="1" name="quantity" class="d-none" aria-hidden="true">
+
+      <a href="{{product.url}}" class="svg-btn medium d-flex flex-a-center flex-j-center bg-transperant">
+        {% render '_ss_polygon_button_shape', type: '' %}
+        <span>Shop Now</span>
+      </a>
+
+      <!--<div class="notchouter-btn sm">
+        <div class="notchinner-btn">
+          <a href="{{product.url}}" class="polygone-btn sm">Shop Now</a>-->
+          <!-- <button type="submit" name="add" class="polygone-btn sm" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              Shop Now
+            {% else %}
+              Sold out
+            {% endif %}
+          </button> -->
+       <!-- </div>
+      </div>-->
+
+    </form>
+  </div>
+</article>

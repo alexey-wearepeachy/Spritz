@@ -1,0 +1,56 @@
+<section class="collection-figure w-100 color-ss-pink">
+  <video
+    src="{{section.settings.video_url}}"
+    class="asset-fill video-plays-in-view"
+    preload="metadata"
+    poster=""
+    muted playsinline loop -webkit-playsinline>
+  </video>
+  <div class="collection-hero">
+    <span class="before"></span>
+    <span class="after"></span>
+  </div>
+</section>
+  
+<section class="text-center color-ss-grapefruit background-ss-background about-hero">
+  <div class="about-hero__inner">
+  
+    <header class="about-hero__header">
+     
+      <h2 class="ss--secondary-font h1">{{section.settings.heading}}</h2>
+    </header>
+    <section class="body-1 about-header__body">
+    {{section.settings.text}}
+    </section>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name" : "About Hero",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "video_url",
+      "label": "Vidoe URL"
+    },  
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type" : "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}

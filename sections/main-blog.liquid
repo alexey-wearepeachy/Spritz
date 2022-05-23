@@ -1,0 +1,61 @@
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+<style>
+    #shopify-section-ss-header {
+        background: transparent;
+        transition: .3s ease;
+    }
+</style>
+
+{% assign blocks = section.blocks %}
+
+{%- paginate blog.articles by 6 -%}
+  <div class="main-blog">
+      {% for block in blocks %}
+        {% if block.settings.blog.title == blog.title %}
+            <div class="main-blog__banner">
+                <img src="{{ block.settings.img | img_url: 'master' }}" alt="{{ block.settings.img.alt }}">
+            </div>
+        {% endif %}
+      {% endfor %}
+
+      <div class="container">
+          <h1 class="main-blog__title">{{ blog.title | escape }}</h1>
+
+          <div class="blog__articles">
+            {%- for article in blog.articles -%}
+                {%- render 'article-post', article: article -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            {%- render 'pagination', paginate: paginate -%}
+          {%- endif -%}
+      </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Blog",
+      "settings": [
+        {
+            "type": "blog",
+            "id": "blog",
+            "label": "Select blog"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Blog image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+<section class="april-fools">
+    <h1 class="april-fools__title">{{ section.settings.title }}</h1>
+
+    {% for i in (i..7) %}
+        <span class="april-fools__haha p-{{ forloop.index }}">HA</span>
+    {% endfor %}
+
+    {% for block in section.blocks %}
+        {% assign img = block.settings.img %}
+        <div class="april-fools__img p-{{ forloop.index }}">
+            <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+        </div>
+    {% endfor %}
+
+</section>
+
+{% schema %}
+{
+    "name": "April fools",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "APRIL <br> FOOLS!"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block",
+            "name": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Float image"
+                }
+            ]
+        }
+    ],
+    "max_blocks": 8
+}
+{% endschema %}

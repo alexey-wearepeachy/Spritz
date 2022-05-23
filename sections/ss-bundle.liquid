@@ -1,0 +1,49 @@
+<article class="background-ss-background color-ss-grapefruit homepage-bundle">
+  <header class="text-center">
+    <h1 class="ss--secondary-font homepage-bundle__heading heading-xxl">{{section.settings.heading}}</h1>
+  </header>
+  <section class="text-center">
+    {% render '_ss_bundle_product' as product: section.settings.product %}
+  </section>
+</article>
+
+
+{% schema %}
+{
+  "name" : "Homepage Bundle Product",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type" : "product",
+      "id": "product",
+      "label": "Choose product"
+    }
+  ],
+  "blocks": [{
+    "type": "image",
+    "name": "Product Images",
+    "settings" : [
+      {
+        "type" : "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type" : "text",
+        "id": "heading",
+        "label": "Heading"
+      }    
+    ]
+  }],
+  "presets": [
+    {
+      "name": "Homepage Bundle Product"
+    }
+  ]
+}
+{% endschema %}

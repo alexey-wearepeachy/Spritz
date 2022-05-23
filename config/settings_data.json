@@ -1,0 +1,542 @@
+{
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/Favicon_Spritz_Society_32x32_eb8f7bd7-04d1-4de1-8e37-fca6c9a13cbb.png",
+    "instagram_url": "https:\/\/www.instagram.com\/spritz\/?hl=en",
+    "gwp_enabled": true,
+    "gwp_min": "20",
+    "gwp_product": "free-shaker",
+    "free-hat-tshirt": false,
+    "checkout_logo_image": "shopify:\/\/shop_images\/Logo_Solid_Color-1_a236c66f-d448-4f80-8adc-c78b77caba97.png",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_accent_color": "#f452cd",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 100,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": true,
+          "enable_sticky_header": true
+        }
+      },
+      "ss-header": {
+        "type": "ss-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/SPRITZ_logo_white.png"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Sign up to our emails",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "9f2163b7-ffc9-463c-a02f-7f877895d769": {
+            "type": "text",
+            "settings": {
+              "question": "BRAND",
+              "answer": "<p><strong>Who started Spritz Society?<\/strong><\/p><p>You! Spritz Society was made by Spritz lovers, for Spritz lovers. We developed a high-quality, delicious product to fill the void of what our audience was missing: a modern twist on the classic spritz. <br\/><\/p><p><strong>What is Spritz Society?<\/strong><\/p><p>We are a sparkling wine-based beverage infused with natural flavors and best enjoyed chilled. At 6% ABV, 120 Calories, and 5g of sugar, Spritz Society was created by spritz lovers, for spritz lovers.<br\/><\/p><p><strong>How can I contact you?<\/strong><\/p><p>Hit us with your questions, comments and spritz love notes at hello@spritzsociety.com.<\/p><p><strong>Who do I reach out to for PR requests? <\/strong><\/p><p>We'd love to connect with you! Please email us at spritzsociety@align-pr.com. <\/p><p><br\/><strong>Where do you ship?<\/strong><\/p><p>We ship domestically to all states except: Utah, Mississippi, Alabama, Arkansas, Rhode Island, and Delaware. We're always expanding, and can't wait to be able to ship to your neck of the woods sometime soon! Please never hesitate to reach out to us for more info at hello@spritzsociety.com <\/p><p><strong>Is there an ambassador program? How can I be a brand ambassador?<\/strong><\/p><p>Yes! Everyone can come spritz with us. Shoot us an email at ambassador@spritzsociety.com and our team will be in touch. <\/p>"
+            }
+          },
+          "9bca395a-0b39-456b-b315-50f14d84cfea": {
+            "type": "text",
+            "settings": {
+              "question": "PRODUCT\/INGREDIENTS",
+              "answer": "<p><strong>What is sparkling wine?<\/strong><\/p><p>Sparkling wine is real wine infused with a touch of effervescence to embody the taste and feeling of a true spritz.  <\/p><p><strong>What does it taste like?<\/strong><\/p><p>Grapefruit: Tart and bold with a refreshing bitterness, enjoy our go-to flavor<\/p><p>Lemonade: Clean and classic and a balance of sharp citrus and natural sweetness<\/p><p>Pineapple: Naturally sweet and slightly tart, lean into the tropical life<\/p><p>Blood Orange: Rich citrus flavors and a touch of tangy red grapefruit, elevate your orange<\/p><p><strong>What are the nutrition facts?<\/strong><\/p><p>6% ABV, 120 Calories, and 5g of sugar per can.<\/p><p><strong>What are the ingredients?<\/strong><\/p><p>Grapefruit: White wine, grapefruit, soda, cane sugar, citric acid<\/p><p>Lemonade: White wine, lemon, soda, cane sugar<\/p><p>Pineapple: White wine, pineapple, soda, cane sugar, citric acid, natural flavors<\/p><p>Blood Orange: White wine, blood orange, soda, cane sugar, citric acid, natural flavors<\/p><p><strong>How much sugar is in the wine and do you use artificial sweeteners?<\/strong><\/p><p>Each can is 5 grams of sugar, and we use natural cane sugar to lightly sweeten our spritz.<\/p><p><strong>Is it gluten free?<\/strong><\/p><p>Technically yes, but it is not registered as such.<\/p><p><strong>Is it vegan?<\/strong><\/p><p>No it is not vegan<\/p><p><strong>Is it kosher?<\/strong><\/p><p>No, it is not Kosher but is something we’d like to do immediately for V2<\/p><p><strong>What kind of wine is in Spritz Society?<\/strong><\/p><p>White wine from Sonoma California<\/p><p><strong>How many flavors are there?<\/strong><\/p><p>There are currently 4 unique flavors: Grapefruit, Lemonade, Pineapple, and Blood Orange. <\/p><p><strong>Is the juice real in Spritz Society?<\/strong><\/p><p>We use only real juice and natural flavors. <\/p><p><strong>Where are the grapes from?<\/strong><\/p><p>Our grapes are sourced from vineyards all across California.<\/p><p><strong>How is this different from hard seltzer?<\/strong><\/p><p>From lifestyle to first sip, Spritz Society is a new way to enjoy your happiest hour. It’s a combination of real wine, natural fruit flavors, and a touch of effervescence that tingles the senses and elevates the scene. We use only natural juices and flavors, and we never use malt liquors. <\/p><p><\/p><p><strong>How many servings are in each can? How many bottles is that?<\/strong><\/p><p>One can is one serving. One 4-pack is equal to approximately 1 bottle of wine. <\/p><p><\/p><p><strong>Do you sell a mix and match case option?<\/strong><\/p><p>Yes! You can build your own Spritz bundle of your favorite flavors at spritzsociety.com\/byob.<\/p><p><\/p><p><strong>Can I recycle the cans?<\/strong><\/p><p>All of the packaging and cans are completely recyclable. <\/p><p><\/p><p><strong>Can you buy Spritz Society at wholesale?<\/strong><\/p><p>For any wholesale inquiries, please reach out to info@spritzsociety.com<\/p><p><\/p><p><strong>How many cans come in a pack?<\/strong><\/p><p>Four cans come in a single pack. We offer cases of 2 packs, 4 packs, and 6 packs. <\/p>"
+            }
+          },
+          "fb2f433e-1c2f-4644-96d6-48e8f1539999": {
+            "type": "text",
+            "settings": {
+              "question": "SHIPPING\/RETURNS",
+              "answer": "<p><strong>Where do you ship?<\/strong><\/p><p>Vast majority of the US. If your state isnt listed, please send us an email. <\/p><p><strong>Can I cancel my order?<\/strong><\/p><p>For any questions regarding orders, please reach out to hello@spritzsociety.com.<\/p><p><strong>Do you accept returns? <\/strong><\/p><p>Given the nature of our product, we are not able to accept returns. Please reach out to us at hello@spritzsociety.com if you have any questions about your order or if your order did not arrive perfectly! We are here to help. :) <\/p><p><strong>Do you ship internationally?<\/strong><\/p><p>Unfortunately, we do not ship internationally at this time. <\/p><p><strong>When will my order ship?<\/strong><\/p><p>Orders ship within 1-5 standard business days. <\/p><p><strong>How do I track my order?<\/strong><\/p><p>Once your order ships, we will email you with a tracking number so you can patiently wait for the happiest hour to arrive. <\/p><p><strong>Do I have to be home to receive my order?<\/strong><\/p><p>Yes! You need to be present to receive the order with a valid ID. If you can't be home, then another adult, over 21 years old, can sign for you — so if it's a doorman or a receptionist, that works, too.<\/p><p><strong>Where is Spritz Society available in stores?<\/strong><\/p><p>Spritz Society will be available in select stores in Fall 2021. <\/p><p><\/p>"
+            }
+          },
+          "62934b0f-41bb-44f5-9497-d45dcae79204": {
+            "type": "text",
+            "settings": {
+              "question": "SUBSCRIPTION",
+              "answer": "<p><strong>How do I sign up?<\/strong><\/p><p>You can sign up for a subscription by selecting the “subscribe and save” option at purchase, or by heading to spritzsociety.com\/subscriptions<\/p><p><strong>How do I cancel my subscription?<\/strong><\/p><p>You can easily opt out of your subscription by heading to your account at spritzsociety.com\/subscriptions and clicking “cancel subscription” under the settings menu.<\/p><p><strong>Can I change the frequency of my subscription?<\/strong><\/p><p>You can manage the frequency of your subscription and all other changes by heading to your account at spritzsociety.com\/subscriptions and clicking on “manage subscription.” <\/p>"
+            }
+          },
+          "f98dff16-c843-4e4d-b724-adcfca6390b9": {
+            "type": "text",
+            "settings": {
+              "question": "I have a question I don’t see here…",
+              "answer": "<p>We are all about staying connected to you. Email us at hello@spritzsociety.com and we will get back to you ASAP. Our business hours are 9am - 5pm EST, Monday-Friday. We look forward to hearing from you!<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "9f2163b7-ffc9-463c-a02f-7f877895d769",
+          "9bca395a-0b39-456b-b315-50f14d84cfea",
+          "fb2f433e-1c2f-4644-96d6-48e8f1539999",
+          "62934b0f-41bb-44f5-9497-d45dcae79204",
+          "f98dff16-c843-4e4d-b724-adcfca6390b9"
+        ],
+        "settings": {}
+      },
+      "age-gate": {
+        "type": "age-gate",
+        "settings": {}
+      },
+      "promobar": {
+        "type": "promobar",
+        "blocks": {
+          "38db90cd-ddf1-4c7e-9e12-5f955f85a024": {
+            "type": "block",
+            "settings": {
+              "text": "<p>subscribe. save. spritz<\/p>"
+            }
+          },
+          "3abfe1b4-be97-40f1-9161-b5449811a032": {
+            "type": "block",
+            "settings": {
+              "text": "<p>Free shipping on $60+<\/p>"
+            }
+          },
+          "59f6979a-2ae9-4e39-81a7-9a4a7693639a": {
+            "type": "block",
+            "settings": {
+              "text": "<p>ORDER A 4 PACK TODAY<\/p>"
+            }
+          },
+          "a70ccdf2-1ffc-4a1a-ae2d-ff4beadd1bb4": {
+            "type": "block",
+            "settings": {
+              "text": "<p>join the society<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "38db90cd-ddf1-4c7e-9e12-5f955f85a024",
+          "3abfe1b4-be97-40f1-9161-b5449811a032",
+          "59f6979a-2ae9-4e39-81a7-9a4a7693639a",
+          "a70ccdf2-1ffc-4a1a-ae2d-ff4beadd1bb4"
+        ],
+        "settings": {
+          "bg": "#ffffff",
+          "font": "#f54b47"
+        }
+      },
+      "global-gwp-settings": {
+        "type": "global-gwp-settings",
+        "blocks": {
+          "7a18412b-d158-4865-aa99-a3f596bbec14": {
+            "type": "single_product_type",
+            "settings": {
+              "product": "free-shaker"
+            }
+          },
+          "17f15dd9-902b-4ddb-9bcb-d0eefa2ae821": {
+            "type": "multi_product_type",
+            "settings": {
+              "product": "dev-free-hat"
+            }
+          },
+          "5e0361c3-ba61-4875-8af5-e4261f81eaef": {
+            "type": "multi_product_type",
+            "settings": {
+              "product": "dev-free-t-shirt"
+            }
+          }
+        },
+        "block_order": [
+          "7a18412b-d158-4865-aa99-a3f596bbec14",
+          "17f15dd9-902b-4ddb-9bcb-d0eefa2ae821",
+          "5e0361c3-ba61-4875-8af5-e4261f81eaef"
+        ],
+        "settings": {
+          "is_enable_gwp": true,
+          "gwp_type": "cart_match_product",
+          "threshold": "30",
+          "needed_product_in_cart": "variety-pack",
+          "gwp_products_type": "single_product_type"
+        }
+      },
+      "subscription-lp--hero": {
+        "type": "subscription-lp--hero",
+        "settings": {
+          "title": "Welcome<br> to the society",
+          "descr": "<p>As a Spritz Society member, you are not only stocked up with Spritz every month, but you also get access to exclusive content, special offers, limited edition items, events and more.<\/p>",
+          "btn_text": "Subscribe Now",
+          "btn_url": "#shopify-section-subscription-lp--our-spritz",
+          "desk_img": "shopify:\/\/shop_images\/Sophia_s_01.jpg",
+          "mob_img": "shopify:\/\/shop_images\/Sophia_s_01.jpg"
+        }
+      },
+      "subscription-lp--subscribe": {
+        "type": "subscription-lp--subscribe",
+        "blocks": {
+          "3ee1fe0d-ee8d-4d81-8c03-0f0d5545334f": {
+            "type": "icontext",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Mask_Group.png",
+              "caption": "Save 15% off your order"
+            }
+          },
+          "86b9e76d-5f6a-4a79-8507-dc9c3a0493c8": {
+            "type": "icontext",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Mask_Group_1.png",
+              "caption": "Change your order size or flavors whenever"
+            }
+          },
+          "4ebfb914-2be2-4e71-b352-ad709c5f5f85": {
+            "type": "icontext",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Mask_Group_2.png",
+              "caption": "Access to member only experiences"
+            }
+          },
+          "12300165-255b-4f77-b634-3fb15c13aeab": {
+            "type": "icontext",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Mask_Group_3.png",
+              "caption": "Cancel or pause at any time"
+            }
+          }
+        },
+        "block_order": [
+          "3ee1fe0d-ee8d-4d81-8c03-0f0d5545334f",
+          "86b9e76d-5f6a-4a79-8507-dc9c3a0493c8",
+          "4ebfb914-2be2-4e71-b352-ad709c5f5f85",
+          "12300165-255b-4f77-b634-3fb15c13aeab"
+        ],
+        "settings": {
+          "heading": "Subscribe to Spritz",
+          "button_text": "Subscribe Now",
+          "button_link": "#shopify-section-subscription-lp--our-spritz"
+        }
+      },
+      "subscription-lp--our-spritz": {
+        "type": "subscription-lp--our-spritz",
+        "blocks": {
+          "2a4ad179-ec6d-49b6-afe0-3f78ef80281e": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled-1_09_3e1dd8f1-e9b0-4733-a122-514e0d5f7395.png",
+              "product": "grapefruit"
+            }
+          },
+          "43226e02-6952-457e-ab58-fa5bf1eecfc6": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled-1_10_bf7de8a7-9716-47a5-885d-0d94bc60766a.png",
+              "product": "blood-orange"
+            }
+          },
+          "eec955ae-24f9-4bbb-ae84-04a1f593425f": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled-1_05.png",
+              "product": "pineapple"
+            }
+          },
+          "d06fcbed-8ab7-4aef-8c05-f542104f21d0": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled-1_03_ecb79462-1c9b-4e33-b352-abd5f7ba5983.png",
+              "product": "lemon"
+            }
+          }
+        },
+        "block_order": [
+          "2a4ad179-ec6d-49b6-afe0-3f78ef80281e",
+          "43226e02-6952-457e-ab58-fa5bf1eecfc6",
+          "eec955ae-24f9-4bbb-ae84-04a1f593425f",
+          "d06fcbed-8ab7-4aef-8c05-f542104f21d0"
+        ],
+        "settings": {
+          "headline": "Subscribe to Spritz",
+          "sub_headline": ""
+        }
+      },
+      "subscription-lp--bundle": {
+        "type": "subscription-lp--bundle",
+        "blocks": {
+          "a93c435f-b12e-4d0f-8ab1-cb7740f965a3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Box-Can-3_03.png",
+              "heading": "Grapefruit"
+            }
+          },
+          "dafd0b61-049e-4e45-b02a-2f7724e51683": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Box-Can-4_03.png",
+              "heading": "Blood Orange"
+            }
+          },
+          "7df5714d-9d3d-4a5b-8588-8e4b94f6fce0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Box-Can-1_03.png",
+              "heading": "Pineapple"
+            }
+          },
+          "6318d363-e8a3-4f7e-81b2-35438e0bf722": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Box-Can-2_03.png",
+              "heading": "Lemon"
+            }
+          }
+        },
+        "block_order": [
+          "a93c435f-b12e-4d0f-8ab1-cb7740f965a3",
+          "dafd0b61-049e-4e45-b02a-2f7724e51683",
+          "7df5714d-9d3d-4a5b-8588-8e4b94f6fce0",
+          "6318d363-e8a3-4f7e-81b2-35438e0bf722"
+        ],
+        "settings": {
+          "heading": "Can’t decide? Try them all.",
+          "product": "variety-pack"
+        }
+      },
+      "subscription-lp--testimonials": {
+        "type": "subscription-lp--testimonials",
+        "blocks": {
+          "800020cc-3146-4ee3-8d2c-83fb30d7fdb5": {
+            "type": "text",
+            "settings": {
+              "testi": "I’m a huge fan of the variety pack. I love all the Spritz flavors so this is the perfect compromise when you want to have a little of everything",
+              "cite": "Alix L.",
+              "rank": 5
+            }
+          },
+          "20194da5-7af6-4ec8-b0eb-1b89a33bff4e": {
+            "type": "text",
+            "settings": {
+              "testi": "Blood orange is delicious! Light and refreshing with a really distinct citrus flavor. Will for sure be ordering again!",
+              "cite": "Eric O.",
+              "rank": 5
+            }
+          },
+          "87940bcd-0a7d-4d65-a0bc-894ab94c12cb": {
+            "type": "text",
+            "settings": {
+              "testi": "I’m team grapefruit all the way. So many hard seltzers that I’ve tried do not do this flavor justice, but Spritz Society crushed it!!",
+              "cite": "Jess F.",
+              "rank": 5
+            }
+          },
+          "b33288e8-9909-4931-af10-f5b18ac398af": {
+            "type": "text",
+            "settings": {
+              "testi": "If you’re looking for a quintessential lemonade flavor, look no further. Spot on and the bubbles make it super delicious.",
+              "cite": "Sammy F.",
+              "rank": 5
+            }
+          },
+          "56909184-15c0-44a7-b45f-1b9a119680d8": {
+            "type": "text",
+            "settings": {
+              "testi": "I like pineapple flavored anything, so you know I had to give this one a try first. Holy!!! I can’t get enough of this stuff - I bring it to every party!",
+              "cite": "Charlie C.",
+              "rank": 5
+            }
+          }
+        },
+        "block_order": [
+          "800020cc-3146-4ee3-8d2c-83fb30d7fdb5",
+          "20194da5-7af6-4ec8-b0eb-1b89a33bff4e",
+          "87940bcd-0a7d-4d65-a0bc-894ab94c12cb",
+          "b33288e8-9909-4931-af10-f5b18ac398af",
+          "56909184-15c0-44a7-b45f-1b9a119680d8"
+        ],
+        "settings": {
+          "heading": "Hear from Spritz Society",
+          "btn_text": "shop now",
+          "btn_url": "#shopify-section-subscription-lp--our-spritz"
+        }
+      },
+      "subscription-lp--society": {
+        "type": "subscription-lp--society",
+        "blocks": {
+          "72e81b3d-4692-48db-923a-1581cdbd7e8a": {
+            "type": "blocks",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Items.png",
+              "descr": "Limited Edition Spritz Society Items",
+              "bg_color": "#f64a46",
+              "color": "#f64a46"
+            }
+          },
+          "8841be86-534a-4fd4-adbe-d76062c0e09c": {
+            "type": "blocks",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Content.png",
+              "descr": "Exclusive Content Experiences",
+              "bg_color": "#fc6804",
+              "color": "#fc6804"
+            }
+          },
+          "c8cc3269-1245-450b-97cd-daa034ad53bb": {
+            "type": "blocks",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Events.png",
+              "descr": "Invitations to Members Only Events",
+              "bg_color": "#fdad2a",
+              "color": "#fdad2a"
+            }
+          },
+          "a7749eec-2c63-4ee4-9400-7134990afda1": {
+            "type": "blocks",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/New_Flavors.png",
+              "descr": "Collaborate on New Ideas and Flavors",
+              "bg_color": "#f2c628",
+              "color": "#f2c628"
+            }
+          }
+        },
+        "block_order": [
+          "72e81b3d-4692-48db-923a-1581cdbd7e8a",
+          "8841be86-534a-4fd4-adbe-d76062c0e09c",
+          "c8cc3269-1245-450b-97cd-daa034ad53bb",
+          "a7749eec-2c63-4ee4-9400-7134990afda1"
+        ],
+        "settings": {
+          "title": "Subscriber perks"
+        }
+      },
+      "subscription-lp--community": {
+        "type": "subscription-lp--community",
+        "blocks": {
+          "4b0ba32c-4842-4041-881d-ea9f5de661a1": {
+            "type": "block",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/spritz-society-brittany-brickles-mamahoodwithb_-09202021_2_2.png"
+            }
+          },
+          "9c7ad178-5c86-429c-be40-7ffba34f0416": {
+            "type": "block",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/spritz-society-patrice-smith-patricefaithh-09102021_1.png"
+            }
+          },
+          "1afe7a25-6bfa-4806-a8a8-b7da7259c147": {
+            "type": "block",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/spritz-society-paloma-honek-traveling_dove-09202021_2.png"
+            }
+          }
+        },
+        "block_order": [
+          "4b0ba32c-4842-4041-881d-ea9f5de661a1",
+          "9c7ad178-5c86-429c-be40-7ffba34f0416",
+          "1afe7a25-6bfa-4806-a8a8-b7da7259c147"
+        ],
+        "settings": {
+          "title": "We are here for our community",
+          "descr": "<p>We created Spritz Society to bring people together. <\/p>",
+          "btn_text": "Subscribe Now",
+          "btn_url": "#shopify-section-subscription-lp--our-spritz"
+        }
+      },
+      "store-locator": {
+        "type": "store-locator",
+        "blocks": {
+          "399019b2-178e-4323-8eea-7787e26aa4c8": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/gopuff.png",
+              "url": "https:\/\/gopuff.com\/"
+            }
+          },
+          "2235c038-fa4f-4335-9850-561c5847e5f6": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/drizly_3d86d9d1-4cfc-4464-8c17-b7501a8b4173.png",
+              "url": "https:\/\/drizly.com\/"
+            }
+          },
+          "c2086ec2-7e68-4943-8c2e-7d10c1bc9a6f": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/instacart.png",
+              "url": "https:\/\/www.instacart.com\/"
+            }
+          },
+          "e106c777-c764-43f9-b96e-a9920db4be0e": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/doordash.png",
+              "url": "https:\/\/www.doordash.com\/"
+            }
+          },
+          "625e1272-16d8-45cf-b3d3-57145edb8626": {
+            "type": "block",
+            "disabled": true,
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/totalwine.png",
+              "url": "https:\/\/www.totalwine.com\/"
+            }
+          },
+          "8fa1b3c7-27d6-4343-a3ae-027b58dea810": {
+            "type": "block",
+            "disabled": true,
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/bevmo.png",
+              "url": "https:\/\/www.bevmo.com\/"
+            }
+          }
+        },
+        "block_order": [
+          "399019b2-178e-4323-8eea-7787e26aa4c8",
+          "2235c038-fa4f-4335-9850-561c5847e5f6",
+          "c2086ec2-7e68-4943-8c2e-7d10c1bc9a6f",
+          "e106c777-c764-43f9-b96e-a9920db4be0e",
+          "625e1272-16d8-45cf-b3d3-57145edb8626",
+          "8fa1b3c7-27d6-4343-a3ae-027b58dea810"
+        ],
+        "settings": {
+          "main_title": "Find Spritz Society at a retailer near you.",
+          "title": "Buy now on:",
+          "img": "shopify:\/\/shop_images\/SPRITZ_logo_white.png",
+          "pop_title": "Not in your area?<br>Buy Spritz online!",
+          "pop_btn": "Shop now",
+          "pop_url": "https:\/\/www.spritzsociety.com\/collections\/spritz"
+        }
+      },
+      "navigation": {
+        "type": "navigation",
+        "settings": {
+          "navigation": "new-menu"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "16334414439bbda7df": {
+        "type": "shopify:\/\/apps\/govalo\/blocks\/app-embed\/0261c814-5eb7-41a0-a529-3dcb870c5415",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}

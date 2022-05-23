@@ -1,0 +1,25 @@
+
+<section class="text-center about-quote ss-container">
+  <blockquote class="h2">
+    {{section.settings.text}}
+  </blockquote>
+</section>
+
+{% schema %}
+{
+  "name" : "About Quote",
+  "tag" : "section",
+  "settings" : [
+    {
+      "type" : "textarea",
+      "id": "text",
+      "label": "Text"
+    }    
+  ],
+  "presets": [
+    {
+      "name": "About Quote"
+    }
+  ]
+}
+{% endschema %}

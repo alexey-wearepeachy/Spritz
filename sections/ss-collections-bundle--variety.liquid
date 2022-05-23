@@ -1,0 +1,110 @@
+<article  id="bundle-section" class="background-ss-background color-ss-grapefruit homepage-bundle">
+    <header class="text-center ss-container">
+        <h1 class="ss--secondary-font homepage-bundle__heading heading-xxl">{{section.settings.heading}}</h1>
+    </header>
+    <section class="text-center collections-bundle-products d-flex flex-wrap ss-container text-center">
+        {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+                {% render '_ss_collections_bundle_products_variety' as block: block %}
+            {% endfor %}
+        {% endif %}
+    </section>
+</article>
+
+
+{% schema %}
+{
+    "name" : "Collection Bundle Product",
+    "tag" : "section",
+    "settings" : [
+        {
+            "type" : "text",
+            "id": "heading",
+            "label": "Heading"
+        }
+        ],
+    "blocks": [{
+        "type": "bundle_product",
+        "name": "Bundle Product",
+        "limit": 2,
+        "settings" : [
+            {
+                "type": "text",
+                "id": "product_handle",
+                "label": "Product handle for subscription option",
+                "default": "variety-pack"
+            },
+            {
+                "type": "product",
+                "id": "productt",
+                "label": "Select product"
+            },
+            {
+                "type" : "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type" : "text",
+                "id": "subtitle",
+                "label": "Subtitle"
+            },
+            {
+                "type" : "text",
+                "id": "second_subtitle",
+                "label": "Second subtitle"
+            },
+            {
+                "type" : "checkbox",
+                "id": "enable_star",
+                "label": "Show rating star"
+            },
+            {
+                "type" : "text",
+                "id": "price",
+                "label": "Price"
+            },
+            {
+                "type" : "text",
+                "id": "can_price",
+                "label": "Can price"
+            },
+            {
+                "type" : "url",
+                "id": "btn_link",
+                "label": "Button link"
+            },
+            {
+                "type" : "text",
+                "id": "btn_text",
+                "label": "Button text"
+            },
+            {
+                "type" : "url",
+                "id": "bottom_link",
+                "label": "Bottom link url"
+            },
+            {
+                "type" : "text",
+                "id": "bottom_link_text",
+                "label": "Bottom link text"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_badge",
+                "label": "Show best seller label"
+            },
+            {
+                "type": "image_picker",
+                "id": "img_label",
+                "label": "Select label"
+            }
+        ]
+    }],
+    "presets": [
+        {
+            "name": "Collection Bundle Variety"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,30 @@
+<div class="ticker-tape-wrap ticker-tape-about">
+  <div class="swiper-container ticker-tape js-ticker-taper-swiper">
+    <div class="swiper-wrapper">
+      {% for i in (1..12)  %}    
+      <div class="swiper-slide">
+        <span class="ticker-text">{{ section.settings.text }}</span>
+      </div>
+      {% endfor %}    
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name" : "About Ticker Tape",
+  "tag" : "section",
+  "settings" : [
+      {
+      "type" : "text",
+      "id": "text",
+      "label": "Text"
+    }
+  ],  
+  "presets": [
+    {
+      "name": "About Ticker Tape"
+    }
+  ]
+}
+{% endschema %}

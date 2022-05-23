@@ -1,0 +1,125 @@
+{% assign is_enable_gwp                   = section.settings.is_enable_gwp %}
+{% assign gwp_type                        = section.settings.gwp_type %}
+{% assign threshold                       = section.settings.threshold %}
+{% assign needed_product_in_cart          = section.settings.needed_product_in_cart %}
+{% assign gwp_products_type               = section.settings.gwp_products_type %}
+{% assign products                        = section.blocks | where: 'type', gwp_products_type %}
+
+{% capture json_products %}
+    [
+        {% for custom_product in products  %}
+            {{ all_products[custom_product.settings.product] | json }},
+        {% endfor %}
+    ]
+{% endcapture %}
+
+<script defer>
+    window.gwpInstance = {} || null;
+
+    window.gwpInstance = function () {
+        const data = {
+            isEnableGwp: {{ is_enable_gwp }},
+            gwpType: '{{ gwp_type }}',
+            threshold: parseFloat('{{ threshold }}'),
+            neededProductInCart: {{ all_products[needed_product_in_cart] | json }},
+            gwpProducts: {{ json_products | strip_newlines }}
+        };
+
+        return data;
+    }
+</script>
+
+{% schema %}
+{
+    "name": "GLOBAL GWP SETTINGS",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "is_enable_gwp",
+            "label": "Enable gwp PROMO ?",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "GWP TYPE"
+        },
+        {
+            "type": "select",
+            "id": "gwp_type",
+            "options": [
+                {
+                    "value": "threshold",
+                    "label": "Threshold"
+                },
+                {
+                    "value": "cart_match_product",
+                    "label": "Cart include product"
+                }
+            ],
+            "default": "cart_match_product",
+            "label": "Chose GWP type"
+        },
+        {
+            "type": "header",
+            "content": "GWP CONDITION VALUES"
+        },
+        {
+            "type": "text",
+            "id": "threshold",
+            "label": "Threshold value",
+            "default": "65",
+            "info": "Example 30 or 40.50 etc"
+        },
+        {
+            "type": "product",
+            "id": "needed_product_in_cart",
+            "label": "This product must be in cart"
+        },
+        {
+            "type": "header",
+            "content": "GWP Products type"
+        },
+        {
+            "type": "select",
+            "id": "gwp_products_type",
+            "options": [
+                {
+                    "value": "single_product_type",
+                    "label": "Single free product"
+                },
+                {
+                    "value": "multi_product_type",
+                    "label": "Multi free products"
+                }
+            ],
+            "default": "single_product_type",
+            "label": "Chose GWP product/products type"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "single_product_type",
+            "name": "Single free product",
+            "limit": 1,
+            "settings": [
+                {
+                "type": "product",
+                "id": "product",
+                "label": "Single free product"
+                }
+            ]
+        },
+        {
+            "type": "multi_product_type",
+            "name": "Multi free products type",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Multi free product"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

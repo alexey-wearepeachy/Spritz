@@ -1,0 +1,48 @@
+<section class="customer login ss-customer text-center">
+  <div class="ss-container">
+    <header>
+      <h1 class="h1" tabindex="-1">
+        {{ page_title }}
+      </h1>
+    </header>
+    <div class="accordion page-width page-width--narrow">
+      <!-- <h2 class="page-title">{{ page_title }}</h2> -->
+      {% for block in section.blocks %}
+      <div class="accordion-trigger-wrapper notchouter">
+        <div class="verticle-border verticle-border-left"></div>
+        <div class="accordion-inner notchinner">
+          <button class="accordion-trigger js-accordion-trigger">{{ block.settings.question }}<span class="accordion-icon">{% render '_ss_faq_acc_icon' %}</span></button>
+          <div class="accordion-panel js-accordion-panel">
+            <div class="accordion-content-wrapper">{{- block.settings.answer -}}</div>
+          </div>
+        </div>
+        <div class="verticle-border verticle-border-right"></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "max_blocks": 50,
+  "class": "pdp-faq-section",
+  "settings": [],
+  "blocks": [{
+		"type": "text",
+		"name": "Blocks",
+		"settings": [
+    {
+			"type": "text",
+			"id": "question",
+			"label": "Question"
+		},
+    {
+			"type": "richtext",
+			"id": "answer",
+			"label": "Answer"
+		}
+    ]
+	}]
+}
+{% endschema %}

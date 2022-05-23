@@ -1,0 +1,44 @@
+<div class="accordion-trigger-wrapper notchouter {% if isVarietyPack %}cursor-text{% endif %}">
+  <div class="verticle-border verticle-border-left"></div>
+  <div class="accordion-inner notchinner">
+    
+    <button class="accordion-trigger js-accordion-trigger">
+      <span class="accordeon-title">
+        {{product.selected_or_first_available_variant.title}}
+      </span>
+        <span class="accordion-icon">
+        {% render '_ss_icon_down_arrow' %}
+        </span>        
+    </button>
+    
+      <div class="accordion-panel js-accordion-panel">
+        <ul class="dropdown-list">
+          {% for variant in product.variants %}
+            <li data-variant-id="{{variant.id}}" class="js-variant-select{% unless variant.available %} disabled{% endunless %}">
+                {{variant.title}}
+            </li>
+          {% endfor %}        
+        </ul>
+      </div>
+
+  </div>
+  <div class="verticle-border verticle-border-right"></div>
+</div>
+
+<div class="variant-select select gift-variants hidden" {% if product.has_only_default_variant or hasOneVar %}style="display:none" {% endif %}>
+  <div class="notchouter-btn">
+      <div class="notchinner-btn js-select">
+          <select name="id" class="js-product-select">
+              {% for variant in product.variants %}
+              {% if variant.available == true %}
+              <option value="{{variant.id}}" data-id="{{variant.id}}" data-price="{{ variant.price | money_with_currency }}" data-js-option-price="{{variant.price | money_without_currency}}">{{ variant.title }}</option>
+              {% else %}
+              <option disabled="disabled">{{ variant.title }} Sold out!</option>
+              {% endif %}
+              {% endfor %}
+          </select>
+      </div>
+      <span class="down-arrow-icon">{% render '_ss_icon_down_arrow' %}</span>
+  </div>
+</div>
+

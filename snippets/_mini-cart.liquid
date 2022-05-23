@@ -1,0 +1,318 @@
+<div class="js-mini-cart mini-cart" id="mini-cart">{%- comment -%} #template-mini-cart template gets inserted here {%- endcomment -%}</div>
+
+<script id="template-mini-cart" type="text/x-handlebars-template">
+<div class="mini-cart--bkg">
+  <img src="{{'Cart_BG.svg' | asset_url}}" alt="" aria-hidden="true">
+</div>  
+
+<header class="mini-cart-header">
+  <!-- {{#if items}}<span>Items {{item_count}} {{ money total_price}}</span>{{/if}} -->
+  <h2 class="heading-xl text-left heading-md hero-text">My Cart</h2>
+  <button class="ss-header__hamburger js-toggle-mini-cart" aria-label="Open close mini cart">
+    {% render '_ss_hamburger_open' %}
+  </button>
+  {% raw %}{{#if items}}<span class="acumin-pro text-center qty-text foo">qty</span>{{/if}}{% endraw %}
+</header>
+
+
+{% if settings.free_ship_enabled == true %}
+  {% raw %}
+    <div class="mini-cart__free-ship">
+      <span class="mini-cart__free-ship-pre-message {{toggleFreeShipping total_price}}">
+        You're {{money (distanceToFreeShipping total_price)}} from free shipping
+      </span>
+      <span class="mini-cart__free-ship-message {{toggleFreeShipping total_price}}">
+        You qualify for free shipping!
+      </span>
+      {% endraw %}
+        {% comment %}
+        <!-- work in progress
+        {{#if items}}
+          <div class="mini-cart-progress-bar-wrap">
+            <progress class="mini-cart-progress-bar js-mini-cart-progress-bar" max="100" value="1"></progress>
+          </div>
+        {{/if}}
+         -->
+        {% endcomment %}
+      {% raw %}
+    </div>
+  {% endraw %}
+{% endif %}
+
+{% raw %}
+{{^items}}
+<div class="mini-cart__empty">
+  <div class="mini-cart__empty-message">
+    <p class="">{{emptyCartMessage}}</p>
+  </div>
+</div>
+{{/items}}
+
+
+{{#if items}}
+<section class="mini-cart-items scrollbar-hidden">
+  {{# each items}}
+  {{#ifCond product_type "Free Sample"}}
+  {{else}}
+    <article
+      class="mini-cart-item d-flex"
+      data-properties="{{#properties}}{{#each this}}{{#if this}}{{@key}}{{/if}}{{/each}}{{/properties}}"
+      data-selling-plan="{{#with selling_plan_allocation}}{{#with selling_plan}}true{{/with}}{{/with}}">
+
+      <figure class="mini-cart-item__fig">
+        <a href="/products/{{ handle }}">      
+          <img
+            srcset="{{#with featured_image}}{{transfromImageUrl url}}{{/with}}"
+            alt="{{ title }}"
+            width="49"
+            height="56">      
+        </a> 
+      </figure> 
+      <section class="mini-cart-item__meta">
+        <div class="mini-cart__title-qty-wrapper d-flex flex-a-center">
+          <div class="flex-1">
+            <h2 class="mini-cart-item__title">{{ product_title }}</h2>
+            {{#if variant_title}}<span class="mini-cart-item__variant_title acumin-pro">({{variant_title}})</span>{{/if}}
+          </div>
+          <div class="mini-cart-item__quantity d-flex">
+            <div class="mini-cart-item__quantity-incrementor">
+              <button
+                class="js-mini-cart-item-increment mini-cart-item-increment down"
+                aria-label="Adjust quantity down"
+                data-qty="{{ quantity }}"
+                data-variant="{{variant_id}}" data-line="{{@index}}"><span class="d-none">Decrease</span>-</button>
+                <div class="d-flex pdp-qty-area">
+                  <span class="mini-cart-item__quantity-num acumin-pro">{{ quantity }}</span>
+                  <svg width="87" height="50" viewBox="0 0 87 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M65.2452 0.999997L85.1925 24.68L65.2452 48.36L22.6651 48.36L1.55463 24.68L22.6651 0.999992L65.2452 0.999997Z"
+                      stroke="#F64A47" stroke-width="2" />
+                  </svg>
+                </div>
+              <button
+                class="js-mini-cart-item-increment mini-cart-item-increment up"
+                aria-label="Adjust quantity up"
+                data-qty="{{ quantity }}"
+                data-variant="{{variant_id}}"
+                data-line="{{@index}}"><span class="d-none">Increase</span>+</button>          
+            </div>
+          </div>
+        </div>  
+        
+        {{#contains "Pack" variant_title}}
+        <div class="flex mini-cart-item__choice">
+          <div>
+            <div class="selling-plan-wrapper" data-id="{{@index}}">
+              <div class="selling-plan-selector">
+                  <div class="selling-plan-selector__inner  d-flex flex-a-center">
+                      <input type="radio" name="selling-plan-select{{@index}}" class="min-cart-item__selling"
+                          id="selling-plan-subscription-{{@index}}" data-id="{{@index}}" data-variant="{{variant_id}}" value="subscription" {{#if selling_plan_allocation}}checked=""{{/if}}>
+
+                      <svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M16.5 1L32 8.85184V18.8553L16.5 27L1 18.8553V8.85184L16.5 1Z" stroke="#F64A47"></path>
+                      </svg>
+
+                      <label class="bag-message__label" for="selling-plan-subscription-{{@index}}">
+                          Subscribe &amp; Save 15%
+                      </label>
+
+                      <div class="mini-cart-item__price">{{ money selling_price}}  {{#if discounts}}<span  class="mini-cart-item__price-old">{{ money original_line_price}}</span>{{/if}}</div>
+                  </div>
+              </div>
+              <div class="selling-plan-selector">
+                  <div class="selling-plan-selector__inner d-flex flex-a-center">
+                      <input type="radio" name="selling-plan-select{{@index}}" class="min-cart-item__selling"
+                          id="selling-plan-single-{{@index}}" data-id="{{@index}}" data-variant="{{variant_id}}" value="regular" {{#if selling_plan_allocation}} {{else}} checked=""{{/if}}>
+          
+                      <svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M16.5 1L32 8.85184V18.8553L16.5 27L1 18.8553V8.85184L16.5 1Z" stroke="#F64A47"></path>
+                      </svg>
+          
+                      <label class="bag-message__label" for="selling-plan-single-{{@index}}">
+                          One-Time Purchase
+                      </label>
+
+                      <div class="mini-cart-item__price">{{ money normal_price}}  {{#if discounts}}<span  class="mini-cart-item__price-old">{{ money original_line_price}}</span>{{/if}}</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/contains}}
+
+        {{#excludes "Pack" variant_title}}
+          <div class="flex mini-cart-item__choice">
+            <div>
+              <div class="selling-plan-wrapper" data-id="{{@index}}">
+                <div class="selling-plan-selector">
+                    <div class="selling-plan-selector__inner d-flex flex-a-center">
+                      <label class="bag-message__label" for="selling-plan-single-{{@index}}"> </label>
+                        <div class="mini-cart-item__price">
+                          {{ money_gift_check ../items handle normal_price quantity @index }}
+                          {{#if discounts}}
+                            <span class="mini-cart-item__price-old">
+                              {{ money_gift_check ../items handle original_line_price quantity @index }}
+                            </span>
+                          {{/if}}
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/excludes}}
+        
+        {{!--    
+        <div class="flex mini-cart-item__choice">
+          <div>
+            {{#with selling_plan_allocation}}
+            <div class="mini-cart-item__selling_plan">
+              {{#with selling_plan}}
+                {{name}}
+              {{/with}}
+            </div>
+          {{/with}}
+          </div>
+          <div class="mini-cart-item__price">{{ money line_price}}  {{#if discounts}}<span  class="mini-cart-item__price-old">{{ money original_line_price}}</span>{{/if}}</div>
+        </div>
+
+       
+        {{#properties}}
+          <div class="mini-cart-item__properties">
+            {{#each this}}
+              {{#if this}}
+                <span class="mini-cart-item__property">{{ @key}}: {{this}}</span>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/properties}}
+        --}}
+        
+
+        <!-- <div class="mini-cart-item__delete">
+          <button class="js-remove-mini-cart-item mini-cart-item__delete-button" data-variant="{{variant_id}}" data-line="{{@index}}">X Remove</button>
+        </div> -->
+
+      </section>
+    </article>
+  {{/ifCond}}
+  {{/each}}
+</section>
+{{/if}}
+
+{{#if items}}
+{%- endraw -%}
+{% if settings.upsell_enabled == true %}
+  <div class="mini-cart-upsell">
+    {% if settings.upsell_title != '' %}<h2 class="mini-cart-upsell__title">{{settings.upsell_title}}</h2>{% endif %}
+    {% assign upsellProduct = all_products[settings.upsell_product] %}
+    {% for upsellProduct in collections['upsell'].products %}
+      <div class="mini-cart-upsell__item" id="upsell_{{upsellProduct.selected_or_first_available_variant.id}}"> 
+        <figure class="mini-cart-upsell__item-fig"> 
+          <a href="{{upsellProduct.url}}" aria-label="Link to {{upsellProduct.url}}">
+          <img
+            data-src="{{upsellProduct.featured_image | img_url: '180x180' }}"
+            alt="{{ upsellProduct.title }}"
+            class="lazyload d-block"
+            width="90"
+            height="90"
+            loading="lazy">
+          </a>      
+        </figure>
+        <div class="mini-cart-upsell__item-meta">
+          <h3 class="mini-cart-upsell__item-title">{{ upsellProduct.title }}</h3>
+          <button
+            class="js-add-upsell-to-cart mini-cart-upsell__item-add"
+            data-id="{{upsellProduct.selected_or_first_available_variant.id}}">
+            {% render '_icon_quick_add' %}
+          </button>
+        </div>  
+      </div>
+    {% endfor %}       
+    
+  </div>
+{% endif %}
+{%if settings.free_samples_enabled == true %}
+  <section class="mini-cart-samples">
+    <h3 class="mini-cart-samples__title">{{ settings.free_samples_heading }}</h3>
+    <p class="mini-cart-samples__subtitle">{{ settings.free_samples_description }}</p>
+    <ul class="mini-cart-samples__list">
+      {%- assign free_sample_collection = collections["free-sample"] -%}
+      {%- for product in free_sample_collection.products -%}
+        <li>
+          <label class="free-sample-variant" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+            <span class="checkmark"></span>
+            <span class="checkvalue">{{ product.title }}</span>
+          </label>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+{% endif %}
+{%- raw -%}
+{{/if}}
+
+{{#if items}}
+<section class="mini-cart-footer">
+  {{#if items}}
+    <!-- <span class="mini-cart-footer__sub-total">
+      <span>Subtotal</span> <span>{{ money total_price}}</span>
+    </span> -->
+  {{/if}}
+  <form class="js-mini-cart-gift-note mini-cart-gift-note d-block">
+    <label for="gift-note" class="d-block">Add a note to order</label>
+    <textarea class="d-block w-100" id="gift-note" name="gift-note">{{#if note}}{{note}}{{/if}}</textarea>
+    <div class="mini-cart-gift-note__actions">
+      <input type="submit" class="" value="{{#if note}}Update Cart Note {{else}} Add Cart Note{{/if}}">
+      {{#if note}}<button class="js-mini-cart-gift-note-remove">Remove note</button>{{/if}}
+    </div>
+  </form> 
+  <div class="mini-cart-footer__checkout-btn">
+    {{#if items}}
+        <div class="js-mini-cart-progressbar">
+             {{ calcProgressBar  total_price}}
+             <div class="inner">
+             </div>
+        </div>
+    {{/if}}
+    <div class="accordion-trigger-wrapper notchouter">
+      <div class="accordion-inner notchinner">
+        <a href="javascript:void(0)" class="button cta-button btn polygone-btn">Checkout<span class="total_price_btn">{{ money_without_gift items total_price}}</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkboxCheck" style="display: none !important;">
+
+    <input type="checkbox" name="checkAge" style="display: none !important;" id="ageCheck">
+
+    <label for="ageCheck">
+        <span class="square">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="122.877px" height="101.052px" viewBox="0 0 122.877 101.052" enable-background="new 0 0 122.877 101.052" xml:space="preserve"><g><path d="M4.43,63.63c-2.869-2.755-4.352-6.42-4.427-10.11c-0.074-3.689,1.261-7.412,4.015-10.281 c2.752-2.867,6.417-4.351,10.106-4.425c3.691-0.076,7.412,1.255,10.283,4.012l24.787,23.851L98.543,3.989l1.768,1.349l-1.77-1.355 c0.141-0.183,0.301-0.339,0.479-0.466c2.936-2.543,6.621-3.691,10.223-3.495V0.018l0.176,0.016c3.623,0.24,7.162,1.85,9.775,4.766 c2.658,2.965,3.863,6.731,3.662,10.412h0.004l-0.016,0.176c-0.236,3.558-1.791,7.035-4.609,9.632l-59.224,72.09l0.004,0.004 c-0.111,0.141-0.236,0.262-0.372,0.368c-2.773,2.435-6.275,3.629-9.757,3.569c-3.511-0.061-7.015-1.396-9.741-4.016L4.43,63.63 L4.43,63.63z"/></g></svg>
+        </span>
+
+        <p>
+            Confirm that you are 21+ years old
+        </p>
+    </label>
+  </div>
+
+  <div class="acumin-pro text-center mini-cart__shipping-text">Taxes & Shipping calculated at checkout.</div>
+{%- endraw -%}
+  {% comment %}
+  {% if additional_checkout_buttons %}
+  <div class="mini-cart-additional-checkout-buttons">
+    {{ content_for_additional_checkout_buttons }}
+  </div>
+  {% endif %}
+  
+
+  <div class="mini-cart-footer__messaging">
+   {% if settings.cart_footer_messaging %} <p>{{settings.cart_footer_messaging}}.</p>{% endif %}
+  </div>
+  {% endcomment %}
+{%- raw -%}
+</section>
+{{/if}}
+{%- endraw -%}
+</script>

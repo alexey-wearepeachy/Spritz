@@ -1,0 +1,36 @@
+  <section
+    class="collection-figure w-100"
+    style="background-image: url(//i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/lemon-health-benefits-1296x728-feature.jpg?w=1155&h=152);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;">
+    <div class="collection-hero">
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description ss--secondary-font">{{ collection.description }}</div>
+      {%- endif -%}
+      <span class="before"></span>
+      <span class="after"></span>
+    </div>
+</section>
+  
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    }
+  ]
+}
+{% endschema %}
