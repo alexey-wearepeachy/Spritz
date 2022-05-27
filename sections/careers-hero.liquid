@@ -1,0 +1,117 @@
+{% liquid
+    assign title        = section.settings.title
+    assign title_img    = section.settings.title_img 
+    assign subtitle     = section.settings.subtitle
+    assign text         = section.settings.text
+    assign img          = section.settings.img
+    assign bg_color     = section.settings.bg_color
+    assign btn_text     = section.settings.btn_text
+    assign btn_url      = section.settings.btn_url
+
+    assign press_title = section.settings.press_title
+
+%}
+
+<style>
+    .hp-hero__btn {
+        background-color: {{ bg_color }};
+    }
+</style>
+
+<section class="careers-hero" style="background-color: {{ bg_color }}">
+    <div class="careers-hero__top">
+        <div class="hp-hero__content">
+            <div class="careers-hero__text">
+                <h2 class="careers-hero__subtitle">
+                    {{ subtitle }}
+                    {%- if title_img -%}
+                        <img class="careers-hero__title_img" src="{{ title_img | img_url: '165x112' }}" srcset="{{ title_img | img_url: '165x112' }} 1x, {{ title_img | img_url: '330x224' }} 2x" alt="{{ title_img.alt }}">
+                        <img class="careers-hero__title_img_mobile" src="{{ title_img | img_url: '94x64' }}" srcset="{{ title_img | img_url: '94x64' }} 1x, {{ title_img | img_url: '188x128' }} 2x" alt="{{ title_img.alt }}">
+                    {%- endif -%}
+                </h2>
+
+                <h2 class="careers-hero__title">{{ title }}</h2>
+
+                <p class="careers-hero__paragraph">{{ text }}</p>
+
+                <a class="careers-hero__btn noselect svg-btn filled-svg-btn" href="{{ btn_url }}">
+                    {% render '_ss_polygon_button_shape', type: 'filled' %}
+                    <span>{{ btn_text }}</span>
+                </a>
+
+                <button type="submit" name="add"  class=" d-block large" {% unless product.available %}disabled{% endunless %}>
+                  </button>
+            </div>
+        </div>
+        <div class="hp-hero__img">
+            <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+        </div>
+    </div>
+    
+    <div class="careers-hero__bot">
+        {% if press_title != blank %}
+            <div class="careers-hero__bot-title">
+                <h3>{{ section.settings.press_title }}</h3>
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+{% schema %}
+{
+    "name": "Hero section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Section subtitle",
+            "default": "Join the"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section title",
+            "default": "Spritz Society"
+        },
+        {
+            "type": "image_picker",
+            "id": "title_img",
+            "label": "Title image"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Section text"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Section image"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Section background",
+            "default": "#FED9D1"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "APPLY NOW"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button link"
+        },
+        {
+            "type": "richtext",
+            "id": "press_title",
+            "label": "Bottom title",
+            "default": "<p>Real wine.</p><p>Real flavors.</p><p>Real Ingredients.</p><p>Real People.<p>"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,64 @@
+{% liquid
+    assign heading        = section.settings.heading 
+    assign mobile_heading = section.settings.mobile_heading
+    assign text           = section.settings.text
+    assign mobile_text    = section.settings.mobile_text
+    assign button_link    = section.settings.button_link
+    assign button_text    = section.settings.button_text
+%}
+
+
+<section class="careers-cta"> 
+    <div class="container">
+        <h2 class="careers-cta__title">{{ heading }}</h2>
+        <h2 class="careers-cta__title_mobile">{% if mobile_heading != blank %}{{ mobile_heading }}{% else %}{{ heading }}{% endif %}</h2> 
+
+        <div class="careers-cta__text">{{ text }}</div>
+        <div class="careers-cta__text_mobile">{% if mobile_text != blank %}{{ mobile_text }}{% else %}{{ text }}{% endif %}</div>
+        
+        <a href="{{ button_link }}" class="careers-cta__button svg-btn large d-flex flex-a-center flex-j-center desk-btn">
+            {% render '_ss_polygon_button_shape', type: '' %}
+            <span>{{ button_text }}</span>
+        </a>
+        
+    </div>
+</section>
+
+{% schema %}
+{
+    "name" : "Careers sta",
+    "tag" : "section",
+    "settings" : [
+        {
+            "type" : "richtext",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type" : "richtext",
+            "id": "mobile_heading",
+            "label": "Mobile Heading"
+        },
+        {
+            "type" : "richtext",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type" : "richtext",
+            "id": "mobile_text",
+            "label": "Mobile Text"
+        },
+        {
+            "type" : "text",
+            "id": "button_text",
+            "label": "Button Label"
+        },
+        {
+            "type" : "url",
+            "id": "button_link",
+            "label": "Button URL"
+        }
+    ]
+}
+{% endschema %}
