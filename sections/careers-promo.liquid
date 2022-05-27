@@ -1,0 +1,53 @@
+{% liquid
+    assign text_1 = section.settings.text_1
+    assign text_2 = section.settings.text_2
+    assign image  = section.settings.image
+    assign mobile_image  = section.settings.mobile_image
+%}
+
+
+<section class="careers-promo"> 
+    <div class="container">
+        <h3 class="careers-promo__text_f">{{ text_1 }}</h3>
+
+        <img class="careers-promo__img {% if mobile_image %}with-mobile-image{% endif %}" src="{{ image | img_url: '810x500' }}" alt="{{ image.alt }}">
+
+        {%- if mobile_image -%}
+            <img class="careers-promo__mobile_img" src="{{ mobile_image | img_url: '740x477' }}" alt="{{ mobile_image.alt }}">
+        {%- endif -%}
+
+        <h3 class="careers-promo__text_s">{{ text_2 }}</h3>
+
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name" : "Careers promo",
+    "tag" : "section",
+    "settings" : [
+        {
+            "type" : "textarea",
+            "id": "text_1",
+            "label": "Heading"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Section image",
+            "info": "image size 810x500px"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image"
+        },
+        {
+            "type" : "textarea",
+            "id": "text_2",
+            "label": "Text"
+        }
+    ]
+}
+{% endschema %}
