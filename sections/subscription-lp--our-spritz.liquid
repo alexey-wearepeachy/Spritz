@@ -12,9 +12,12 @@
         {% assign block_id = 'ss-' | append: block.id %}
       <div class="text-center spritz-product swiper-slide" id="{{ block_id }}">
         <figure class="spritz-product__fig">
-          <a href="{{product.url}}">
+          <a class="spritz-product__fig_img"  href="{{product.url}}">
+            {% if block.settings.new_badge %}
+              <img class="spritz-product__badge" src="{{'new_badge.png' | asset_img_url: '60x60' }}" alt="new">
+            {% endif %}
             <img
-            data-srcset="{{ block.settings.image | img_url: '120x' }}, {{ block.settings.image | img_url: '120x', scale: 2 }} 2x"
+            data-srcset="{{ block.settings.image | img_url: '120x' }}, {{ block.settings.image | img_url: '240x', scale: 2 }} 2x"
             class="lazyload h-auto spritz-product__img"
             alt="{{product.title}} by {{shop.name}}"
             loading="lazy"
@@ -150,6 +153,12 @@
           "type" : "product",
           "id": "product",
           "label": "Choose product"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_badge",
+          "default": false,
+          "label": "Show NEW badge on product"
         }
       ]
     }

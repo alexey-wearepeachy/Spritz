@@ -9125,7 +9125,7 @@ Handlebars.registerHelper(
 );
 
 Handlebars.registerHelper('calcProgressBar', function (num) {
-  const freeShippingLimit = 60;
+  const freeShippingLimit = 45;
   const prepNum = num / 100;
   let template
   if (prepNum < freeShippingLimit) {
@@ -9956,7 +9956,7 @@ function meetOurSpritzSwiper() {
   var ww = $(window).width()
   var elem = $('.meet-our-spritz-swiper')
   let swiper = null
-  if (elem.length && ww <= 768) {
+  if (elem.length && ww <= 767) {
     $(".meet-our-spritz-swiper").each(function(){
       if (this.swiper != undefined) {   
         this.swiper.destroy();
@@ -9965,7 +9965,7 @@ function meetOurSpritzSwiper() {
 
     let swiper = new Swiper(".meet-our-spritz-swiper", {
       spaceBetween: 0,
-      slidesPerView: 'auto',
+      slidesPerView: 1,
       centeredSlides: false,
       roundLengths: true,
       initialSlide: 0,
@@ -9973,6 +9973,9 @@ function meetOurSpritzSwiper() {
       breakpoints: {
         415: {
           centeredSlides: true,
+        },
+        480: {
+          slidesPerView: 2,
         },
         640: {
           slidesPerView: 3,
@@ -9992,7 +9995,7 @@ function meetOurSpritzSwiper() {
 $(window).on('resize load', function () {
   var ww = $(window).width()
   var elem = $('.meet-our-spritz-swiper')
-  if (ww <= 768 && !elem.hasClass('swiper-container-initialized')) {
+  if (ww <= 767 && !elem.hasClass('swiper-container-initialized')) {
     meetOurSpritzSwiper()
   }
 })
@@ -10001,7 +10004,7 @@ function intiMerchSwiper() {
   var ww = $(window).width()
   var elem = $('.home-merch-swiper')
   let swiper = null
-  if (elem.length && ww <= 768) {
+  if (elem.length && ww <= 767) {
     $(".home-merch-swiper").each(function(){
       if (this.swiper != undefined) {   
         this.swiper.destroy();
@@ -10025,7 +10028,7 @@ function intiMerchSwiper() {
 $(window).on('resize load', function () {
   var ww = $(window).width()
   var elem = $('.home-merch-swiper')
-  if (ww <= 768 && !elem.hasClass('swiper-container-initialized')) {
+  if (ww <= 767 && !elem.hasClass('swiper-container-initialized')) {
     intiMerchSwiper()
   }
 })
