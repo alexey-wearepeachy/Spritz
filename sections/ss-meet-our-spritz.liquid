@@ -1,20 +1,27 @@
 <article class="meet-our-spritz-wrap background-ss-background">
   
   <header class="ss-container text-center meet-our-spritz-header">
-    <h1 class="ss--secondary-font meet-our-spritz-headline heading-xxl">{{section.settings.headline}}</h1>
-    <p class="acumin-pro meet-our-spritz-sub-headline body-2">{{section.settings.sub_headline}}</p>
+    {%- if section.settings.headline != blank -%}
+      <h1 class="ss--secondary-font meet-our-spritz-headline heading-xxl">{{section.settings.headline}}</h1>
+    {%- endif -%}
+    {%- if section.settings.sub_headline != blank -%}
+      <p class="acumin-pro meet-our-spritz-sub-headline body-2">{{section.settings.sub_headline}}</p>
+    {%- endif -%}
   </header>
   
   <section class="swiper-container meet-our-spritz-swiper">
-    <div class="d-flex flex-wrap spritz-products swiper-wrapper">
+    <div class="d-flex spritz-products swiper-wrapper">
       {% for block in section.blocks %}
         {% assign product = all_products[block.settings.product]%}
         {% assign block_id = 'ss-' | append: block.id %}
       <div class="text-center spritz-product swiper-slide" id="{{ block_id }}">
         <figure class="spritz-product__fig">
-          <a href="{{product.url}}">
+          <a class="spritz-product__fig_img" href="{{product.url}}">
+            {% if block.settings.new_badge %}
+              <img class="spritz-product__badge" src="{{'new_badge.png' | asset_img_url: '60x60' }}" alt="new">
+            {% endif %}
             <img
-            data-srcset="{{ block.settings.image | img_url: '120x' }}, {{ block.settings.image | img_url: '120x', scale: 2 }} 2x"
+            data-srcset="{{ block.settings.image | img_url: '120x' }}, {{ block.settings.image | img_url: '240x', scale: 2 }} 2x"
             class="lazyload h-auto spritz-product__img"
             alt="{{product.title}} by {{shop.name}}"
             loading="lazy"
@@ -157,6 +164,12 @@
           "type" : "product",
           "id": "product",
           "label": "Choose product"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_badge",
+          "default": false,
+          "label": "Show NEW badge on product"
         }
       ]
     }

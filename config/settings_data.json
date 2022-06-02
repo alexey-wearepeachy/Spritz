@@ -71,7 +71,7 @@
             "type": "text",
             "settings": {
               "question": "SHIPPING\/RETURNS",
-              "answer": "<p><strong>Where do you ship?<\/strong><\/p><p>Vast majority of the US. If your state isnt listed, please send us an email. <\/p><p><strong>Can I cancel my order?<\/strong><\/p><p>For any questions regarding orders, please reach out to hello@spritzsociety.com.<\/p><p><strong>Do you accept returns? <\/strong><\/p><p>Given the nature of our product, we are not able to accept returns. Please reach out to us at hello@spritzsociety.com if you have any questions about your order or if your order did not arrive perfectly! We are here to help. :) <\/p><p><strong>Do you ship internationally?<\/strong><\/p><p>Unfortunately, we do not ship internationally at this time. <\/p><p><strong>When will my order ship?<\/strong><\/p><p>Orders ship within 1-5 standard business days. <\/p><p><strong>How do I track my order?<\/strong><\/p><p>Once your order ships, we will email you with a tracking number so you can patiently wait for the happiest hour to arrive. <\/p><p><strong>Do I have to be home to receive my order?<\/strong><\/p><p>Yes! You need to be present to receive the order with a valid ID. If you can't be home, then another adult, over 21 years old, can sign for you — so if it's a doorman or a receptionist, that works, too.<\/p><p><strong>Where is Spritz Society available in stores?<\/strong><\/p><p>Spritz Society will be available in select stores in Fall 2021. <\/p><p><\/p>"
+              "answer": "<p><strong>Where do you ship?<\/strong><\/p><p>WE SHIP DOMESTICALLY TO ALL STATES EXCEPT: South Dakota, UTAH, MISSISSIPPI, ALABAMA, ARKANSAS, RHODE ISLAND, AND DELAWARE. WE'RE ALWAYS EXPANDING, AND CAN'T WAIT TO BE ABLE TO SHIP TO YOUR NECK OF THE WOODS SOMETIME SOON! PLEASE NEVER HESITATE TO REACH OUT TO US FOR MORE INFO AT <a href=\"mailto:HELLO@SPRITZSOCIETY.COM\">HELLO@SPRITZSOCIETY.COM<\/a><\/p><p><strong>Can I cancel my order?<\/strong><\/p><p>For any questions regarding orders, please reach out to hello@spritzsociety.com.<\/p><p><strong>Do you accept returns? <\/strong><\/p><p>Given the nature of our product, we are not able to accept returns. Please reach out to us at hello@spritzsociety.com if you have any questions about your order or if your order did not arrive perfectly! We are here to help. :) <\/p><p><strong>Do you ship internationally?<\/strong><\/p><p>Unfortunately, we do not ship internationally at this time. <\/p><p><strong>When will my order ship?<\/strong><\/p><p>Orders ship within 1-5 standard business days. <\/p><p><strong>How do I track my order?<\/strong><\/p><p>Once your order ships, we will email you with a tracking number so you can patiently wait for the happiest hour to arrive. <\/p><p><strong>Do I have to be home to receive my order?<\/strong><\/p><p>Yes! You need to be present to receive the order with a valid ID. If you can't be home, then another adult, over 21 years old, can sign for you — so if it's a doorman or a receptionist, that works, too.<\/p><p><strong>Where is Spritz Society available in stores?<\/strong><\/p><p>Spritz Society will be available in select stores in Fall 2021. <\/p><p><\/p>"
             }
           },
           "62934b0f-41bb-44f5-9497-d45dcae79204": {
@@ -96,11 +96,13 @@
           "62934b0f-41bb-44f5-9497-d45dcae79204",
           "f98dff16-c843-4e4d-b724-adcfca6390b9"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "age-gate": {
         "type": "age-gate",
-        "settings": {}
+        "settings": {
+        }
       },
       "promobar": {
         "type": "promobar",
@@ -120,7 +122,7 @@
           "59f6979a-2ae9-4e39-81a7-9a4a7693639a": {
             "type": "block",
             "settings": {
-              "text": "<p>ORDER A 4 PACK TODAY<\/p>"
+              "text": "<p>ORDER THE NEW VARIETY 8-PACK TODAY<\/p>"
             }
           },
           "a70ccdf2-1ffc-4a1a-ae2d-ff4beadd1bb4": {
@@ -314,7 +316,7 @@
         ],
         "settings": {
           "heading": "Can’t decide? Try them all.",
-          "product": "variety-pack"
+          "product": "dev-variety-pack-8-16"
         }
       },
       "subscription-lp--testimonials": {
@@ -528,14 +530,58 @@
         "settings": {
           "navigation": "new-menu"
         }
+      },
+      "subscription-lp--bundle-variety": {
+        "type": "subscription-lp--bundle-variety",
+        "settings": {
+          "heading": "Can’t decide? Try them all.",
+          "product": "variety-8pack"
+        }
+      },
+      "careers-hero": {
+        "type": "careers-hero",
+        "settings": {
+          "subtitle": "Join the",
+          "title": "Spritz Society",
+          "title_img": "shopify:\/\/shop_images\/1.png",
+          "text": "Since launching in 2021, we’ve been disrupting the industry through brand, taste, and community and are looking to add to our team of creators, sellers, marketers, operators, and entrepreneurs.",
+          "img": "shopify:\/\/shop_images\/2.jpg",
+          "bg_color": "#ffe8e8",
+          "btn_text": "APPLY NOW",
+          "btn_url": "#shopify-section-careers-greenhouse",
+          "press_title": "<p>Real wine. <\/p><p>Real flavors. <\/p><p>Real ingredients. <\/p><p>Real people. <\/p><p><\/p>"
+        }
+      },
+      "careers-promo": {
+        "type": "careers-promo",
+        "settings": {
+          "text_1": "<p>We’ve opened doors and established partnerships with some of the most respected distributors, retailers, and brand partners and are only just getting started.<\/p>",
+          "image": "shopify:\/\/shop_images\/Vector2.png",
+          "mobile_image": "shopify:\/\/shop_images\/Vector_16_2.png",
+          "text_2": "<p>As a team, we work hard, but we play hard too –  because life’s too short for drinks you don’t love (and to work with uninspiring people)!<\/p>"
+        }
+      },
+      "careers-cta": {
+        "type": "careers-cta",
+        "settings": {
+          "heading": "<p>Spritz Society is a taste first, people first brand<\/p>",
+          "mobile_heading": "<p>Spritz Society is a <\/p><p>taste first, people <\/p><p>first brand<\/p>",
+          "text": "<p>We are reimagining the future of sparkling cocktails. If you’re into that, <\/p><p>come join  the society.<\/p>",
+          "mobile_text": "<p>We are reimagining the future of sparkling <\/p><p>cocktails. If you’re into that,  come join  <\/p><p>the society.<\/p>",
+          "button_text": "APPLY NOW",
+          "button_link": "#shopify-section-careers-greenhouse"
+        }
       }
     },
-    "content_for_index": [],
+    "content_for_index": [
+
+    ],
     "blocks": {
       "16334414439bbda7df": {
         "type": "shopify:\/\/apps\/govalo\/blocks\/app-embed\/0261c814-5eb7-41a0-a529-3dcb870c5415",
         "disabled": false,
-        "settings": {}
+        "settings": {
+        }
       }
     }
   }

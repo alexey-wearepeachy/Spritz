@@ -1,11 +1,14 @@
 {% liquid
-    assign title        = section.settings.title
-    assign subtitle     = section.settings.subtitle
-    assign motto        = section.settings.motto
-    assign img          = section.settings.img
-    assign bg_color     = section.settings.bg_color
-    assign btn_text     = section.settings.btn_text
-    assign btn_url      = section.settings.btn_url
+    assign title         = section.settings.title 
+    assign title_img     = section.settings.title_img
+    assign subtitle      = section.settings.subtitle
+    assign motto         = section.settings.motto
+    assign img           = section.settings.img
+    assign bg_img        = section.settings.bg_img 
+    assign bg_img_mobile = section.settings.bg_img_mobile
+    assign bg_color      = section.settings.bg_color
+    assign btn_text      = section.settings.btn_text
+    assign btn_url       = section.settings.btn_url
 
     assign press_title = section.settings.press_title
 
@@ -18,29 +21,45 @@
     }
 </style>
 
-<section class="hp-hero" style="background-color: {{ bg_color }}">
-    <div class="container">
-
-        <div class="hp-hero__top">
-            <div class="hp-hero__content">
+<section class="hp-hero" style="{% if bg_color != blank %}background-color: {{ bg_color }};{% endif %}">
+    
+    <div class="hp-hero__top">
+        <div class="hp-hero__content">
+            <div class="hp-hero__content_inner">
                 <h4 class="hp-hero__subtitle">{{ subtitle }}</h4>
-                <h1 class="hp-hero__title">{{ title }}</h1>
+
+                <h1 class="hp-hero__title">
+                    {{ title }}
+                    {% if title_img %}
+                        <img class="hp-hero__title_img" src="{{ title_img | img_url: '126x126' }}" alt="{{ title_img.alt }}">
+                    {% endif %}
+                </h1>
+
                 <h2 class="hp-hero__motto">{{ motto }}</h2>
+
                 <a class="hp-hero__btn noselect" href="{{ btn_url }}">
                     <span class="btn--overlay"></span>
                     <span class="btn--overlay-hover"></span>
                     <span>{{ btn_text }}</span>
                 </a>
             </div>
-            <div class="hp-hero__img">
-                <img src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
-            </div>
         </div>
 
-        <div class="hp-hero__bot">
+        <div class="hp-hero__img">
+            <img class="hp-hero__img_bg" src="{{ bg_img | img_url: '2048x' }}" alt="{{ bg_img.alt }}">
+
+            <img class="hp-hero__img_single" src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
+
+            <img class="hp-hero__img_mobile" src="{% if bg_img_mobile %}{{ bg_img_mobile | img_url: '740x' }}{% else %}{{ bg_img | img_url: '740x' }}{% endif %}" alt="{{ bg_img_mobile.alt }}">
+        </div>
+    </div>
+
+    <div class="hp-hero__bot">
+        <div class="container">
             {% if press_title != blank %}
                 <h3 class="hero__press-title">{{ section.settings.press_title }}</h3>
             {% endif %}
+
             {% if blocks %}
                 <div class="hero__press-desk">
                     {% for block in blocks  %}
@@ -51,6 +70,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+
                 <div class="marquee-slider hero__press-mob" data-marquee>
                     {% for i in (i..1) %}
                         {% for block in blocks %}
@@ -64,8 +84,8 @@
                 </div>
             {% endif %}
         </div>
-
     </div>
+
 </section>
 
 {% schema %}
@@ -82,7 +102,13 @@
             "type": "text",
             "id": "title",
             "label": "Section title",
-            "default": "Life’s to short for drinks you don’t love"
+            "default": "PEACH"
+        },
+        {
+            "type": "image_picker",
+            "id": "title_img",
+            "label": "Title image",
+            "info": "Image size 126x126px"
         },
         {
             "type": "text",
@@ -93,13 +119,23 @@
         {
             "type": "image_picker",
             "id": "img",
-            "label": "Section image"
+            "label": "Section center image"
         },
         {
             "type": "color",
             "id": "bg_color",
             "label": "Section background",
             "default": "#FED9D1"
+        },
+        {
+            "type": "image_picker",
+            "id": "bg_img",
+            "label": "Section background image"
+        },
+        {
+            "type": "image_picker",
+            "id": "bg_img_mobile",
+            "label": "Section background image mobile"
         },
         {
             "type": "text",
