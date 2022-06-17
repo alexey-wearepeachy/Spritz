@@ -498,8 +498,8 @@ select:active, select:focus {
 .accent, #shopify-section-ss-header .cart-count,
 #shopify-section-ss-header a, .header__toggle-mini-cart, .home-ingredients .ingredient .ing-title {
   font-family: 'Knockout';
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 18px;
   text-align: center;
 }
 #shopify-section-ss-header .cart-count,
@@ -508,6 +508,15 @@ select:active, select:focus {
   font-family: 'Knockout-junior';
 }
 
+
+#shopify-section-ss-header .ss-header__megamenu_toggle {
+  line-height: 85px;
+  font-size: 16px;
+}
+
+.navigation__megamenu_one {
+  filter: drop-shadow(0px 4px 4px #00000040);
+}
 
 /* line 165, _src/css/core/globals.scss */
 .h1 {
@@ -2814,10 +2823,11 @@ select {
   height: 100%;
   border: none;
   color: transparent;
+  transition: all 1s ease;
 }
 
 /* line 14, _src/css/components/blocker.scss */
-.nav-open .blocker,
+/* .nav-open .blocker, */
 .mini-cart-open .blocker {
   display: block;
   z-index: 99;
@@ -2888,16 +2898,23 @@ input[type=submit] textarea {
 }
 
 /* line 1, _src/css/components/header.scss */
-#shopify-section-ss-header {
+#main_header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 9;
+}
+#shopify-section-ss-header {
   height: 84px;
   font-size: 25px;
   box-sizing: content-box;
   background-color: #F64A47;
+}
+@media (max-width: 767px) {
+  #shopify-section-ss-header {
+    height: 48px;
+  }
 }
 
 /* line 12, _src/css/components/header.scss */
@@ -2905,10 +2922,13 @@ input[type=submit] textarea {
 .about #shopify-section-ss-header {
   background-color: transparent;
 }
+.about.nav-open #shopify-section-ss-header {
+  background-color: #f64a47;
+}
 
 
 /* line 16, _src/css/components/header.scss */
-.nav-open #shopify-section-ss-header,
+/* .nav-open #shopify-section-ss-header, */
 .mini-cart-open #shopify-section-ss-header {
   filter: blur(20px);
 }
@@ -2927,6 +2947,11 @@ input[type=submit] textarea {
   text-transform: uppercase;
   color: white;
   font-size: 16px;
+}
+#shopify-section-ss-header a {
+  font-family: "KumlienProBold";
+  text-transform: none;
+  font-weight: bold;
 }
 
 /* line 34, _src/css/components/header.scss */
@@ -2955,6 +2980,22 @@ input[type=submit] textarea {
 .scrolled #shopify-section-ss-header {
   background-color: #F64A47;
 }
+.megamenu_active:not(.home) #shopify-section-ss-header {
+  background-color: #F64A47;
+}
+
+body.megamenu_active {
+  position: fixed;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+}
+body.megamenu_active .blocker {
+  display: block;
+  z-index: 8;
+  background: rgba(109, 0, 0, 0.2);
+}
+
 
 /* line 63, _src/css/components/header.scss */
 .ss-header__logo {
@@ -2965,6 +3006,12 @@ input[type=submit] textarea {
   width: 75px;
   transform: translate(-50%, -50%);
   margin: 0;
+}
+@media (max-width: 767px) {
+  .ss-header__logo {
+    width: 44px;
+    height: auto;
+  }
 }
 
 /* line 71, _src/css/components/header.scss */
@@ -3014,16 +3061,17 @@ input[type=submit] textarea {
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: 767px) {
   .header__toggle-mini-cart svg {
-    width: 43px;
-    height: 43px;
+    width: 36px;
+    height: 36px;
+    margin-right: 0;
   }
 }
 
 /* line 101, _src/css/components/header.scss */
 .ss-header__hamburger {
-  width: 90px;
+  width: 50px;
   background-color: transparent;
   border: none;
   position: absolute;
@@ -3036,6 +3084,11 @@ input[type=submit] textarea {
   margin: 0;
   cursor: pointer;
 }
+@media (min-width: 768px){
+  .ss-header__hamburger:not(.js-toggle-mini-cart) {
+    display: none;
+  }
+}
 
 /* line 114, _src/css/components/header.scss */
 .ss-header__hamburger svg {
@@ -3046,10 +3099,10 @@ input[type=submit] textarea {
   transform-origin: center;
 }
 
-@media (max-width: 1024px), (max-height: 800px) {
+@media (max-width: 1024px) {
   /* line 114, _src/css/components/header.scss */
   .ss-header__hamburger svg {
-    width: 32px;
+    width: 20px;
   }
 }
 
@@ -3059,29 +3112,45 @@ input[type=submit] textarea {
 }
 
 /* line 128, _src/css/components/header.scss */
-.ss-header__hamburger:hover svg:nth-child(1) {
-  transform: rotate(45deg) translate(3px, 8px);
+.nav-open .ss-header__hamburger svg:nth-child(1){
+  transform: rotate(45deg) translate(0px, 5px);
 }
 
 /* line 131, _src/css/components/header.scss */
-.ss-header__hamburger:hover svg:nth-child(2) {
-  transform: rotate(-45deg) translate(-1px, -6px);
+.nav-open .ss-header__hamburger svg:nth-child(2) {
+  transform: rotate(-45deg) translate(0px, -5px);
+}
+
+@media (min-width: 768px) {
+  .ss-header__hamburger:hover svg:nth-child(1),
+  .nav-open .ss-header__hamburger svg:nth-child(1) {
+    transform: rotate(45deg) translate(0px, 7px);
+  }
+  
+  .ss-header__hamburger:hover svg:nth-child(2),
+  .nav-open .ss-header__hamburger svg:nth-child(2) {
+    transform: rotate(-45deg) translate(0px, -8px);
+  }
 }
 
 /* line 136, _src/css/components/header.scss */
 .ss-header__nav {
-  position: absolute;
   height: 100%;
   display: flex;
   align-items: center;
 }
+.nav-open .ss-header__megamenu_toggle {
+  visibility: hidden;
+}
 
 /* line 141, _src/css/components/header.scss */
 .ss-header__nav.left {
-  left: 90px;
+  left: 0;
+  align-items: stretch;
+  float: left;
 }
 
-@media (max-width: 1024px), (max-height: 800px) {
+@media (max-width: 767px) {
   /* line 141, _src/css/components/header.scss */
   .ss-header__nav.left {
     display: none;
@@ -3091,6 +3160,7 @@ input[type=submit] textarea {
 /* line 147, _src/css/components/header.scss */
 .ss-header__nav.right {
   right: 0px;
+  float: right;
 }
 
 @media (max-width: 1024px), (max-height: 800px) {
@@ -3253,7 +3323,7 @@ input[type=submit] textarea {
   padding-bottom: 55px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* line 2, _src/css/components/hero.scss */
   .heading_wrapper {
     padding-bottom: 35px;
@@ -3750,6 +3820,7 @@ body.custom-pack .hero {
   /* line 160, _src/css/components/collection.scss */
   .collections .meet-our-spritz-header {
     padding-bottom: 40px;
+    padding-top: 40px;
   }
 }
 
@@ -4138,6 +4209,7 @@ body.custom-pack .hero {
   right: 0;
   z-index: 99999;
   width: 543px;
+  max-width: 543px;
   height: 90%;
   top: 80px;
   right: 80px;
@@ -4156,6 +4228,7 @@ body.custom-pack .hero {
     top: 50%;
     left: 50%;
     width: calc(100vw - 40px);
+    max-width: 410px;
     --notchSize: 40px;
     --value: polygon(0% var(--notchSize),
   var(--notchSize) 0%,
@@ -4782,7 +4855,6 @@ body.custom-pack .hero {
 
 /* line 2, _src/css/components/login.scss */
 .account .ss-header {
-  padding: 8px 0 12px;
   background-color: currentColor;
 }
 
@@ -5025,13 +5097,17 @@ body.custom-pack .hero {
 
 /* line 6, _src/css/components/contact.scss */
 .pages.contact .ss-header {
-  padding: 8px 0 12px;
   background-color: currentColor;
 }
 
 /* line 11, _src/css/components/contact.scss */
 .pages.contact .js-Pjax {
   padding-top: 110px;
+}
+@media (max-width: 768px) {
+  .pages.contact .js-Pjax {
+    padding-top: 25px;
+  }
 }
 
 /* line 17, _src/css/components/contact.scss */
@@ -7186,7 +7262,7 @@ meet-our-spritz-wrap .spritz-product.spritz-product--merch {
 
 /* line 2, _src/css/components/pdp-spritz.scss */
 .products .ss-header, .custom-pack .ss-header {
-  padding: 8px 0 12px;
+  /* padding: 8px 0 12px; */
   background-color: currentColor;
 }
 
@@ -7238,6 +7314,7 @@ meet-our-spritz-wrap .spritz-product.spritz-product--merch {
   .products .right_part, .custom-pack .right_part {
     width: 100%;
     padding-left: 0;
+    margin-top: 30px;
   }
 }
 
@@ -8697,13 +8774,18 @@ meet-our-spritz-wrap .spritz-product.spritz-product--merch {
 
 /* line 3, _src/css/components/faq.scss */
 .pages.faq .ss-header {
-  padding: 8px 0 12px;
+  /* padding: 8px 0 12px; */
   background-color: currentColor;
 }
 
 /* line 8, _src/css/components/faq.scss */
 .pages.faq #MainContent {
   padding-top: 110px;
+}
+@media (max-width: 768px) {
+  .pages.faq #MainContent {
+    padding-top: 24px;
+  }
 }
 
 /* line 15, _src/css/components/faq.scss */
@@ -8848,7 +8930,7 @@ meet-our-spritz-wrap .spritz-product.spritz-product--merch {
   right: 0;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 10;
   display: none;
   width: 100%;
   height: 100%;
@@ -9142,6 +9224,11 @@ body.pages.about {
 .account .js-Pjax {
   padding-top: 110px;
 }
+@media (max-width: 768px) {
+  .products .js-Pjax {
+    padding-top: 60px;
+  }
+}
 
 .js-mini-cart-progressbar {
   background: #fff;
@@ -9164,13 +9251,14 @@ body.pages.about {
 }
     
 .account #MainContent {
-  padding-top: 50px !important;
+  padding-top: 110px !important;
   outline: none !important;
 }
 
 #MainContent {
   outline: none !important;
 }
+
 
 .checkboxCheck label {
   display: flex;
@@ -9210,4 +9298,12 @@ body.pages.about {
 
 .checkboxCheck input:checked ~ label .square svg {
   display: block;
+}
+
+#shopify-section-ss-header .menu-drawer__account {
+  font-size: 16px;
+  font-family: "KumlienProBold";
+  flex-shrink: 0;
+  width: fit-content;
+  line-height: 84px;
 }

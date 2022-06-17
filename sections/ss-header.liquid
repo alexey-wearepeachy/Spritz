@@ -17,7 +17,17 @@
     </button>
     
     <nav class="ss-header__nav left">
-      <a href="/collections/spritz">Shop</a>
+      {% for link in linklists[settings.main_navigation].links %}
+        {% unless link.title == 'Home' %}
+          <a class="ss-header__megamenu_toggle" href="{{ link.url }}" data-link="{{ link.title }}">
+            {{ link.title }}
+  
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 1L7 7L1 0.999999" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </a>
+        {% endunless %}
+      {% endfor %}
     </nav>
 
     <nav class="ss-header__nav right">
