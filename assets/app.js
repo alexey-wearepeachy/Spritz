@@ -45,6 +45,7 @@ this.decorators.push("return fn;"),d?this.decorators=Function.apply(this,["fn","
  *    - based on the idea of Remy Sharp, http://remysharp.com/2009/01/26/element-in-view-event-plugin/
  *    - forked from http://github.com/zuk/jquery.inview/
  */
+
 (function (factory) {
   if (typeof define == 'function' && define.amd) {
     // AMD
@@ -9125,7 +9126,7 @@ Handlebars.registerHelper(
 );
 
 Handlebars.registerHelper('calcProgressBar', function (num) {
-  const freeShippingLimit = 45;
+  const freeShippingLimit = 55;
   const prepNum = num / 100;
   let template
   if (prepNum < freeShippingLimit) {
@@ -9897,6 +9898,129 @@ function initHeaderFunctions (){
   for (var i = 0; i < hamburger.length; i++) {
     hamburger[i].addEventListener('click', toggleNav, false)
   }
+
+  let mainMenus = document.getElementsByClassName('ss-header__megamenu_toggle');
+  let megamenus = document.getElementsByClassName('navigation__megamenu_item');
+
+
+
+  var scrolled = 0;
+  for (let i = 0; i < mainMenus.length; i++) {
+    const megamenuTrigger = mainMenus[i];
+    let itemSingle;
+    let selector = '.navigation__megamenu_item[data-link="' + megamenuTrigger.dataset.link + '"]' ;
+    let leftPossition = megamenuTrigger.getBoundingClientRect().left;
+    const megamenuItem = document.querySelectorAll(selector)[0];
+    
+    if (megamenuItem) {
+      if ( !megamenuTrigger.classList.contains('init') ){
+        megamenuTrigger.classList.add('init');
+
+        itemSingle = megamenuItem.querySelectorAll('.navigation__megamenu_one');
+  
+        if (itemSingle.length > 0) {
+          itemSingle[0].style.left = leftPossition + 'px';
+        }
+
+      
+        $(megamenuTrigger).on("mouseenter touchstart",function(e) {
+            $('.ss-header__megamenu_toggle').not(megamenuTrigger).removeClass('active');
+            $('.navigation__megamenu_item').not(megamenuItem).removeClass('open');
+  
+            megamenuTrigger.classList.add('active');
+            megamenuItem.classList.add('open');
+            
+            document.body.style.top = - window.pageYOffset + 'px';
+            scrolled = window.pageYOffset;
+            document.body.classList.add('megamenu_active'); console.log('test',scrolled);
+            return scrolled;
+        });
+
+        
+        $(megamenuItem).on("mouseenter touchstart",function(e) {
+          megamenuItem.classList.add('in_transfer');
+        });
+
+      
+        $(megamenuTrigger).on("mouseleave",function(e) {
+          setTimeout(function () {
+              if ( megamenuItem.classList.contains('in_transfer') ) { 
+                megamenuItem.classList.remove('in_transfer');
+              } else {
+                megamenuTrigger.classList.remove('active');  
+                megamenuItem.classList.remove('open');
+
+                document.body.classList.remove('megamenu_active');
+                if ( scrolled > 0 ) {
+                  window.scrollTo({
+                    top: scrolled,
+                    behavior: "instant"
+                  });
+                }
+              }
+      
+            }, 20);
+        });
+
+   
+        $(megamenuItem).on("mouseleave",function(e) {
+            megamenuTrigger.classList.remove('active');  
+            megamenuItem.classList.remove('open');
+
+            // let newActiveItem = $('.ss-header__megamenu_toggle.active').not(megamenuTrigger);
+            // if (newActiveItem.length){ console.log('new menu',newActiveItem.length);
+              document.body.classList.remove('megamenu_active');
+              if ( scrolled > 0 ) {
+                window.scrollTo({
+                  top: scrolled,
+                  behavior: "instant"
+                });
+              }
+            // } else {
+            //   console.log('non opened menu');
+            // }
+        });
+  
+
+      }
+
+    }
+
+  }
+
+  let mobileTabTrigger = document.querySelectorAll('.mobile_navigation__link');
+  mobileTabTrigger.forEach(item => {
+    const tabItem = item.nextElementSibling || item.nextSibling;
+
+    if (!item.classList.contains('init')) {
+      item.classList.add('init');
+
+      item.addEventListener('click', function() {
+        item.classList.toggle('active');
+
+        $('.mobile_navigation__column,.mobile_navigation__linklist').not(tabItem).slideUp();
+        $('.mobile_navigation__link').not(item).removeClass('active');
+        $(tabItem).slideToggle();
+
+        setTimeout(() => {
+          let compare = window.innerHeight - tabItem.offsetHeight - tabItem.getBoundingClientRect().top;
+      
+          if ( tabItem.offsetHeight > 0 ) {
+            if ( compare < 0 ){
+            
+              $('#mobile_navigation').animate({
+                scrollTop: (-compare) + 'px'
+              }, 1000);
+            } 
+
+          }
+        }, 700);
+
+      });
+    }
+    
+  });
+
 }
 
 $(document).on('click', '#js-blocker', function(){

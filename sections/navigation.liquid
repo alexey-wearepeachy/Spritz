@@ -1,13 +1,350 @@
-{% render '_ss_nav', navigation: section.settings.navigation %}
+{%- for block in section.blocks -%}
+    <div class="navigation__megamenu_item {% if block.type == 'menu' %}navigation__megamenu_item_linklist{% endif %}" data-link="{{ block.settings.block_nav }}" style="display: none;">
+        {%- case block.type -%}
+            {%- when 'menu' -%}
+                <div class="navigation__megamenu_one">
+                    <div class="navigation__megamenu_inner navigation__megamenu_single">
+                        <ul class="navigation__list">
+                            {% for link in linklists[block.settings.item_navigation].links %}
+                              <li class="navigation__item">
+                                  <a href="{{ link.url }}" class="no-pjax">{{ link.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div> 
+
+            {%- when '3_columns' -%}
+                <div class="navigation__megamenu_inner navigation__megamenu_columns">
+                    <div class="navigation__megamenu_container">
+                        <div class="navigation__megamenu_colomn d-flex">
+                            <h3 class="navigation__megamenu_title">{{ block.settings.product_title }}</h3>
+
+                            {% for i in (1..6) %}
+                                {%- capture product -%}product_{{ i }}{%- endcapture -%}
+                                {%- assign product_handle = block.settings[product] -%}
+                                
+                                {%- if product_handle != blank -%}
+                                    {%- assign menu_product = all_products[product_handle] -%}
+                                    <a href="{{ menu_product.url }}" class="navigation__megamenu_product no-pjax">
+                                        <img src="{{ menu_product.images.first.src | product_img_url: '100x100' }}" srcset="{{ menu_product.images.first.src | product_img_url: '100x100' }} 1x, {{ menu_product.images.first.src | product_img_url: '200x200' }} 2x" alt="{{ menu_product.title }}">
+                                        <h4>{{ menu_product.title }}</h4>
+                                    </a>
+                                {%- endif -%}
+                            {% endfor %}
+                        </div>
+
+                        <div class="navigation__megamenu_colomn">
+                            <h3 class="navigation__megamenu_title">{{ block.settings.bundle_title }}</h3>
+
+                            <p class="navigation__megamenu_text">{{ block.settings.bundle_text }}</p>
+
+                            <div class="navigation__megamenu_bundle">
+                                <a class="navigation__megamenu_bundle_item no-pjax" href="{{ block.settings.bundle_link }}">
+                                    <img src="{{ block.settings.bundle_img | img_url: '150x150' }}" srcset="{{ block.settings.bundle_img | img_url: '150x150' }} 1x, {{ block.settings.bundle_img | img_url: '300x300' }} 2x" alt="">
+                                    <span>{{block.settings.bundle_name}}</span>
+                                </a>
+                                <a class="navigation__megamenu_bundle_item no-pjax" href="{{ block.settings.bundle_link_2 }}">
+                                    <img src="{{ block.settings.bundle_img_2 | img_url: '150x150' }}" srcset="{{ block.settings.bundle_img_2 | img_url: '150x150' }} 1x, {{ block.settings.bundle_img_2 | img_url: '300x300' }} 2x" alt="">
+                                    <span>{{ block.settings.bundle_name_2 }}</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <a class="navigation__megamenu_colomn no-pjax" href="{{ block.settings.banner_link }}">
+                            <h3 class="navigation__megamenu_title">{{ block.settings.banner_title }}</h3>
+
+                            <p class="navigation__megamenu_text">{{ block.settings.banner_text }}</p>
+
+                            <img src="{{ block.settings.img | img_url: '200x' }}" srcset="{{ block.settings.img | img_url: '200x200' }} 1x, {{ block.settings.img | img_url: '400x400' }} 2x" alt="">
+                        </a>
+                    </div>
+
+                    <div class="navigation__megamenu_bottom">
+                        <a href="{{ block.settings.button_link }}" class="navigation__megamenu__btn svg-btn d-flex flex-a-center flex-j-center no-pjax">
+                            {% render '_ss_polygon_button_shape', type: '' %}
+                            <span>{{ block.settings.button_text }}</span>
+                        </a>
+                    </div>
+                </div>
+                
+        {%- endcase -%}
+    </div>
+{%- endfor -%}
+
+<div id="mobile_navigation" class="mobile_navigation" style="display: none;">
+    <div class="mobile_navigation__inner">
+        {%- for link in linklists[settings.main_navigation].links -%}
+            {%- assign has_submenu = false -%}
+
+            {%- for block in section.blocks -%}
+                {%- if block.settings.block_nav == link.title -%}
+                    {%- assign has_submenu = true -%}
+
+                    <div class="mobile_navigation__tab">
+                        <span class="mobile_navigation__link">
+                            {{ link.title }}
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1L7 7L1 0.999999" stroke="white" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        {%- case block.type -%}
+                            {%- when 'menu' -%}
+                                <ul class="mobile_navigation__linklist">
+                                    {% for link in linklists[block.settings.item_navigation].links %}
+                                        <li class="navigation__item">
+                                            <a href="{{ link.url }}" class="no-pjax">{{ link.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {%- when '3_columns' -%}
+                                <div class="mobile_navigation__column">
+                                    <div class="mobile_navigation__column_item">
+                                        <h4 class="navigation__megamenu_title">{{ block.settings.product_title }}</h3>
+                                        {% for i in (1..6) %}
+                                            {%- capture product -%}product_{{ i }}{%- endcapture -%}
+                                            {%- assign product_handle = block.settings[product] -%}
+                                            
+                                            {%- if product_handle != blank -%}
+                                                {%- assign menu_product = all_products[product_handle] -%}
+                                                <a class="mobile_navigation__product no-pjax" href="{{ menu_product.url }}">
+                                                    <img src="{{ menu_product.images.first.src | product_img_url: '100x100' }}"  srcset="{{ menu_product.images.first.src | product_img_url: '70x70' }} 70w,{{ menu_product.images.first.src | product_img_url: '100x100' }} 100w" alt="{{ menu_product.title }}">
+                                                    <h5>{{ menu_product.title }}</h5>
+                                                </a>
+                                            {%- endif -%}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mobile_navigation__column_item" href="{{ block.settings.bundle_link }}">
+                                        <h3 class="navigation__megamenu_title">{{ block.settings.bundle_title }}</h3>
+            
+                                        <p class="navigation__megamenu_text">{{ block.settings.bundle_text }}</p>
+
+                                        <div class="navigation__megamenu_bundle">
+                                            <a class="navigation__megamenu_bundle_item no-pjax" href="{{ block.settings.bundle_link }}">
+                                                <img src="{{ block.settings.bundle_img | img_url: '100x100' }}" alt="">
+                                                <span>{{ block.settings.bundle_name | split: ' -' | first }}</span>
+                                            </a>
+                                            <a class="navigation__megamenu_bundle_item no-pjax" href="{{ block.settings.bundle_link_2 }}">
+                                                <img src="{{ block.settings.bundle_img_2 | img_url: '100x100' }}" alt="">
+                                                <span>{{ block.settings.bundle_name_2 | split: ' -' | first }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+            
+                                    <a class="mobile_navigation__column_item no-pjax" href="{{ block.settings.banner_link }}">
+                                        <h3 class="navigation__megamenu_title">{{ block.settings.banner_title }}</h3>
+            
+                                        <p class="navigation__megamenu_text">{{ block.settings.banner_text }}</p>
+            
+                                        <img src="{{ block.settings.img | img_url: '100x' }}" alt="">
+                                    </a>
+                                    
+                                    <div class="mobile_navigation__megamenu_bottom">
+                                        <a href="{{ block.settings.button_link }}" class="navigation__megamenu__btn svg-btn d-flex flex-a-center flex-j-center no-pjax">
+                                            {% render '_ss_polygon_button_shape', type: '' %}
+                                            <span>{{ block.settings.button_text }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                        {%- endcase -%}
+                    </div>
+            {%- endif -%}
+        {%- endfor -%}
+        
+            {%- unless has_submenu -%}
+                <a class="mobile_navigation__link mobile_navigation__inner_toggle no-pjax" href="{{ link.url }}">{{ link.title }}</a>
+            {%- endunless -%}
+        {%- endfor -%}
+
+        <div class="mobile_navigation__bottom">
+            <ul>
+                <li>
+                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account no-pjax">
+                        {%- liquid
+                          render 'icon-customer' 
+                          if customer
+                            echo 'customer.account_fallback' | t
+                          else
+                            echo 'customer.log_in' | t
+                          endif
+                        -%}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/?mini-cart-open=true" class="mobile_navigation__bottom_cart no-pjax">
+                        {% render 'icon-cart-mobile' %} Cart
+                    </a>
+                    {% comment %} <button class="d-flex js-toggle-mini-cart header__toggle-mini-cart">
+                        {% render '_ss_icon_cart' %}
+                        Cart
+                    </button> {% endcomment %}
+                </li>
+
+                <li>
+                    <a href="{{ settings.instagram_url }}" target="_blank" class="no-pjax">
+                      {%- render 'icon-instagram' -%}
+                      <span>{{ 'general.social.links.instagram' | t }}</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
 
 {% schema %}
 {
     "name": "Navigation",
-    "settings": [
+    "settings": [],
+    "blocks": [
         {
-            "type": "link_list",
-            "id": "navigation",
-            "label": "Navigation menu"
+          "type": "menu",
+          "name": "One linklist",
+          "limit": 2,
+          "settings": [
+            {
+                "type": "text",
+                "id": "block_nav",
+                "label": "Assigned to link in menu"
+            },
+            {
+                "type": "link_list",
+                "id": "item_navigation",
+                "label": "Item menu"
+            }
+          ]
+        },
+        {
+            "type": "3_columns",
+            "name": "3 Columns of Products",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "block_nav",
+                    "label": "Assigned to Title menu"
+                },
+                {
+                    "type": "header",
+                    "content": "Product column"
+                },
+                {
+                    "type": "text",
+                    "id": "product_title",
+                    "label": "Product title"
+                },
+                {
+                    "type": "product",
+                    "id": "product_1",
+                    "label": "Product 1"
+                },
+                {
+                    "type": "product",
+                    "id": "product_2",
+                    "label": "Product 2"
+                },
+                {
+                    "type": "product",
+                    "id": "product_3",
+                    "label": "Product 3"
+                },
+                {
+                    "type": "product",
+                    "id": "product_4",
+                    "label": "Product 4"
+                },
+                {
+                    "type": "product",
+                    "id": "product_5",
+                    "label": "Product 5"
+                },
+                {
+                    "type": "product",
+                    "id": "product_6",
+                    "label": "Product 6"
+                },
+                {
+                    "type": "header",
+                    "content": "Bundle column"
+                },
+                {
+                    "type": "text",
+                    "id": "bundle_title",
+                    "label": "Bundle title"
+                },
+                {
+                    "type": "text",
+                    "id": "bundle_text",
+                    "label": "Bundle text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "bundle_img",
+                    "label": "Bundle image"
+                },
+                {
+                    "type": "text",
+                    "id": "bundle_name",
+                    "label": "Bundle name"
+                },
+                {
+                    "type": "url",
+                    "id": "bundle_link",
+                    "label": "Bundle link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "bundle_img_2",
+                    "label": "Bundle image 2"
+                },
+                {
+                    "type": "text",
+                    "id": "bundle_name_2",
+                    "label": "Bundle name 2"
+                },
+                {
+                    "type": "url",
+                    "id": "bundle_link_2",
+                    "label": "Bundle link 2"
+                },
+                {
+                    "type": "header",
+                    "content": "Banner column"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_title",
+                    "label": "Banner title"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_text",
+                    "label": "Banner text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Banner image"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_link",
+                    "label": "Banner link"
+                },
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "label": "Button text",
+                    "default": "SHOP ALL"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button link"
+                }
+            ]
         }
     ]
 }

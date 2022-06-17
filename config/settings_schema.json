@@ -22,6 +22,20 @@
     ]
   },
   {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "main_navigation",
+        "label": "Navigation menu"
+      }
+    ]
+  },
+  {
     "name": "Social URLS",
     "settings": [
       {

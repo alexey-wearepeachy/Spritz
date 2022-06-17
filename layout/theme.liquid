@@ -129,9 +129,11 @@
     {% comment %}{% section 'announcement-bar' %}{% endcomment %}
     {% comment %} {% section 'header' %} {% endcomment %}
     {% section 'promobar' %}
-    {% section 'ss-header' %}
-    {% section 'navigation' %}
-
+    
+    <div id="main_header">
+      {% section 'ss-header' %}
+      {% section 'navigation' %}
+    </div>
 
     <main id="MainContent" class="js-Pjax content-for-layout focus-none" role="main" tabindex="-1">
       <div class="js-Pjax-inner">{{ content_for_layout }}</div>

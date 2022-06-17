@@ -1,6 +1,7 @@
 {
   "current": {
     "favicon": "shopify:\/\/shop_images\/Favicon_Spritz_Society_32x32_eb8f7bd7-04d1-4de1-8e37-fca6c9a13cbb.png",
+    "main_navigation": "main-menu",
     "instagram_url": "https:\/\/www.instagram.com\/spritz\/?hl=en",
     "gwp_enabled": true,
     "gwp_min": "20",
@@ -116,13 +117,13 @@
           "3abfe1b4-be97-40f1-9161-b5449811a032": {
             "type": "block",
             "settings": {
-              "text": "<p>Free shipping on $60+<\/p>"
+              "text": "<p>Free shipping on $55+<\/p>"
             }
           },
           "59f6979a-2ae9-4e39-81a7-9a4a7693639a": {
             "type": "block",
             "settings": {
-              "text": "<p>ORDER THE NEW VARIETY 8-PACK TODAY<\/p>"
+              "text": "<p>Try NEW Peach Today<\/p>"
             }
           },
           "a70ccdf2-1ffc-4a1a-ae2d-ff4beadd1bb4": {
@@ -239,34 +240,47 @@
           "2a4ad179-ec6d-49b6-afe0-3f78ef80281e": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled-1_09_3e1dd8f1-e9b0-4733-a122-514e0d5f7395.png",
-              "product": "grapefruit"
+              "image": "shopify:\/\/shop_images\/Render_Grapefruit_V4.png",
+              "product": "grapefruit",
+              "new_badge": false
+            }
+          },
+          "a2adec82-9f2e-44f0-a0e7-638659ee5b53": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Render_Peach_V4.0.png",
+              "product": "peach",
+              "new_badge": true
             }
           },
           "43226e02-6952-457e-ab58-fa5bf1eecfc6": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled-1_10_bf7de8a7-9716-47a5-885d-0d94bc60766a.png",
-              "product": "blood-orange"
+              "image": "shopify:\/\/shop_images\/Render_Blood_Orange_V4.png",
+              "product": "blood-orange",
+              "new_badge": false
             }
           },
           "eec955ae-24f9-4bbb-ae84-04a1f593425f": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled-1_05.png",
-              "product": "pineapple"
+              "image": "shopify:\/\/shop_images\/Render_Pineapple_V4.png",
+              "product": "pineapple",
+              "new_badge": false
             }
           },
           "d06fcbed-8ab7-4aef-8c05-f542104f21d0": {
             "type": "product",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled-1_03_ecb79462-1c9b-4e33-b352-abd5f7ba5983.png",
-              "product": "lemon"
+              "image": "shopify:\/\/shop_images\/Render_Lemon_V4.png",
+              "product": "lemon",
+              "new_badge": false
             }
           }
         },
         "block_order": [
           "2a4ad179-ec6d-49b6-afe0-3f78ef80281e",
+          "a2adec82-9f2e-44f0-a0e7-638659ee5b53",
           "43226e02-6952-457e-ab58-fa5bf1eecfc6",
           "eec955ae-24f9-4bbb-ae84-04a1f593425f",
           "d06fcbed-8ab7-4aef-8c05-f542104f21d0"
@@ -527,8 +541,47 @@
       },
       "navigation": {
         "type": "navigation",
+        "blocks": {
+          "6581d578-fccd-41d0-8361-20e09b7bd7a5": {
+            "type": "3_columns",
+            "settings": {
+              "block_nav": "Shop",
+              "product_title": "Flavors",
+              "product_1": "blood-orange",
+              "product_2": "peach",
+              "product_3": "grapefruit",
+              "product_4": "pineapple",
+              "product_5": "lemon",
+              "product_6": "",
+              "bundle_title": "Variety Packs",
+              "bundle_text": "Try all our flavors in one simple pack.<br> award winning flavors",
+              "bundle_img": "shopify:\/\/shop_images\/Vector_4.png",
+              "bundle_name": "8 pack - <br>TRY NEW",
+              "bundle_link": "\/products\/variety-8pack",
+              "bundle_img_2": "shopify:\/\/shop_images\/Vector_3.png",
+              "bundle_name_2": "16 pack - <br>FREE SHIPPING",
+              "bundle_link_2": "\/products\/variety-pack",
+              "banner_title": "Spritz Society Gift Card",
+              "banner_text": "Shopping for someone else but not sure what to<to> give them? Give them the gift of choice with<br> a Spritz Society Gift Card!<\/to>",
+              "img": "shopify:\/\/shop_images\/Vector_5.png",
+              "banner_link": "\/products\/spritz-society-gift-card",
+              "button_text": "SHOP ALL"
+            }
+          },
+          "bc562bce-ad38-4fc9-bb07-739beae2a860": {
+            "type": "menu",
+            "settings": {
+              "block_nav": "Spritz Society",
+              "item_navigation": "spritz-society"
+            }
+          }
+        },
+        "block_order": [
+          "6581d578-fccd-41d0-8361-20e09b7bd7a5",
+          "bc562bce-ad38-4fc9-bb07-739beae2a860"
+        ],
         "settings": {
-          "navigation": "new-menu"
+          "navigation": "spritz-society"
         }
       },
       "subscription-lp--bundle-variety": {
@@ -544,7 +597,7 @@
           "subtitle": "Join the",
           "title": "Spritz Society",
           "title_img": "shopify:\/\/shop_images\/1.png",
-          "text": "Since launching in 2021, we’ve been disrupting the industry through brand, taste, and community and are looking to add to our team of creators, sellers, marketers, operators, and entrepreneurs.",
+          "text": "Since launching in 2021, we’ve been disrupting the industry through brand, taste, and community. \nJoin our dynamic team today.",
           "img": "shopify:\/\/shop_images\/2.jpg",
           "bg_color": "#ffe8e8",
           "btn_text": "APPLY NOW",
@@ -555,7 +608,7 @@
       "careers-promo": {
         "type": "careers-promo",
         "settings": {
-          "text_1": "<p>We’ve opened doors and established partnerships with some of the most respected distributors, retailers, and brand partners and are only just getting started.<\/p>",
+          "text_1": "<p>We’ve opened doors and established partnerships with some of the most respected distributors, retailers, and brand partners and we're just getting started.<\/p>",
           "image": "shopify:\/\/shop_images\/Vector2.png",
           "mobile_image": "shopify:\/\/shop_images\/Vector_16_2.png",
           "text_2": "<p>As a team, we work hard, but we play hard too –  because life’s too short for drinks you don’t love (and to work with uninspiring people)!<\/p>"
