@@ -1,5 +1,6 @@
 {% liquid
     assign title         = section.settings.title 
+    assign title_2       = section.settings.title_2
     assign title_img     = section.settings.title_img
     assign subtitle      = section.settings.subtitle
     assign motto         = section.settings.motto
@@ -29,7 +30,12 @@
                 <h4 class="hp-hero__subtitle">{{ subtitle }}</h4>
 
                 <h1 class="hp-hero__title">
-                    {{ title }}
+                    <span>{{ title }}</span>
+                    
+                    {%- if title_2 != blank -%}
+                        <span class="hp-hero__title_second">{{ title_2 }}</span>
+                    {%- endif -%}
+
                     {% if title_img %}
                         <img class="hp-hero__title_img" src="{{ title_img | img_url: '126x126' }}" alt="{{ title_img.alt }}">
                     {% endif %}
@@ -102,7 +108,13 @@
             "type": "text",
             "id": "title",
             "label": "Section title",
-            "default": "PEACH"
+            "default": "KICK OFF THE"
+        },
+        {
+            "type": "text",
+            "id": "title_2",
+            "label": "Section title second",
+            "default": "4th OF JULY "
         },
         {
             "type": "image_picker",
@@ -111,10 +123,9 @@
             "info": "Image size 126x126px"
         },
         {
-            "type": "text",
+            "type": "richtext",
             "id": "motto",
-            "label": "Section motto",
-            "default": "FEATURING ALL 4 FLAVORS"
+            "label": "Section motto"
         },
         {
             "type": "image_picker",
