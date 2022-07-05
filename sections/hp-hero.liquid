@@ -1,12 +1,13 @@
 {% liquid
     assign title         = section.settings.title 
     assign title_2       = section.settings.title_2
-    assign title_img     = section.settings.title_img
+    assign border_img    = section.settings.border_img
     assign subtitle      = section.settings.subtitle
     assign motto         = section.settings.motto
     assign img           = section.settings.img
     assign bg_img        = section.settings.bg_img 
     assign bg_img_mobile = section.settings.bg_img_mobile
+    assign cont_bg_mob   = section.settings.content_bg_mobile
     assign bg_color      = section.settings.bg_color
     assign btn_text      = section.settings.btn_text
     assign btn_url       = section.settings.btn_url
@@ -25,7 +26,7 @@
 <section class="hp-hero" style="{% if bg_color != blank %}background-color: {{ bg_color }};{% endif %}">
     
     <div class="hp-hero__top">
-        <div class="hp-hero__content">
+        <div class="hp-hero__content" {% if cont_bg_mob != blank %}style="background-image: url({{ cont_bg_mob | img_url: '740x' }});"{% endif %}>
             <div class="hp-hero__content_inner">
                 <h4 class="hp-hero__subtitle">{{ subtitle }}</h4>
 
@@ -35,10 +36,6 @@
                     {%- if title_2 != blank -%}
                         <span class="hp-hero__title_second">{{ title_2 }}</span>
                     {%- endif -%}
-
-                    {% if title_img %}
-                        <img class="hp-hero__title_img" src="{{ title_img | img_url: '126x126' }}" alt="{{ title_img.alt }}">
-                    {% endif %}
                 </h1>
 
                 <h2 class="hp-hero__motto">{{ motto }}</h2>
@@ -57,6 +54,11 @@
             <img class="hp-hero__img_single" src="{{ img | img_url: 'master' }}" alt="{{ img.alt }}">
 
             <img class="hp-hero__img_mobile" src="{% if bg_img_mobile %}{{ bg_img_mobile | img_url: '740x' }}{% else %}{{ bg_img | img_url: '740x' }}{% endif %}" alt="{{ bg_img_mobile.alt }}">
+
+            {% if border_img %}
+                <img class="hp-hero__border_img_top" src="{{ border_img | img_url: '124x151' }}" alt="{{ border_img.alt }}">
+                <img class="hp-hero__border_img_bottom" src="{{ border_img | img_url: '124x151' }}" alt="{{ border_img.alt }}">
+            {% endif %}
         </div>
     </div>
 
@@ -91,7 +93,7 @@
             {% endif %}
         </div>
     </div>
-
+  
 </section>
 
 {% schema %}
@@ -117,15 +119,15 @@
             "default": "4th OF JULY "
         },
         {
-            "type": "image_picker",
-            "id": "title_img",
-            "label": "Title image",
-            "info": "Image size 126x126px"
-        },
-        {
             "type": "richtext",
             "id": "motto",
             "label": "Section motto"
+        },
+        {
+            "type": "image_picker",
+            "id": "border_img",
+            "label": "Border image",
+            "info": "Image size 124x151px"
         },
         {
             "type": "image_picker",
@@ -147,6 +149,11 @@
             "type": "image_picker",
             "id": "bg_img_mobile",
             "label": "Section background image mobile"
+        },
+        {
+            "type": "image_picker",
+            "id": "content_bg_mobile",
+            "label": "Content area background image mobile"
         },
         {
             "type": "text",

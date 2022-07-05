@@ -9932,7 +9932,7 @@ function initHeaderFunctions (){
             
             document.body.style.top = - window.pageYOffset + 'px';
             scrolled = window.pageYOffset;
-            document.body.classList.add('megamenu_active'); console.log('test',scrolled);
+            document.body.classList.add('megamenu_active'); 
             return scrolled;
         });
 
