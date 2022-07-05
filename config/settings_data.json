@@ -554,24 +554,25 @@
               "product_5": "lemon",
               "product_6": "",
               "bundle_title": "Variety Packs",
-              "bundle_text": "Try all our flavors in one simple pack.<br> award winning flavors",
+              "bundle_text": "",
               "bundle_img": "shopify:\/\/shop_images\/Vector_4.png",
-              "bundle_name": "8 pack - <br>TRY NEW",
+              "bundle_name": "8 pack",
               "bundle_link": "\/products\/variety-8pack",
               "bundle_img_2": "shopify:\/\/shop_images\/Vector_3.png",
-              "bundle_name_2": "16 pack - <br>FREE SHIPPING",
+              "bundle_name_2": "16 pack",
               "bundle_link_2": "\/products\/variety-pack",
               "banner_title": "Spritz Society Gift Card",
-              "banner_text": "Shopping for someone else but not sure what to<to> give them? Give them the gift of choice with<br> a Spritz Society Gift Card!<\/to>",
+              "banner_text": "",
               "img": "shopify:\/\/shop_images\/Vector_5.png",
               "banner_link": "\/products\/spritz-society-gift-card",
-              "button_text": "SHOP ALL"
+              "button_text": "SHOP ALL",
+              "button_link": "shopify:\/\/collections\/spritz"
             }
           },
           "bc562bce-ad38-4fc9-bb07-739beae2a860": {
             "type": "menu",
             "settings": {
-              "block_nav": "Spritz Society",
+              "block_nav": "Menu",
               "item_navigation": "spritz-society"
             }
           }
@@ -581,7 +582,6 @@
           "bc562bce-ad38-4fc9-bb07-739beae2a860"
         ],
         "settings": {
-          "navigation": "spritz-society"
         }
       },
       "subscription-lp--bundle-variety": {

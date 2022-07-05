@@ -3,6 +3,24 @@
     assign title        = section.settings.title
     assign blocks       = section.blocks
 %}
+<script>
+    window.storeLocatorMapMarker = {
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'marker' -%}
+            {{ block.settings.text }}: '{{ block.settings.icon | img_url: '50x82' }}',
+          {%- endif -%}  
+        {%- endfor -%}
+    };
+</script>
+
+<script src="{{ 'store-locator.js' | asset_url }}" defer="defer"></script>
+{% comment %} 
+to use the store locator functionality out of the box, disable the script above and uncomment the page content
+and remove Stockist.co widget code
+
+has been changed function _getMarkerUrl and _calculateDistance and buildTemplateForResult 
+{% endcomment %}
+
 
 <article class="text-page store-locator--main">
     <header class="text-page__header text-center">
@@ -11,20 +29,27 @@
     </header>
 
     <section class="text-page__body">
-      {{ page.content }}
+      {% comment %} {{ page.content }} {% endcomment %}
+
+        <!-- Start Stockist.co widget -->
+        <div data-stockist-widget-tag="u10795">Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...</div>
+        <!-- End Stockist.co widget -->
+
         <div class="delivery-blocks">
             <h2 class="delivery-blocks__title">{{ title }}</h2>
             <div class="delivery-blocks__list">
                 {% for block in blocks %}
-                    {% assign title = block.settings.title %}
-                    {% assign icon  = block.settings.icon %}
-                    {% assign url  = block.settings.url %}
-
-                    <a href="{{ url }}" target="_blank" class="delivery-blocks__item">
-                        <div class="delivery-blocks-item__img">
-                            <img src="{{ icon | img_url: 'master' }}" alt="{{ icon.alt }}">
-                        </div>
-                    </a>
+                    {% unless block.type == 'marker' %}
+                        {% assign title = block.settings.title %}
+                        {% assign icon  = block.settings.icon %}
+                        {% assign url  = block.settings.url %}
+    
+                        <a href="{{ url }}" target="_blank" class="delivery-blocks__item">
+                            <div class="delivery-blocks-item__img">
+                                <img src="{{ icon | img_url: 'master' }}" alt="{{ icon.alt }}">
+                            </div>
+                        </a>
+                    {% endunless %}
                 {% endfor %}
             </div>
         </div>
@@ -87,6 +112,22 @@
                     "type": "url",
                     "id": "url",
                     "label": "Link"
+                }
+            ]
+        },
+        {
+            "type": "marker",
+            "name": "map marker",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon(50x82px)"
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Filter name"
                 }
             ]
         }

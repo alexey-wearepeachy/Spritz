@@ -354,7 +354,7 @@
 
 #home {
     #shopify-section-ss-header {
-        background-color: #E56757;
+        background-color: #ED2724;
     }
     #MainContent {
         padding-top: 13px;
@@ -3232,6 +3232,9 @@
         margin: 35px 0 40px;
     }
 }
+.home .hero__press-title {
+    color: #EF2421;
+}
 
 .hero__press-desk {
     display: none;
@@ -3335,7 +3338,7 @@ main:-internal-direct-focus {
 }
 
 .hp-hero {
-    padding-top: 60px;
+    padding-top: 59px;
     .container {
         padding: 0 0 40px;
         max-width: 1440px;
@@ -3353,7 +3356,8 @@ main:-internal-direct-focus {
 
         padding: 0;
         position: relative;
-        border-bottom: 3px solid #f64a47;
+        overflow-x: hidden;
+        border-bottom: 3px solid #E52926;
         @media (min-width: 740px) {
             flex-direction: row;
             align-items: center;
@@ -3371,14 +3375,24 @@ main:-internal-direct-focus {
             top: 50%;
             display: flex;
             justify-content: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             
             .hp-hero__content_inner {
-                max-width: 600px;
+                max-width: 640px;
                 margin: 0 auto;
-                padding: 24px 15px;
+                padding: 24px 0;
+                text-align: center;
                 
                 @media (min-width: 1020px) {
-                    margin-right: 10%;
+                    margin-right: 6%;
+                    min-width: 86%;
+                }
+                @media (max-width: 740px) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 }
             }
             
@@ -3389,6 +3403,7 @@ main:-internal-direct-focus {
                 z-index: 1;
                 text-align: left;
                 transform: translateY(-50%);
+                background: none !important;
 
                 .hp-hero__content_inner {
                     padding: 20px 40px;
@@ -3397,8 +3412,11 @@ main:-internal-direct-focus {
             @media (min-width: 1020px) {
               
             }
-            @media (min-width: 1300px) {
-              
+            @media (min-width: 1800px) {
+                .hp-hero__content_inner {
+                    margin-right: auto;
+                    min-width: auto;
+                }
             }
             .hp-hero__subtitle {
                 font-family: 'Knockout-junior';
@@ -3406,19 +3424,21 @@ main:-internal-direct-focus {
                 font-weight: 500;
                 font-size: 20px;
                 line-height: 22px;
-                color: #E56757;
+                color: #E52926;
 
                 white-space: nowrap;
-                margin-bottom: 9px;
+                margin-bottom: 0;
                 padding-left: 5px;
+                padding-top: 10px;
 
                 @media (max-width: 365px) {
                     font-size: 16px;
                     line-height: 18px;
                 }
                 @media (min-width: 740px) {
-                    text-align: left;
                     padding-left: 0;
+                    display: block;
+                    padding-top: 0;
                 }
                 @media (min-width: 1300px) {
                     font-size: 28px;
@@ -3427,15 +3447,15 @@ main:-internal-direct-focus {
              }
             .hp-hero__title {
                 position: relative;
-                font-family: 'Bebas Neue';
+                font-family: 'Knockout-lite';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 150px;
-                line-height: 165px;
+                font-size: 72px;
+                line-height: 61px;
                 text-transform: uppercase;
                 text-align: center;
-                color: #E56757;
-                line-height: 0.8;
+                color: #ED2724;
+                padding-top: 20px;
 
                 position: relative;
                 display: block;
@@ -3444,45 +3464,53 @@ main:-internal-direct-focus {
                 @media (min-width: 740px) {
                     padding-top: 10px;
                     display: inline-block;
-                    font-size: 180px;
                     text-align: left;
-                    margin-left: -5px;
+                    margin-left: -2px;
+                    font-size: 72px;
+                    line-height: 61px;
                 }
                 @media (min-width: 1300px) {
-                    font-size: 280px;
-                    margin-left: -11px;
+                    font-size: 140px;
+                    line-height: 119px;
                 }
-                .hp-hero__title_img {
-                    position: absolute;
-                    top: -5px;
-                    right: -27px;
-                    display: none;
-
-                    @media (min-width: 740px) {
-                        width: 63px;
-                        height: 63px;
-                        display: block;
-                    }
-                    @media (min-width: 1300px) {
-                        width: auto;
-                        height: auto;
-                        top: -40px;
-                        right: -55px;
-                    }
+                .hp-hero__title_second {
+                    display: block;
                 }
             }
             .hp-hero__motto {
-                font-family: 'Bebas Neue';
+                font-family: arial, sans-serif;
                 font-style: normal;
                 font-weight: 400;
-                font-size: 24px;
-                line-height: 28px;
+                font-size: 23px;
+                line-height: 25px;
                 text-align: center;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                color: #F64A47;
+                color: #4458A7;
+                order: 2;
+
+                strong {
+                    font-weight: bold;
+                }
                 @media (min-width: 740px) {
                     text-align: left;
+                    margin-top: 10px;
+                }
+                @media (min-width: 740px) and (max-width: 1300px) {
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+                @media (max-width: 740px) {
+                    margin-top: 20px;
+                    em {
+                        display: block;
+                    }
+                    p + p {
+                        margin-top: 25px;
+                    }
+                }
+                @media (max-width: 480px) {
+                }
+                @media (max-width: 380px) {
+                    max-width: none;
                 }
             }
             .hp-hero__btn {
@@ -3494,32 +3522,31 @@ main:-internal-direct-focus {
                 font-family: 'Knockout';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 17px;
-                line-height: 20px;
+                font-size: 16px;
+                line-height: 18px;
                 text-transform: uppercase;
-                color: #e56757;
-                background: #ffefe8;
+                color: #ED2724;
+                background: #FFFDF8;
 
                 padding: 11px;
-                margin: 10px auto 20px;
-                min-height: 60px;
+                margin: 30px auto 0;
+                min-height: 48px;
                 width: max-content;
-                min-width: 260px;
+                min-width: 212px;
 
                 @media (min-width: 740px) {
-                    font-size: 14px;
-                    line-height: 16px;
-
                     padding: 8px;
-                    // min-height: 33px;
-                    // min-width: 125px;
-                    margin: 12px 0 0;
+                    min-height: 44px;
+                    min-width: 210px;
+                    margin: 12px auto 0;
+                    font-size: 14px;
                 }
                 @media (min-width: 1300px) {
                     min-width: 262px;
-                    // min-height: 47px;
+                    min-height: 60px;
 
-                    margin-top: 10px;
+                    margin-top: 30px;
+                    font-size: 20px;
                 }
                 
                 .btn--overlay {
@@ -3530,7 +3557,7 @@ main:-internal-direct-focus {
                     top: 0;
                     left: 0;
                     clip-path: polygon(0 20%, 3% 0, 97% 0, 100% 20%, 100% 80%, 97% 100%, 3% 100%, 0 80%);
-                    background: #e56757;
+                    background: #ED2724;
                     @media (min-width: 740px) {
                         clip-path: polygon(0 20%,5% 0,95% 0,100% 20%,100% 80%,95% 100%,5% 100%,0 80%);
                     }
@@ -3543,7 +3570,7 @@ main:-internal-direct-focus {
                     top: 2px;
                     left: 2px;
                     clip-path: polygon(0 20%,3% 0,97% 0,100% 20%,100% 80%,97% 100%,3% 100%,0 80%);
-                    background: #ffefe8;
+                    background: #FFFDF6;
 
                     transition: .3s ease;
                     @media (min-width: 740px) {
@@ -3551,7 +3578,7 @@ main:-internal-direct-focus {
                     }
                 }
                 span {
-                    color: #e56757;
+                    color: #ED2724;
                     z-index: 1;
 
                     display: flex;
@@ -3559,7 +3586,7 @@ main:-internal-direct-focus {
                 }
                 &:hover {
                     .btn--overlay-hover {
-                        background-color: #fff;
+                        background-color: #FFF3EA;
                     }
                 }
             }
@@ -3567,8 +3594,9 @@ main:-internal-direct-focus {
         .hp-hero__img {
             width: 100%;
             position: relative;
-
+            
             @media (min-width: 740px) {
+                overflow: hidden;
             }
             @media (min-width: 1020px) {
                
@@ -3578,6 +3606,10 @@ main:-internal-direct-focus {
                 height: auto;
                 display: block;
                 object-fit: cover;
+
+                @media (min-width: 740px) {
+                    width: 50%;
+                }
             }
         }
         img.hp-hero__img_bg {
@@ -3587,10 +3619,10 @@ main:-internal-direct-focus {
             }
         }
         img.hp-hero__img_single {
-            width: 40%;
+            width: 50%;
             position: absolute;
-            bottom: 0;
-            left: 52%;
+            top: 0;
+            left: 50%;
             display: none;
             @media (min-width: 740px) {
                 display: block;
@@ -3604,6 +3636,33 @@ main:-internal-direct-focus {
             border-bottom: 3px solid #EF2421;
             @media (min-width: 740px) {
                 display: none;
+            }
+        }
+        img.hp-hero__border_img_top {
+            width: 56px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin: -35px 0 0 -27px;
+            
+            @media (min-width: 740px) {
+                width: auto;
+                top: 0;
+                left: 50%;
+                margin: -75px 0 0 -61px;
+            }
+        }
+        img.hp-hero__border_img_bottom {
+            width: 56px;
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            margin: 0 0 -33px -28px;
+            
+            @media (min-width: 740px) {
+                width: auto;
+                left: 50%;
+                margin: 0 0 -76px -61px;
             }
         }
     }
@@ -3620,6 +3679,10 @@ main:-internal-direct-focus {
             }
         }
     }
+}
+ 
+.home .hp-hero .hp-hero__top {
+    border-color: #EF2421;
 }
 
 .pages.careers {
