@@ -1942,6 +1942,7 @@
             a {
                 font-size: 20px;
                 line-height: 100%;
+                word-break: break-word;
 
                 transition: all .2s ease-in-out;
                 &:hover {
@@ -1951,6 +1952,12 @@
 
                 @media (min-width: 1024px) {
                     font-size: 26px;
+                }
+                @media (max-width: 480px) {
+                    font-size: 16px;
+                }
+                @media (max-width: 380px) {
+                    font-size: 14px;
                 }
             }
         }
