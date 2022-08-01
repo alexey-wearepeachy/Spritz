@@ -8865,7 +8865,7 @@ this.decorators.push("return fn;"),d?this.decorators=Function.apply(this,["fn","
   if (firstSegment === "") {
     return $('body').removeAttr('class').addClass('home').attr('id', 'home');
   } else {
-    return $('body').removeAttr('class').attr('id', bodyClass).addClass(bodyClass);
+    return $('body').attr('id', bodyClass).addClass(bodyClass);
   }
 };
 ;var addInviewClass = function(element) {
@@ -10505,6 +10505,7 @@ function initCustomScripts() {
       changeImgBySelect(this);
     });
   }
+  
 
   // hide arrow in select when only 1 option
   if ($('.js-product-select').length) {

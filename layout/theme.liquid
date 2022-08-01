@@ -112,7 +112,8 @@
     <script async="" type="text/javascript">var d=document,s='https://a.smtrk.net/trk?t=s&i=62693cb87d6dc3d91ebd58b6&p=t,i,x&s=069e2cd9df61fbeae7168c604b7a5d5e&r='+escape(d.referrer)+'&u='+escape(d.URL),n=d.createElement("script"),e=d.getElementsByTagName("script")[0];n.async=!0,n.src=s,e.parentNode.insertBefore(n,e);</script>
   </head>
 
-  <body>
+  <body class="template_{{ template.name }}{% if template.suffix.size > 0 %}_{{ template.suffix }}{% endif %}">
+    
     <script>
       let ssData = localStorage.getItem('registeredCustomer');
       if ('{{ customer.email }}' == ssData) {

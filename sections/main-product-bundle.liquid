@@ -1,0 +1,676 @@
+{% comment %}
+If product more than one Variant
+{% endcomment %}
+
+{% assign is_merch_product = false %}
+{% for collection in product.collections %}
+  {% assign title = collection.title | downcase %}
+  {% if title == 'merch' %}
+    {% assign is_merch_product = true %}
+  {% endif %}
+{% endfor %}
+
+{% assign hasFruitGraphic = false %}
+{% assign fruitGraphic =  product.metafields.my_fields.fruit_graphic %}
+{% if fruitGraphic != blank %}
+  {% assign hasFruitGraphic = true %}
+{% endif %}
+{% assign hasOneVar = true %}
+{% if product.variants.size > 1 %}
+{% assign hasOneVar = false %}
+{% endif %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign product_color = 'ss-' | append: product.id %}
+
+<article class="product-hero" data-product-id="{{product.id}}" id="{{ product_color }}">
+    <div class="d-flex flex-j-center flex-wrap ss-container">
+      <div class="product-hero__center left_part">
+        <div class="d-flex">
+          <div class="thumbnail-slider-wrap">
+            <div class="slider-arrow-prev">
+              {% render '_ss_icon_down_arrow' %}
+            </div>
+            <div class="thumbnail-slider">
+
+              {% for image in product.images %}
+                <picture class="">
+                  <img
+                          data-src="{{ image | img_url: '100x' }}"
+                          data-srcset="{{ image | img_url: '600x' }},
+                    {{ image | img_url: '600x', scale: 2 }} 2x,
+                    {{ image | img_url: '600x', scale: 3 }} 3x"
+                          width="{{ product.featured_image.width}}"
+                          height="{{ product.featured_image.height}}"
+                          alt="{{product.title}} from {{shop.name}}"
+                          data-custom-alt="{{ image.alt }}"
+                          class="lazyload margin-auto w-auto d-block h-auto" />
+                </picture>
+              {% endfor %}
+
+            </div>
+            <div class="slider-arrow-next">
+              {% render '_ss_icon_down_arrow' %}
+            </div>
+          </div>
+
+
+
+          <div class="pdp-image-wrap main-slider">
+
+            {%- comment -%}
+             {% if hasFruitGraphic %}
+              <img
+                data-src="{{product.metafields.my_fields.fruit_graphic | file_url }}"
+                alt="{{product.title}}"
+                class="js-fruit-graphic lazyload"
+                aria-hidden="true">
+            {% endif %}
+            {%- endcomment -%}
+
+
+            {% for image in product.images %}
+              <picture class="">
+
+                {% assign image_variant_id = "" %}
+                {% for variant in product.variants %}
+                  {% if variant.image.src == image.src %}
+                    {% assign image_variant_id = variant.id %}
+                  {% endif %}
+                {% endfor %}
+                <img
+                        data-src="{{ image | img_url: '100x' }}"
+                        data-srcset="{{ image | img_url: '600x' }},
+                    {{ image | img_url: '600x', scale: 2 }} 2x,
+                    {{ image | img_url: '600x', scale: 3 }} 3x"
+                        width="{{ product.featured_image.width}}"
+                        height="{{ product.featured_image.height}}"
+                        alt="{{product.title}} from {{shop.name}}"
+                        class="lazyload margin-auto w-auto d-block h-auto"
+                        data-id="{{ image_variant_id }}" 
+                        data-order="{{ forloop.index | minus: 1 }}"
+                        data-custom-alt="{{ image.alt }}"/>
+              </picture>
+            {% endfor %}
+
+
+            {% assign src = image %}
+
+
+          </div>
+          <div class="main-arrow-prev"><</div>
+          <div class="main-arrow-next">></div>
+
+
+        </div>
+
+      </div>
+
+      <div class="product-hero__right right_part">
+
+        {% assign title = product.title | downcase %}
+        {% comment %} {% if title contains 'variety' and section.settings.free_sticker != blank %}
+          <div class="position-absolute pdp-right-img variety-free-shipping">
+            <img src="{{section.settings.free_sticker | img_url: 'master'}}" >
+          </div>
+        {% endif %} {% endcomment %}
+
+        {% comment %} {% unless is_merch_product %}
+          <div class="position-absolute pdp-right-img {% if title contains 'variety' %}variety-temp{% endif %}">
+            {% render '_ss_icon_pdp_badge' %}
+          </div>
+        {%endunless%} {% endcomment %}
+
+        {% if section.settings.promo_sticker %}
+          <div class="position-absolute pdp-right-img variety-temp">
+            <img src="{{section.settings.promo_sticker | img_url: '130x'}}" >
+          </div>
+        {% endif %}
+
+        <div class="product-hero__right--inner product-content">
+          <form action="/cart/add" method="post" enctype="multipart/form-data" data-id="{{product.id}}"
+                class="js-product-form {% if title contains 'variety' %}variety-form{% endif %}"
+                data-title="{{ product.title }}"
+                data-categories='{{ product.collections |map:'title' |json }}'
+                data-image-url="https:{{ product.featured_image.src|img_url:'grande' }}"
+                data-url="{{ shop.secure_url }}{{ product.url }}"
+                data-brand={{ product.vendor|json }}
+                data-price={{ product.price|money|json }}
+                data-compareatprice={{ product.compare_at_price_max|money|json }}>
+            <h1 class="spritz-product__title heading-l pdp-title h2">{{product.title}}</h1>
+            <a href="#reviews">
+              {% render 'okendo-reviews-product-rating-summary' %}
+            </a>
+            <br>
+
+            {% comment %} {% unless is_merch_product or product.metafields.multi.multi_variants_packs %}
+              <p class="acumin-pro meet-our-spritz-sub-headline body-2 line-2" style="margin-top: 0;">{{ product.metafields.product.pack }}-pack&nbsp;</p>
+            {%endunless%} {% endcomment %}
+            <p class="acumin-pro meet-our-spritz-sub-headline body-2" style="margin-top: 0;">{{ product.metafields.descriptors.subtitle }}</p>
+
+
+            {% comment %}
+            {% unless product.has_only_default_variant %}
+            <span class="js-pdp-variant pdp-variant-name d-block">
+              {{product.selected_or_first_available_variant.title}}
+            </span>
+            {% endunless %}
+            {% endcomment %}
+            {% comment %}
+            <div class="yotpo bottomLine mb-3" data-product-id="{{ product.id }}" aria-label="Star rating">
+              <div class="current"></div>
+            </div>
+            {% endcomment %}
+            <!-- SMARTRR_CUSTOMIZED_NO_AUTO_EDIT -->
+            {% comment %}{% render 'smartrr-product' %}{% endcomment %}
+
+            <div class="pdp-desc acumin-pro js-bundle_description">
+              {{product.description}}
+            </div>
+
+            {% if product.metafields.product.props != blank %}
+              <div class="product-props">
+                {% assign product_props = product.metafields.product.props | split: '|' %}
+                {% for prop in product_props %}
+                  <div class="product-props__item">
+                    {{ prop }}
+                    <svg width="111" height="77" viewBox="0 0 111 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M105.893 76H5.10742L1 71.507L1 5.49064L5.10742 1H105.893L110 5.49064V71.507L105.893 76Z" stroke="#F64A47" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% render '_ss_pdp_dropdown' %}
+
+            {% if product.tags contains 'varietyPack' %}
+              {% assign variety_class = 'multi-var' %}
+            {% endif %}
+            {% render '_selling_plan_options', variety_class: variety_class %}
+
+            {% if product.metafields.custom_fields["product_attributes"] != blank %}
+              <div class="accordion">
+                {% for item in product.metafields.custom_fields["product_attributes"] %}
+                  {% if item["heading"] != blank %}
+                    <button type="button" class="accordion-trigger" id="accordion-trigger--{{forloop.index}}">{{
+                      item["heading"] }}</button>
+                  {% endif %}
+                  {% if item["body"] != blank %}
+                    <div class="accordion-panel">
+                      {{ item["body"] }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% comment %}<span class="js-product-price pdp-price">{{product.price | money }}</span>{% endcomment %}
+
+            {% assign multi_variants_packs = product.metafields.multi.multi_variants_packs | split: ','  %}
+
+            
+            {% comment %}  {% endcomment %}
+            {% if product.metafields.sep_product.product != blank or product.metafields.sep_product.product_2 != blank %}
+              <div class="bundle-variants-title"><span>Select your Bundle</span></div>
+
+              <div class="bundle-variants">
+                {% if product.metafields.sep_product.product != blank %}
+                  {% assign bundle_product_2 = all_products[product.metafields.sep_product.product] %}
+  
+                  <p class="js-bundle-trigger bundle-trigger" data-id="product_{{ bundle_product_2.id }}" data-custom-alt="{{ bundle_product_2.title }}">
+                    <svg class="desktop" width="172" height="62" viewBox="0 0 172 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M25.9698 60.4878L1.29921 30.7439L25.9698 0.999985L146.03 0.999985L170.701 30.7439L146.03 60.4878L25.9698 60.4878Z" stroke="url(#paint0_linear_3_235)" stroke-width="2"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_3_235" x1="0" y1="30.7439" x2="172" y2="30.7439" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FF3347"/>
+                        <stop offset="0.489583" stop-color="#F36C28"/>
+                        <stop offset="1" stop-color="#F1CE0E"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
+
+                    <svg class="mobile" style="display:none;" width="305" height="62" viewBox="0 0 305 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M45.5258 60.9756L1.77855 31.2317L45.5258 1.48778L259.474 1.48778L303.221 31.2317L259.474 60.9756L45.5258 60.9756Z" stroke="url(#paint0_linear_3_308)" stroke-width="2"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_3_308" x1="0" y1="31.2317" x2="305" y2="31.2317" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#FF3347"/>
+                      <stop offset="0.489583" stop-color="#F36C28"/>
+                      <stop offset="1" stop-color="#F1CE0E"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
+
+                    <span>{{ bundle_product_2.title }}</span>
+                  </p>
+                {% endif %}
+
+                <p class="js-bundle-trigger bundle-trigger active" data-id="product_{{ product.id }}" data-custom-alt="{{ product.title }}">
+                  <svg class="desktop" width="172" height="62" viewBox="0 0 172 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25.9698 60.4878L1.29921 30.7439L25.9698 0.999985L146.03 0.999985L170.701 30.7439L146.03 60.4878L25.9698 60.4878Z" stroke="url(#paint0_linear_3_235)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_3_235" x1="0" y1="30.7439" x2="172" y2="30.7439" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#FF3347"/>
+                      <stop offset="0.489583" stop-color="#F36C28"/>
+                      <stop offset="1" stop-color="#F1CE0E"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <svg class="mobile" style="display:none;" width="305" height="62" viewBox="0 0 305 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M45.5258 60.9756L1.77855 31.2317L45.5258 1.48778L259.474 1.48778L303.221 31.2317L259.474 60.9756L45.5258 60.9756Z" stroke="url(#paint0_linear_3_308)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_3_308" x1="0" y1="31.2317" x2="305" y2="31.2317" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FF3347"/>
+                    <stop offset="0.489583" stop-color="#F36C28"/>
+                    <stop offset="1" stop-color="#F1CE0E"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <span>{{ product.title }}</span>
+                </p>
+  
+                {% if product.metafields.sep_product.product_2 != blank %}
+                  {% assign bundle_product_3 = all_products[product.metafields.sep_product.product_2] %}
+  
+                  <p class="js-bundle-trigger bundle-trigger" data-id="product_{{ bundle_product_3.id }}" data-custom-alt="{{ bundle_product_3.title }}">
+                    <svg class="desktop" width="172" height="62" viewBox="0 0 172 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M25.9698 60.4878L1.29921 30.7439L25.9698 0.999985L146.03 0.999985L170.701 30.7439L146.03 60.4878L25.9698 60.4878Z" stroke="url(#paint0_linear_3_235)" stroke-width="2"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_3_235" x1="0" y1="30.7439" x2="172" y2="30.7439" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FF3347"/>
+                        <stop offset="0.489583" stop-color="#F36C28"/>
+                        <stop offset="1" stop-color="#F1CE0E"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
+
+                    <svg class="mobile" style="display:none;" width="305" height="62" viewBox="0 0 305 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M45.5258 60.9756L1.77855 31.2317L45.5258 1.48778L259.474 1.48778L303.221 31.2317L259.474 60.9756L45.5258 60.9756Z" stroke="url(#paint0_linear_3_308)" stroke-width="2"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_3_308" x1="0" y1="31.2317" x2="305" y2="31.2317" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#FF3347"/>
+                      <stop offset="0.489583" stop-color="#F36C28"/>
+                      <stop offset="1" stop-color="#F1CE0E"/>
+                      </linearGradient>
+                      </defs>
+                    </svg>
+
+                    <span>{{ bundle_product_3.title }}</span>
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% comment %} <div class="accordion-trigger-wrapper notchouter ">
+              <div class="verticle-border verticle-border-left"></div>
+              <div class="accordion-inner notchinner">
+                
+                <button class="accordion-trigger js-accordion-trigger">
+                  <span class="accordeon-title">{{ current_variant.title }}</span>
+                    <span class="accordion-icon">
+                      <svg width="33" height="13" viewBox="0 0 33 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.4043 1L16.3268 12L31.2499 1" stroke="#F64A47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>        
+                  </button>
+                
+                <div class="accordion-panel js-accordion-panel">
+                  <ul class="dropdown-list">
+                    {% for variant in product.variants %}
+                      {% if variant.available == true %}
+                        <li class="js-variant-bundle-select {% if variant == current_variant %}current{% endif %}" 
+                          data-variant="{{ variant.id }}" 
+                          data-name="{{ variant.title }}" 
+                          data-desc="{{ variant.metafields.variant.variant_info }}">
+                          {{ variant.title }}
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+            
+              </div>
+              <div class="verticle-border verticle-border-right"></div>
+            </div> {% endcomment %}
+                  
+            {% comment %}  
+            <div class="select-switcher"> 
+              {% for variant in product.variants %}
+                {% if variant.available == true %}
+                  <div class="switcher-overlay">
+                    <input type="radio" name="selectSwitcher"
+                          id="switcher-{{ forloop.index0 }}"
+                          class="select-switcher__item"
+                          data-op="{{ forloop.index0 }}"
+                          data-variant="{{ variant.id }}" 
+                          data-price="{{ variant.price | money }}" 
+                          data-desc="{{ variant.metafields.variant.variant_info }}"
+                          value="{{ variant.title }}"
+                          {% if forloop.first %} checked {% endif %}
+                    >
+                    <label for="switcher-{{ forloop.index0 }}" class="sel-switcher-option noselect">
+                      <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5.09475L10.8551 1L21 5.09475L21 11.788L10.8551 16L1 11.788L1 5.09475Z" stroke="#F64A47"></path>
+                      </svg>
+                      {{ variant.title }}
+                    </label>
+                  </div>
+                  
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% endcomment %}
+
+            {% comment %}Dont show if only the `Default Title` variant{% endcomment %}
+            {% if product.available == true %}
+              <div class="select select--pdp js-select" style="{% if is_merch_product %}display: block; {% else %}display: none {% endif %}">
+                {% comment %}<input type="hidden" name="id" class="js-product-select" value="{{ product.variants.first.id }}">{% endcomment %}
+                <select name="id" class="js-product-select">
+                  <option value="{{product.variants.first.id}}"
+                    data-index="{{ 1 }}"
+                    data-js-option-price="{{ product.variants.first.price | money_without_currency }}"
+                    data-price="{{ product.variants.first.price | money_with_currency }}"
+                  >
+                    {{ product.title }}
+                  </option>
+
+                  {% if bundle_product_2 != blank %}
+                    <option value="{{bundle_product_2.variants.first.id}}"
+                      data-index="{{ 2 }}"
+                      data-js-option-price="{{ bundle_product_2.variants.first.price | money_without_currency }}"
+                      data-price="{{ bundle_product_2.variants.first.price | money_with_currency }}"
+                    >
+                      {{ bundle_product_2.title }}
+                    </option>
+                  {% endif %}
+
+                  {% if bundle_product_3 != blank %}
+                    <option value="{{bundle_product_3.variants.first.id}}"
+                      data-index="{{ 3 }}"
+                      data-js-option-price="{{ bundle_product_3.variants.first.price | money_without_currency }}"
+                      data-price="{{ bundle_product_3.variants.first.price | money_with_currency }}"
+                    >
+                      {{ bundle_product_3.title }}
+                    </option>
+                  {% endif %}
+
+                </select> 
+              </div>
+            {% endif %}
+
+            {% if product.title contains 'Shirt' or product.title contains 'Crewneck' %}
+              <a href="#size-guide-popup" class="open-popup-link">Size guide</a>
+
+              <div id="size-guide-popup" class="white-popup mfp-hide">
+                {% if product.title contains 'Shirt' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0581/1909/4440/files/Spritz_SG_tee_1.png?v=1630433496" alt="">
+                {% endif %}
+                {% if product.title contains 'Crewneck' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0581/1909/4440/files/Spritz_SG_crewneck_1.png?v=1630433456" alt="">
+                {% endif %}
+              </div>
+            {% endif %}
+
+
+            <div class="d-flex flex-j-center flex-a-center pdp-qty-with-price">
+              <div class="d-flex flex-j-center acumin-pro pdp-qty-increment-wrap">
+                <label class="d-flex pdp-qty-area" for="pdp-qty-{{product.id}}" aria-label="Selet a quantity">
+                  <input type="number" value="1" id="pdp-qty-{{product.id}}" name="quantity" class="js-pdp-qty pdp-qty"
+                         maxlength="10" pattern="[0-9]" {% unless product.available %}disabled{% endunless %}>
+                  <svg class="svg" width="100%" height="72" viewBox="0 0 378 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path d="M346.874 0.999999L376.686 36L346.874 71L31.4672 71L1.31982 36L31.4672 0.999997L346.874 0.999999Z" fill="#F64A47" stroke="#F64A47" stroke-width="2"></path>
+                  </svg>
+                </label>
+                <button class="js-pdp-qty-increment pdp-qty-increment down" type="button"
+                        aria-label="Quantity increment for {{product.title}}">
+                  <span class="d-none">Decrease quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                          d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                          fill="#F64A47" />
+                    <path class="symbol" d="M16.2986 19.4737V21.7837H28.2986V19.4737H16.2986Z" fill="white" />
+                  </svg>
+                </button>
+                <button class="js-pdp-qty-increment pdp-qty-increment up" type="button"
+                        aria-label="Quantity descrement for {{product.title}}">
+                  <span class="d-none">Increase quantity</span>
+                  <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shape"
+                          d="M22.7933 0.683594L45.5867 12.3526V27.2194L22.7933 39.3236L0 27.2194V12.3526L22.7933 0.683594Z"
+                          fill="#F64A47" />
+                    <path class="symbol"
+                          d="M21.6047 11.6437V18.7237H14.5547V21.0637H21.6047V28.3237H23.9747V21.0637H30.9947V18.7237H23.9747V11.6437H21.6047Z"
+                          fill="white" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="price_with_can_price">
+                <div class="price spritz-product__price js-price" data-price='{{product.price}}'>{{product.price | money}}</div>
+                {% if product.metafields.multi.multi_variants_packs %}
+                  <div class="acumin-pro spritz-product__canprice">{{ product.metafields.multi.multi_variants_packs }}</div>
+                {% elsif product.metafields.product.pack %}
+                  <div class="acumin-pro spritz-product__canprice" data-can-price={{product.price | divided_by: product.metafields.product.pack}}>{{product.price | divided_by:
+                    product.metafields.product.pack | money }}/can</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="pdp-add-to-bag-wrapper">
+              <button type="submit" name="add"  class="svg-btn filled-svg-btn d-block large" {% unless product.available %}disabled{% endunless %}>
+                {% render '_ss_polygon_button_shape', type: 'filled' %}
+                <span>{% if product.available %}Add To Cart{% else %}Sold out{% endif %}</span>
+              </button>
+
+              {% assign title = product.title | downcase %}
+              {% if title contains 'variety' %}
+                <div class="free_shipping text-center under-button-text">
+                  {% if product.tags contains 'varietyPack' %}
+                    NEW
+                  {% else %}
+                    FREE SHIPPING
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <!--<button type="submit" name="add" class="polygone-normal-btn d-block pdp-add-to-bag" {% unless
+                      product.available %}disabled{% endunless %}>
+              {% if product.available %}
+              Add To Cart
+              {% else %}
+              Sold out
+              {% endif %}
+            </button>-->
+            </div>
+
+
+        </div>
+        </form>
+        <a href="javascript:void(0)" class="acumin-pro link d-block text-center pdp-link-bottom"
+           aria-label="Learn more about {{product.title}}">
+          {{section.settings.link_text}}
+        </a>
+      </div>
+    </div>
+</article>
+
+
+
+<script>
+
+  if (!theme){
+    var theme = {};
+  }
+
+  theme.productBandle = {};
+  theme.productBandle.product_{{ product.id }} = {
+    id: {{ product.variants.first.id }},
+    title: "{{ product.title }}",
+    handle: '{{ product.handle }}',
+    description: `{{ product.description }}`,
+    price: '{{ product.price | money }}',
+    link: '{{ product.url }}'
+  };
+
+  {% if bundle_product_2 %}
+    theme.productBandle.product_{{ bundle_product_2.id }} = {
+      id: {{ bundle_product_2.variants.first.id  }},
+      title: "{{ bundle_product_2.title }}",
+      handle: '{{ bundle_product_2.handle }}',
+      description: `{{ bundle_product_2.description }}`,
+      price: '{{ bundle_product_2.price | money }}',
+      link: '{{ bundle_product_2.url }}'
+    };
+  {% endif %}
+
+  {% if bundle_product_3 %}
+    theme.productBandle.product_{{ bundle_product_3.id }} = {
+      id: {{ bundle_product_3.variants.first.id  }},
+      title: "{{ bundle_product_3.title }}",
+      handle: '{{ bundle_product_3.handle }}',
+      description: `{{ bundle_product_3.description }}`,
+      price: '{{ bundle_product_3.price | money }}',
+      link: '{{ bundle_product_3.url }}'
+    };
+  {% endif %}
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // filter images
+    setTimeout(() => {
+      $('.main-slider').slick('slickFilter', function () {
+        return $(this).find('img').attr("data-custom-alt") == "{{ product.title }}";
+      });
+
+      $('.thumbnail-slider').slick('slickFilter', function () {
+        return $(this).find('img').attr("data-custom-alt") == "{{ product.title }}";
+      });
+
+      $('.main-slider').slick('slickGoTo', 0);
+    }, 500);
+
+
+    //listener
+    $('.js-bundle-trigger').on('click', function () {
+      let identifier = $(this).data('id');
+
+      $('.js-bundle-trigger').removeClass('active');
+
+      this.classList.add('active');
+
+      $('.js-bundle_description').html(theme.productBandle[identifier].description);
+
+      $('.spritz-product__title').html(theme.productBandle[identifier].title);
+
+      window.history.pushState("object or string", "Title", theme.productBandle[identifier].link); 
+
+      $('.js-product-select').val(theme.productBandle[identifier].id);
+
+
+      // change carousel
+      $('.main-slider').slick('slickUnfilter');
+      $('.thumbnail-slider').slick('slickUnfilter');
+      
+      $('.main-slider').slick('slickFilter', function () {
+        return $(this).find('img').attr("data-custom-alt") == theme.productBandle[identifier].title;
+      });
+
+      $('.thumbnail-slider').slick('slickFilter', function () {
+        return $(this).find('img').attr("data-custom-alt") == theme.productBandle[identifier].title;
+      });
+
+      $('.main-slider').slick('slickGoTo', 0);
+
+    });
+
+  });
+</script>
+
+
+<style>
+  .open-popup-link {
+    display: block;
+    padding: 0 0 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  @media (min-width: 450px) {
+    .open-popup-link {
+      padding: 0 0 20px 0;
+    }
+  }
+  .white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 7px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px 7%;
+    transition: 1s all;
+  }
+
+  @media (min-width: 450px) {
+    .white-popup {
+      padding: 40px;
+      margin: 20px auto;
+    }
+  }
+  .mfp-bg {}
+  .mfp-fade.mfp-bg {
+    opacity: 0;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+  }
+  /* overlay animate in */
+  .mfp-fade.mfp-bg.mfp-ready {
+    opacity: 0.8;
+  }
+  /* overlay animate out */
+  .mfp-fade.mfp-bg.mfp-removing {
+    opacity: 0;
+  }
+  .mfp-fade.mfp-wrap .mfp-content {
+    opacity: 0;
+    transition: all 0.4s ease-out;
+  }
+  .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    opacity: 1;
+  }
+
+  .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    opacity: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP bundle",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Nutrition Facts"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Nutrition Facts and Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "popup_text",
+      "label": "Popup text"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_sticker",
+      "label": "Promo sticker"
+    }
+    
+  ]
+}
+{% endschema %}

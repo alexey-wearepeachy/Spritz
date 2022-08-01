@@ -93,9 +93,11 @@
                 object-fit: cover;
             }
 
-            @media (min-width: 320px) and (max-width: 520px) {
+            @media (min-width: 300px) and (max-width: 600px) {
                 max-width: 70px;
-                right: -30px;
+                right: auto;
+                left: -30px;
+                top: -30px;
                 &.variety-free-shipping{
                     top: 65px;
                     right: -30px;
@@ -104,7 +106,9 @@
 
             @media (min-width: 600px) and (max-width: 768px) {
                 max-width: 100px;
-                right: -30px;
+                right: auto;
+                left: -30px;
+                top: -60px;
                 &.variety-free-shipping{
                     right: 80px;
                 }
@@ -164,10 +168,109 @@
     }
 }
 
+.template_product_bundle {
+
+    .pdp-desc {
+        margin-bottom: 30px;
+        strong {
+            font-weight: bold;
+        }
+    }
+}
 .bundle-product{
 
     .bottom-link a{
         text-decoration: underline;
+    }
+}
+.bundle-variants-title {
+    padding: 10px 0 30px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    
+    span {
+        position: relative;
+        display: inline-block;
+        padding: 10px;
+
+        &:before {
+            content: '';
+            width: 300px;
+            height: 1px;
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            background: #E3584F;
+        }
+        &:after {
+            content: '';
+            width: 300px;
+            height: 1px;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            background: #E3584F;
+        }
+    }
+}
+.bundle-variants {
+    display: flex;
+    justify-content: space-between;
+    line-height: 0;
+    margin-bottom: 30px;
+
+    @media (max-width: 580px) {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+    }
+
+    .bundle-trigger {
+        position: relative;
+        min-width: 32%;
+        text-align: center;
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5px 30px;
+            font-size: 12px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        &.active {
+            span {
+                color: white;
+            } 
+            svg {
+                fill: url(#paint0_linear_3_235);
+                &.mobile {
+                    fill: url(#paint0_linear_3_308);
+                }
+            }
+        }
+
+        @media (max-width: 580px) {
+            width: 100%;
+            margin-bottom: 25px;
+
+            .desktop {
+                display: none;
+            }
+            .mobile {
+                display: inline-block !important;
+                max-width: 100%;
+                height: auto;
+            }
+        }
     }
 }
 
@@ -1572,7 +1675,7 @@
         }
         &:last-child {
             img {
-                width: 200px;
+                width: 250px;
             }
         }
     }
@@ -3157,13 +3260,15 @@
 }
 
 @media (min-width: 769px) {
-    .products .right_part .pdp-qty-with-price, .custom-pack .right_part .pdp-qty-with-price {
+    .products .right_part .pdp-qty-with-price, .custom-pack .right_part .pdp-qty-with-price, .template_product_bundle .right_part .pdp-qty-with-price {
         flex-direction: row-reverse;
     }
     .product-hero .product-hero__right .pdp-right-img.variety-free-shipping {
         right: 80px;
     }
-    .products .right_part .pdp-right-img.variety-temp, .custom-pack .right_part .pdp-right-img.variety-temp {
+    .products .right_part .pdp-right-img.variety-temp, 
+    .custom-pack .right_part .pdp-right-img.variety-temp,
+    .template_product_bundle .right_part .pdp-right-img.variety-temp {
         right: -70px;
     }
     .pdp-qty-with-price {
@@ -3382,7 +3487,7 @@ main:-internal-direct-focus {
             top: 50%;
             display: flex;
             justify-content: center;
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             
@@ -3404,7 +3509,7 @@ main:-internal-direct-focus {
             }
             
             @media (min-width: 740px) {
-                max-width: 54%;
+                max-width: 50%;
                 padding: 0;
                 position: absolute;
                 z-index: 1;
@@ -3457,7 +3562,7 @@ main:-internal-direct-focus {
                 font-family: 'Knockout-lite';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 72px;
+                font-size: 64px;
                 line-height: 61px;
                 text-transform: uppercase;
                 text-align: center;
@@ -3471,7 +3576,6 @@ main:-internal-direct-focus {
                 @media (min-width: 740px) {
                     padding-top: 10px;
                     display: inline-block;
-                    text-align: left;
                     margin-left: -2px;
                     font-size: 72px;
                     line-height: 61px;
@@ -3485,33 +3589,29 @@ main:-internal-direct-focus {
                 }
             }
             .hp-hero__motto {
-                font-family: arial, sans-serif;
+                font-family: 'Knockout-junior'; 
                 font-style: normal;
-                font-weight: 400;
-                font-size: 23px;
-                line-height: 25px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 1;
                 text-align: center;
-                color: #4458A7;
-                order: 2;
+                color: #ed2724;
 
                 strong {
                     font-weight: bold;
                 }
                 @media (min-width: 740px) {
-                    text-align: left;
                     margin-top: 10px;
+                    font-size: 28px;
                 }
                 @media (min-width: 740px) and (max-width: 1300px) {
                     font-size: 18px;
                     line-height: 20px;
                 }
                 @media (max-width: 740px) {
-                    margin-top: 20px;
+                    margin-top: 5px;
                     em {
                         display: block;
-                    }
-                    p + p {
-                        margin-top: 25px;
                     }
                 }
                 @media (max-width: 480px) {
@@ -3536,13 +3636,13 @@ main:-internal-direct-focus {
                 background: #FFFDF8;
 
                 padding: 11px;
-                margin: 30px auto 0;
+                margin: 20px auto 30px;
                 min-height: 48px;
                 width: max-content;
                 min-width: 212px;
 
                 @media (min-width: 740px) {
-                    padding: 8px;
+                    padding: 8px 12px;
                     min-height: 44px;
                     min-width: 210px;
                     margin: 12px auto 0;
@@ -4220,6 +4320,39 @@ main:-internal-direct-focus {
             }
         }
     }
+}
+.template_product_bundle {
+    .select-switcher {
+        flex-direction: column;
+        align-items: flex-start;
+        .switcher-overlay {
+            .sel-switcher-option {
+                padding: 0;
+                margin: 0 0 10px;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1;
+                
+                svg {
+                    margin-right: 10px;
+                }
+            }
+            input:checked + .sel-switcher-option {
+                svg {
+                    fill: #f64a47;
+                }
+            }
+        }
+         
+    }
+}
+
+.bundle_variant_description {
+    font-family: 'Acumin-RPro',arial,sans-serif;
+    margin-bottom: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
 }
 
 .ss_bundle_product .variety-form {
